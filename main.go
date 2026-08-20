@@ -6,20 +6,34 @@ import (
 		"log"
 		"net")
 
-func gerenciarConexao (conexao net.Conn) {
-	defer conexao.Close() 
+func gerenciarConexaoBloqueante (conexao net.Conn){
+	defer conexao.Close()
 
-	// Ler do clinete 
-	buf := make ([]byte, 1024)
-	n,err := conexao.Read(buf) //bloqueia ate retornar o numero de bytes lidos 
-	
-	if err != nil {
-		log.Print(err)
-	}
-	fmt.Println(string(buf[:n]))
-	fmt.Fprintf(conexao, "Opa" + string (buf[:n]))
+	for{
+		conexao.SetDeadline(time.Now().Add(time.Second))
 
+		buf:= make([]byte, 1024)
+		n, err := conexao.Read(buf)
+		
+		if err != nil {
+			if netErr, ok := err.(net.Error); ok && netErr.Timeout(){
+				continue
+			} else {
+				log.Println("Conexao fechada", err)
+				break
+			}
+		}
+
+		fmt.Println("Recebido", string(buf[:n]))
+		conexao.SetWriteDeadline(time.Now().Add(time.Second))
+
+		fmt.Fprintf(conexao, "OPAAA NO TEMPO CORRETO")
+		if err != nil {
+			log.Println ("Eror de escrita dsoi cliente", err)
+			break
+		}
 	}
+}
 
 func main(){
 	//Listener aguarda o cliente cria um canal (socket) e encaminha para uma rotina
