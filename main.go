@@ -54,6 +54,44 @@ func gerenciarConexao(conexao net.Conn) {
 		}
 		respBytes, _ := json.Marshal(resp)
 		conexao.Write(respBytes)
+
+	case utils.AcaoBuscarItinerario:
+		// 1. Decodifica os parâmetros de busca enviados pelo passageiro
+		var filtro struct {
+			Origem  string     `json:"origem"`
+			Destino string     `json:"destino"`
+			Data    utils.Data `json:"data"`
+		}
+
+		if err := json.Unmarshal(req.Payload, &filtro); err != nil {
+			log.Println("Erro no payload da busca:", err)
+			return
+		}
+
+		// 2. Carrega as caronas do JSON
+		caronas, err := utils.CarregarCaronas()
+		if err != nil {
+			log.Println("Erro ao carregar caronas:", err)
+			resp := utils.MensagemResposta{Sucesso: false, Mensagem: "Erro interno no servidor."}
+			respBytes, _ := json.Marshal(resp)
+			conexao.Write(respBytes)
+			return
+		}
+
+		// 3. Executa a busca de rotas baseada em Grafo (BFS)
+		itinerarios := utils.BuscarItinerarios(caronas, filtro.Origem, filtro.Destino, filtro.Data)
+
+		payloadBytes, _ := json.Marshal(itinerarios)
+
+		// 4. Devolve o resultado formatado
+		resp := utils.MensagemResposta{
+			Sucesso:  true,
+			Mensagem: fmt.Sprintf("Encontrado(s) %d itinerário(s) disponível(is).", len(itinerarios)),
+			Payload:  payloadBytes,
+		}
+
+		respBytes, _ := json.Marshal(resp)
+		conexao.Write(respBytes)
 	}
 }
 

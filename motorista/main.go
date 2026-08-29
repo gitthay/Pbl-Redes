@@ -18,13 +18,40 @@ func main() {
 	defer conexao.Close()
 
 	novaCarona := utils.Carona{
-		ID:          "1",
+		ID:          "3",
 		MotoristaID: "motorista@email.com",
 		AssentosTot: 4,
 		Ativa:       true,
 		Trechos: []utils.Trecho{
 			{
 				Origem:         "Feira de Santana",
+				Destino:        "B",
+				DataPartida:    utils.NovaData(15, 10, 2026),
+				HorarioPartida: time.Now(),
+				HorarioChegada: time.Now().Add(2 * time.Hour),
+				Preco:          35.0,
+				AssentosLivre:  4,
+			},
+			{
+				Origem:         "B",
+				Destino:        "C",
+				DataPartida:    utils.NovaData(15, 10, 2026),
+				HorarioPartida: time.Now(),
+				HorarioChegada: time.Now().Add(2 * time.Hour),
+				Preco:          35.0,
+				AssentosLivre:  4,
+			},
+			{
+				Origem:         "C",
+				Destino:        "D",
+				DataPartida:    utils.NovaData(15, 10, 2026),
+				HorarioPartida: time.Now(),
+				HorarioChegada: time.Now().Add(2 * time.Hour),
+				Preco:          35.0,
+				AssentosLivre:  4,
+			},
+			{
+				Origem:         "D",
 				Destino:        "Salvador",
 				DataPartida:    utils.NovaData(15, 10, 2026),
 				HorarioPartida: time.Now(),

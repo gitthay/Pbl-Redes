@@ -21,7 +21,7 @@
     "ativa": true
   },
   {
-    "id": "1",
+    "id": "2",
     "motorista_id": "motorista@email.com",
     "assentos_tot": 4,
     "trechos": [
@@ -35,6 +35,88 @@
         },
         "horario_partida": "2026-08-29T17:16:03.1341886-03:00",
         "horario_chegada": "2026-08-29T19:16:03.1341886-03:00",
+        "preco": 35,
+        "assentos_livres": 4
+      }
+    ],
+    "ativa": true
+  },
+  {
+    "id": "3",
+    "motorista_id": "motorista@email.com",
+    "assentos_tot": 4,
+    "trechos": [
+      {
+        "origem": "Feira de Santana",
+        "destino": "B",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-08-29T17:56:44.202189-03:00",
+        "horario_chegada": "2026-08-29T19:56:44.202189-03:00",
+        "preco": 35,
+        "assentos_livres": 4
+      },
+      {
+        "origem": "B",
+        "destino": "C",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-08-29T17:56:44.202189-03:00",
+        "horario_chegada": "2026-08-29T19:56:44.202189-03:00",
+        "preco": 35,
+        "assentos_livres": 0
+      },
+      {
+        "origem": "C",
+        "destino": "D",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-08-29T17:56:44.202189-03:00",
+        "horario_chegada": "2026-08-29T19:56:44.202189-03:00",
+        "preco": 35,
+        "assentos_livres": 4
+      },
+      {
+        "origem": "D",
+        "destino": "Salvador",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-08-29T17:56:44.202189-03:00",
+        "horario_chegada": "2026-08-29T19:56:44.202189-03:00",
+        "preco": 35,
+        "assentos_livres": 4
+      }
+    ],
+    "ativa": true
+  },
+
+  {
+    "id": "5",
+    "motorista_id": "motorista@email.com",
+    "assentos_tot": 4,
+    "trechos": [
+      {
+        "origem": "Salvador",
+        "destino": "Paris",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-08-29T20:16:03.1341886-03:00",
+        "horario_chegada": "2026-08-29T23:16:03.1341886-03:00",
         "preco": 35,
         "assentos_livres": 4
       }
