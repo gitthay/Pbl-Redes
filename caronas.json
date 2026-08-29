@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "motorista_id": "motorista@email.com",
+    "assentos_tot": 4,
+    "trechos": [
+      {
+        "origem": "Feira de Santana",
+        "destino": "Salvador",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-08-29T17:15:26.4150543-03:00",
+        "horario_chegada": "2026-08-29T19:15:26.4150543-03:00",
+        "preco": 35,
+        "assentos_livres": 4
+      }
+    ],
+    "ativa": true
+  },
+  {
+    "id": "1",
+    "motorista_id": "motorista@email.com",
+    "assentos_tot": 4,
+    "trechos": [
+      {
+        "origem": "Feira de Santana",
+        "destino": "Salvador",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-08-29T17:16:03.1341886-03:00",
+        "horario_chegada": "2026-08-29T19:16:03.1341886-03:00",
+        "preco": 35,
+        "assentos_livres": 4
+      }
+    ],
+    "ativa": true
+  }
+]
