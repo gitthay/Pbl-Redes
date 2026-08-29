@@ -158,7 +158,9 @@ func ConsolidarTrechos(trechos []ArestaTrecho) []ArestaTrecho {
 // persistencia de caronas
 var (
 	ArquivoCaronas = "caronas.json"
+	ArquivoReservas = "reservas.json"
 	mu             sync.Mutex // Evita conflito de concorrência entre goroutines do servidor
+	ArquivoUsuarios = "usuarios.json"
 )
 
 // CarregarCaronas lê todas as caronas salvas no arquivo JSON
@@ -208,4 +210,336 @@ func SalvarCarona(novaCarona Carona) error {
 
 	// 4. Salva os dados no arquivo
 	return os.WriteFile(ArquivoCaronas, dadosFormatados, 0644)
+}
+
+// CarregarReservas lê todas as reservas salvas
+func CarregarReservas() ([]Reserva, error) {
+	if _, err := os.Stat(ArquivoReservas); os.IsNotExist(err) {
+		return []Reserva{}, nil
+	}
+	dados, err := os.ReadFile(ArquivoReservas)
+	if err != nil || len(dados) == 0 {
+		return []Reserva{}, nil
+	}
+	var reservas []Reserva
+	err = json.Unmarshal(dados, &reservas)
+	return reservas, err
+}
+
+// ReservarItinerario executa a validação e reserva atômica de todos os trechos do itinerário
+func ReservarItinerario(passageiroID string, itinerario Itinerario) (*Reserva, error) {
+	mu.Lock()         // 1. TRAVA EXCLUSIVA: Nenhuma outra goroutine lê ou altera assentos enquanto essa roda
+	defer mu.Unlock() // 2. Libera o arquivo apenas no final da operação
+
+	// 3. Carrega o estado mais recente do arquivo de caronas
+	caronas, err := CarregarCaronas()
+	if err != nil {
+		return nil, fmt.Errorf("erro ao carregar caronas: %v", err)
+	}
+
+	// 4. VALIDAÇÃO DE ÚLTIMA HORA: Verifica se TODOS os trechos do itinerário ainda têm assento livre
+	for _, trechoDesejado := range itinerario.Trechos {
+		assentoDisponivel := false
+
+		for _, c := range caronas {
+			if c.ID == trechoDesejado.CaronaID && c.Ativa {
+				for _, t := range c.Trechos {
+					if t.Origem == trechoDesejado.Origem && t.Destino == trechoDesejado.Destino {
+						if t.AssentosLivre > 0 {
+							assentoDisponivel = true
+						}
+					}
+				}
+			}
+		}
+
+		// Se QUALQUER um dos trechos do itinerário esgotou, a reserva falha por completo (Tudo ou Nada)
+		if !assentoDisponivel {
+			return nil, fmt.Errorf("reserva cancelada: o trecho de %s para %s não possui mais assentos disponíveis", trechoDesejado.Origem, trechoDesejado.Destino)
+		}
+	}
+
+	// 5. DECREMENTA OS ASSENTOS: Aplica a reserva atualizando a lista em memória
+	for _, trechoDesejado := range itinerario.Trechos {
+		for idxC, c := range caronas {
+			if c.ID == trechoDesejado.CaronaID {
+				for idxT, t := range c.Trechos {
+					// Se o trecho da carona corresponde ao segmento reservado, subtrai o assento
+					if t.Origem == trechoDesejado.Origem && t.Destino == trechoDesejado.Destino {
+						caronas[idxC].Trechos[idxT].AssentosLivre--
+					}
+				}
+			}
+		}
+	}
+
+	// 6. Persiste o caronas.json atualizado
+	dadosCaronas, err := json.MarshalIndent(caronas, "", "  ")
+	if err != nil {
+		return nil, fmt.Errorf("erro ao serializar caronas: %v", err)
+	}
+	if err := os.WriteFile(ArquivoCaronas, dadosCaronas, 0644); err != nil {
+		return nil, fmt.Errorf("erro ao salvar caronas atualizadas: %v", err)
+	}
+
+	// 7. Criar o registro da Reserva
+	novaReserva := Reserva{
+		ID:           fmt.Sprintf("RES-%d", time.Now().UnixNano()),
+		PassageiroID: passageiroID,
+		Itinerario:   itinerario.Trechos,
+		ValorTotal:   itinerario.PrecoTotal,
+		DataCriacao:  time.Now(),
+	}
+
+	// 8. Salvar no reservas.json
+	reservas, _ := CarregarReservas()
+	reservas = append(reservas, novaReserva)
+	dadosReservas, _ := json.MarshalIndent(reservas, "", "  ")
+	if err := os.WriteFile(ArquivoReservas, dadosReservas, 0644); err != nil {
+		return nil, fmt.Errorf("erro ao gravar reservas.json: %v", err)
+	}
+
+	return &novaReserva, nil
+}
+
+
+// ListarReservasPassageiro retorna todas as reservas ativas de um determinado passageiro
+func ListarReservasPassageiro(passageiroID string) ([]Reserva, error) {
+	mu.Lock()
+	defer mu.Unlock()
+
+	reservas, err := CarregarReservas()
+	if err != nil {
+		return nil, err
+	}
+
+	var minhasReservas []Reserva
+	for _, r := range reservas {
+		if r.PassageiroID == passageiroID {
+			minhasReservas = append(minhasReservas, r)
+		}
+	}
+	return minhasReservas, nil
+}
+
+// CancelarReserva remove a reserva e devolve os assentos para as caronas correspondentes
+func CancelarReserva(reservaID, passageiroID string) error {
+	mu.Lock()
+	defer mu.Unlock()
+
+	reservas, err := CarregarReservas()
+	if err != nil {
+		return err
+	}
+
+	var reservaEncontrada *Reserva
+	novaListaReservas := make([]Reserva, 0)
+
+	// 1. Procura a reserva e valida o dono
+	for _, r := range reservas {
+		if r.ID == reservaID {
+			if r.PassageiroID != passageiroID {
+				return fmt.Errorf("você não tem permissão para cancelar esta reserva")
+			}
+			reservaEncontrada = &r
+		} else {
+			novaListaReservas = append(novaListaReservas, r)
+		}
+	}
+
+	if reservaEncontrada == nil {
+		return fmt.Errorf("reserva %s não encontrada", reservaID)
+	}
+
+	// 2. Devolve os assentos ocupados no caronas.json
+	caronas, err := CarregarCaronas()
+	if err == nil {
+		for _, trechoReservado := range reservaEncontrada.Itinerario {
+			for idxC, c := range caronas {
+				if c.ID == trechoReservado.CaronaID {
+					for idxT, t := range c.Trechos {
+						if t.Origem == trechoReservado.Origem && t.Destino == trechoReservado.Destino {
+							caronas[idxC].Trechos[idxT].AssentosLivre++
+						}
+					}
+				}
+			}
+		}
+		// Persiste caronas com assentos restaurados
+		dadosCaronas, _ := json.MarshalIndent(caronas, "", "  ")
+		_ = os.WriteFile(ArquivoCaronas, dadosCaronas, 0644)
+	}
+
+	// 3. Atualiza o reservas.json
+	dadosReservas, err := json.MarshalIndent(novaListaReservas, "", "  ")
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(ArquivoReservas, dadosReservas, 0644)
+}
+
+// ConsultarCaronasMotorista traz todas as caronas cadastradas pelo motorista logado
+func ConsultarCaronasMotorista(motoristaID string) ([]Carona, error) {
+	mu.Lock()
+	defer mu.Unlock()
+
+	caronas, err := CarregarCaronas()
+	if err != nil {
+		return nil, err
+	}
+
+	var minhasCaronas []Carona
+	for _, c := range caronas {
+		if c.MotoristaID == motoristaID {
+			minhasCaronas = append(minhasCaronas, c)
+		}
+	}
+	return minhasCaronas, nil
+}
+
+// CancelarCaronaMotorista cancela a carona e verifica se há passageiros afetados
+func CancelarCaronaMotorista(caronaID, motoristaID string, confirmouComPassageiros bool) (bool, string, error) {
+	mu.Lock()
+	defer mu.Unlock()
+
+	caronas, err := CarregarCaronas()
+	if err != nil {
+		return false, "", err
+	}
+
+	// 1. Localiza a carona e valida a posse do motorista
+	var caronaIndex = -1
+	for i, c := range caronas {
+		if c.ID == caronaID {
+			if c.MotoristaID != motoristaID {
+				return false, "", fmt.Errorf("você não tem permissão para cancelar esta carona")
+			}
+			caronaIndex = i
+			break
+		}
+	}
+
+	if caronaIndex == -1 {
+		return false, "", fmt.Errorf("carona %s não encontrada", caronaID)
+	}
+
+	// 2. Checa se existem reservas associadas a esta carona
+	reservas, _ := CarregarReservas()
+	passageirosAfetados := make(map[string]bool)
+
+	for _, r := range reservas {
+		for _, trecho := range r.Itinerario {
+			if trecho.CaronaID == caronaID {
+				passageirosAfetados[r.PassageiroID] = true
+			}
+		}
+	}
+
+	qtdPassageiros := len(passageirosAfetados)
+
+	// 3. Se houver passageiros e o motorista ainda não confirmou expressamente o cancelamento
+	if qtdPassageiros > 0 && !confirmouComPassageiros {
+		msg := fmt.Sprintf("ATENÇÃO: Esta carona possui %d passageiro(s) com reserva confirmada! Deseja realmente cancelar?", qtdPassageiros)
+		return true, msg, nil
+	}
+
+	// 4. Efetiva o cancelamento (Inativa a carona no caronas.json)
+	caronas[caronaIndex].Ativa = false
+
+	dadosCaronas, _ := json.MarshalIndent(caronas, "", "  ")
+	if err := os.WriteFile(ArquivoCaronas, dadosCaronas, 0644); err != nil {
+		return false, "", err
+	}
+
+	// 5. Remove as reservas ativas dessa carona cancelada do reservas.json
+	if qtdPassageiros > 0 {
+		novasReservas := make([]Reserva, 0)
+		for _, r := range reservas {
+			temCaronaCancelada := false
+			for _, trecho := range r.Itinerario {
+				if trecho.CaronaID == caronaID {
+					temCaronaCancelada = true
+					break
+				}
+			}
+			if !temCaronaCancelada {
+				novasReservas = append(novasReservas, r)
+			}
+		}
+		dadosReservas, _ := json.MarshalIndent(novasReservas, "", "  ")
+		_ = os.WriteFile(ArquivoReservas, dadosReservas, 0644)
+	}
+
+	return false, "Carona cancelada com sucesso!", nil
+}
+
+// ConsultarPassageirosCarona retorna quais passageiros compraram assentos na carona
+func ConsultarPassageirosCarona(caronaID, motoristaID string) ([]string, error) {
+	mu.Lock()
+	defer mu.Unlock()
+
+	reservas, err := CarregarReservas()
+	if err != nil {
+		return nil, err
+	}
+
+	passageirosMap := make(map[string]bool)
+	for _, r := range reservas {
+		for _, trecho := range r.Itinerario {
+			if trecho.CaronaID == caronaID {
+				passageirosMap[r.PassageiroID] = true
+			}
+		}
+	}
+
+	var lista []string
+	for p := range passageirosMap {
+		lista = append(lista, p)
+	}
+	return lista, nil
+}
+
+// AutenticarOuCadastrarUsuario valida a senha do usuário ou cria um novo registro se não existir
+func AutenticarOuCadastrarUsuario(email, senha string, tipo TipoUsuario) (bool, string, error) {
+	mu.Lock()
+	defer mu.Unlock()
+
+	var usuarios []Usuario
+
+	// 1. Carrega os usuários existentes
+	if _, err := os.Stat(ArquivoUsuarios); !os.IsNotExist(err) {
+		dados, err := os.ReadFile(ArquivoUsuarios)
+		if err == nil && len(dados) > 0 {
+			_ = json.Unmarshal(dados, &usuarios)
+		}
+	}
+
+	// 2. Procura o usuário cadastrado
+	for _, u := range usuarios {
+		if u.Email == email {
+			if u.Senha == senha {
+				return true, "Autenticação realizada com sucesso!", nil
+			}
+			return false, "Senha incorreta.", nil
+		}
+	}
+
+	// 3. Se não encontrou, realiza o cadastro automático no primeiro acesso
+	novoUsuario := Usuario{
+		Email: email,
+		Senha: senha,
+		Tipo:  tipo,
+	}
+
+	usuarios = append(usuarios, novoUsuario)
+	dadosUsuarios, err := json.MarshalIndent(usuarios, "", "  ")
+	if err != nil {
+		return false, "Erro ao processar dados do usuário.", err
+	}
+
+	if err := os.WriteFile(ArquivoUsuarios, dadosUsuarios, 0644); err != nil {
+		return false, "Erro ao salvar arquivo de usuários.", err
+	}
+
+	return true, "Usuário cadastrado e autenticado com sucesso!", nil
 }

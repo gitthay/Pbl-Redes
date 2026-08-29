@@ -1,0 +1,22 @@
+[
+  {
+    "email": "passageiro@email.com",
+    "senha": "124",
+    "tipo": "PASSAGEIRO"
+  },
+  {
+    "email": "thay@gmail",
+    "senha": "123",
+    "tipo": "PASSAGEIRO"
+  },
+  {
+    "email": "m",
+    "senha": "1",
+    "tipo": "MOTORISTA"
+  },
+  {
+    "email": "3",
+    "senha": "j",
+    "tipo": "MOTORISTA"
+  }
+]

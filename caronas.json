@@ -18,7 +18,7 @@
         "assentos_livres": 4
       }
     ],
-    "ativa": true
+    "ativa": false
   },
   {
     "id": "2",
@@ -101,7 +101,6 @@
     ],
     "ativa": true
   },
-
   {
     "id": "5",
     "motorista_id": "motorista@email.com",

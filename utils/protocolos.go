@@ -36,8 +36,7 @@ type Carona struct {
 type Reserva struct {
 	ID           string    `json:"id"`
 	PassageiroID string    `json:"passageiro_id"`
-	CaronaID     string    `json:"carona_id"`
-	Trechos      []Trecho  `json:"trechos"`
+	Itinerario   []ArestaTrecho `json:"itinerario"`
 	ValorTotal   float64   `json:"valor_total"`
 	DataCriacao  time.Time `json:"data_criacao"`
 }
@@ -48,13 +47,28 @@ type TipoAcao string
 
 const (
 	AcaoAutenticar       TipoAcao = "AUTENTICAR"
-	AcaoPublicarCarona   TipoAcao = "PUBLICAR_CARONA"
-	AcaoConsultarCaronas TipoAcao = "CONSULTAR_CARONAS"
-	AcaoCancelarCarona   TipoAcao = "CANCELAR_CARONA"
-	AcaoBuscarItinerario TipoAcao = "BUSCAR_ITINERARIO"
-	AcaoReservarTrecho   TipoAcao = "RESERVAR_TRECHO"
-	AcaoCancelarReserva  TipoAcao = "CANCELAR_RESERVA"
+	AcaoPublicarCarona   TipoAcao = "PUBLICAR_CARONA" //feito
+	AcaoConsultarCaronas TipoAcao = "CONSULTAR_CARONAS" //feito
+	AcaoCancelarCarona   TipoAcao = "CANCELAR_CARONA" //feito
+	AcaoBuscarItinerario TipoAcao = "BUSCAR_ITINERARIO" //feito
+	AcaoReservarTrecho   TipoAcao = "RESERVAR_TRECHO" //feito
+	AcaoListarReservas   TipoAcao = "LISTAR_RESERVAS"   // feito
+	AcaoCancelarReserva  TipoAcao = "CANCELAR_RESERVA" //feito
+	AcaoConsultarPassageirosCarona TipoAcao = "CONSULTAR_PASSAGEIROS_CARONA"
 )
+
+type TipoUsuario string
+
+const (
+	TipoMotorista  TipoUsuario = "MOTORISTA"
+	TipoPassageiro TipoUsuario = "PASSAGEIRO"
+)
+
+type Usuario struct {
+	Email string      `json:"email"`
+	Senha string      `json:"senha"`
+	Tipo  TipoUsuario `json:"tipo"`
+}
 
 // MensagemRequisicao é o envelope de dados enviado pelo Cliente ao Servidor.
 type MensagemRequisicao struct {
