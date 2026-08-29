@@ -6,6 +6,7 @@ import (
 	"os"
 	"sync"
 	"time"
+	"strings"
 )
 
 // String formata a data para leitura (ex: "25/12/2026")
@@ -66,18 +67,28 @@ func MontarGrafo(caronas []Carona, dataDesejada Data) GrafoCidades {
 	}
 	return grafo
 }
-
-// BuscarItinerarios realiza uma BFS no grafo para encontrar rotas diretas ou com troca de carona
+// NormalizarTexto remove espaços sobressalentes nas extremidades e converte para caixa baixa
+func NormalizarTexto(texto string) string {
+	return strings.ToLower(strings.TrimSpace(texto))
+}
+// BuscarItinerarios realiza a busca em largura comparando strings de forma insensível a maiúsculas e espaços
 func BuscarItinerarios(caronas []Carona, origem, destino string, data Data) []Itinerario {
+	// Normaliza as entradas do passageiro
+	origemNorm := NormalizarTexto(origem)
+	destinoNorm := NormalizarTexto(destino)
+
 	grafo := MontarGrafo(caronas, data)
 	var resultados []Itinerario
 
-	// Fila para algoritmo BFS: cada elemento é um caminho de trechos acumulados
 	fila := [][]ArestaTrecho{}
 
-	// Inicializa a fila com as arestas que saem da origem
-	for _, aresta := range grafo[origem] {
-		fila = append(fila, []ArestaTrecho{aresta})
+	// Procura no grafo pelas chaves normalizadas
+	for chaveOrigem, arestas := range grafo {
+		if NormalizarTexto(chaveOrigem) == origemNorm {
+			for _, aresta := range arestas {
+				fila = append(fila, []ArestaTrecho{aresta})
+			}
+		}
 	}
 
 	for len(fila) > 0 {
@@ -86,13 +97,13 @@ func BuscarItinerarios(caronas []Carona, origem, destino string, data Data) []It
 
 		ultimoTrecho := caminhoAtual[len(caminhoAtual)-1]
 
-		if ultimoTrecho.Destino == destino {
+		// Compara o destino final de forma insensível
+		if NormalizarTexto(ultimoTrecho.Destino) == destinoNorm {
 			var precoTotal float64
 			for _, t := range caminhoAtual {
 				precoTotal += t.Preco
 			}
 
-			// Funde os trechos contínuos do mesmo motorista antes de retornar
 			caminhoConsolidado := ConsolidarTrechos(caminhoAtual)
 
 			resultados = append(resultados, Itinerario{
@@ -102,18 +113,19 @@ func BuscarItinerarios(caronas []Carona, origem, destino string, data Data) []It
 			continue
 		}
 
-		// Procura próximas conexões saindo da cidade onde o último trecho desembarcou
-		proximasArestas := grafo[ultimoTrecho.Destino]
-		for _, proxima := range proximasArestas {
-			// Se for a mesma carona, permite a continuidade do percurso.
-			// Se forem caronas diferentes, exige que a partida seja posterior à chegada anterior[cite: 1].
-			mesmaCarona := proxima.CaronaID == ultimoTrecho.CaronaID
-			horarioValido := proxima.HorarioPartida.After(ultimoTrecho.HorarioChegada) || proxima.HorarioPartida.Equal(ultimoTrecho.HorarioChegada)
+		// Procura pelas conexões normalizando os destinos intermediários
+		for chaveOrigem, proximasArestas := range grafo {
+			if NormalizarTexto(chaveOrigem) == NormalizarTexto(ultimoTrecho.Destino) {
+				for _, proxima := range proximasArestas {
+					mesmaCarona := proxima.CaronaID == ultimoTrecho.CaronaID
+					horarioValido := proxima.HorarioPartida.After(ultimoTrecho.HorarioChegada) || proxima.HorarioPartida.Equal(ultimoTrecho.HorarioChegada)
 
-			if mesmaCarona || horarioValido {
-				novoCaminho := append([]ArestaTrecho{}, caminhoAtual...)
-				novoCaminho = append(novoCaminho, proxima)
-				fila = append(fila, novoCaminho)
+					if mesmaCarona || horarioValido {
+						novoCaminho := append([]ArestaTrecho{}, caminhoAtual...)
+						novoCaminho = append(novoCaminho, proxima)
+						fila = append(fila, novoCaminho)
+					}
+				}
 			}
 		}
 	}

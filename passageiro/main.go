@@ -7,6 +7,7 @@ import (
 	"log"
 	"net"
 	"os"
+	"strconv"
 	"strings"
 
 	"vaiJunto/utils"
@@ -17,7 +18,23 @@ var leitor = bufio.NewReader(os.Stdin)
 func lerTexto(rotulo string) string {
 	fmt.Print(rotulo)
 	texto, _ := leitor.ReadString('\n')
-	return strings.TrimSpace(texto)
+	// Remove a quebra de linha (\n ou \r\n) e espaços extras antes e depois
+	return strings.TrimSpace(texto) 
+}
+
+// BuscarReservasDoPassageiro é uma função auxiliar para consultar as reservas do cliente
+func buscarReservas(conexao net.Conn, email string, buf []byte) []utils.Reserva {
+	req := utils.MensagemRequisicao{Acao: utils.AcaoListarReservas, Usuario: email}
+	reqBytes, _ := json.Marshal(req)
+	conexao.Write(reqBytes)
+
+	n, _ := conexao.Read(buf)
+	var resp utils.MensagemResposta
+	json.Unmarshal(buf[:n], &resp)
+
+	var reservas []utils.Reserva
+	json.Unmarshal(resp.Payload, &reservas)
+	return reservas
 }
 
 func main() {
@@ -77,8 +94,12 @@ func main() {
 
 		switch opcao {
 		case "1":
+			fmt.Println("\n--- BUSCAR ITINERÁRIOS (Digite 0 para voltar) ---")
 			origem := lerTexto("Origem: ")
+			if origem == "0" { continue }
+
 			destino := lerTexto("Destino: ")
+			if destino == "0" { continue }
 
 			filtro := struct {
 				Origem  string     `json:"origem"`
@@ -118,16 +139,14 @@ func main() {
 				continue
 			}
 
-			var numOpcao int
-			fmt.Print("Digite o número da OPÇÃO desejada para reserva: ")
-			fmt.Scanln(&numOpcao)
-
-			if numOpcao < 1 || numOpcao > len(ultimosItinerarios) {
-				fmt.Println("Opção inválida!")
+			fmt.Println("\nDigite o número da OPÇÃO desejada (ou 0 para voltar):")
+			input := lerTexto("Opção: ")
+			num, err := strconv.Atoi(input)
+			if err != nil || num == 0 || num > len(ultimosItinerarios) {
 				continue
 			}
 
-			itinerarioEscolhido := ultimosItinerarios[numOpcao-1]
+			itinerarioEscolhido := ultimosItinerarios[num-1]
 			payload, _ := json.Marshal(itinerarioEscolhido)
 
 			req := utils.MensagemRequisicao{Acao: utils.AcaoReservarTrecho, Usuario: email, Payload: payload}
@@ -141,25 +160,37 @@ func main() {
 			fmt.Println("\n>", resp.Mensagem)
 
 		case "3":
-			req := utils.MensagemRequisicao{Acao: utils.AcaoListarReservas, Usuario: email}
-			reqBytes, _ := json.Marshal(req)
-			conexao.Write(reqBytes)
-
-			n, _ := conexao.Read(buf)
-			var resp utils.MensagemResposta
-			json.Unmarshal(buf[:n], &resp)
-
-			var reservas []utils.Reserva
-			json.Unmarshal(resp.Payload, &reservas)
-
+			reservas := buscarReservas(conexao, email, buf)
 			fmt.Println("\n--- MINHAS RESERVAS ---")
-			for _, r := range reservas {
-				fmt.Printf("ID Reserva: %s | Valor Total: R$ %.2f | Trechos: %d\n", r.ID, r.ValorTotal, len(r.Itinerario))
+			if len(reservas) == 0 {
+				fmt.Println("Você não possui reservas ativas.")
+				continue
+			}
+			for i, r := range reservas {
+				fmt.Printf("[%d] ID Reserva: %s | Valor Total: R$ %.2f | Trechos: %d\n", i+1, r.ID, r.ValorTotal, len(r.Itinerario))
 			}
 
 		case "4":
-			reservaID := lerTexto("Digite o ID da reserva para cancelar: ")
-			payload, _ := json.Marshal(map[string]string{"reserva_id": reservaID})
+			reservas := buscarReservas(conexao, email, buf)
+			fmt.Println("\n--- CANCELAR RESERVA ---")
+			if len(reservas) == 0 {
+				fmt.Println("Você não possui reservas para cancelar.")
+				continue
+			}
+
+			for i, r := range reservas {
+				fmt.Printf("[%d] ID Reserva: %s | Valor Total: R$ %.2f\n", i+1, r.ID, r.ValorTotal)
+			}
+			fmt.Println("[0] Voltar ao menu")
+
+			input := lerTexto("Escolha o número da reserva para cancelar: ")
+			num, err := strconv.Atoi(input)
+			if err != nil || num == 0 || num > len(reservas) {
+				continue
+			}
+
+			reservaEscolhida := reservas[num-1]
+			payload, _ := json.Marshal(map[string]string{"reserva_id": reservaEscolhida.ID})
 
 			req := utils.MensagemRequisicao{Acao: utils.AcaoCancelarReserva, Usuario: email, Payload: payload}
 			reqBytes, _ := json.Marshal(req)

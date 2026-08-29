@@ -7,6 +7,7 @@ import (
 	"log"
 	"net"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
@@ -18,7 +19,23 @@ var leitor = bufio.NewReader(os.Stdin)
 func lerTexto(rotulo string) string {
 	fmt.Print(rotulo)
 	texto, _ := leitor.ReadString('\n')
-	return strings.TrimSpace(texto)
+	// Remove a quebra de linha (\n ou \r\n) e espaços extras antes e depois
+	return strings.TrimSpace(texto) 
+}
+
+// BuscarCaronasDoMotorista é uma função auxiliar para consultar a lista atual de caronas
+func buscarCaronas(conexao net.Conn, email string, buf []byte) []utils.Carona {
+	req := utils.MensagemRequisicao{Acao: utils.AcaoConsultarCaronas, Usuario: email}
+	reqBytes, _ := json.Marshal(req)
+	conexao.Write(reqBytes)
+
+	n, _ := conexao.Read(buf)
+	var resp utils.MensagemResposta
+	json.Unmarshal(buf[:n], &resp)
+
+	var caronas []utils.Carona
+	json.Unmarshal(resp.Payload, &caronas)
+	return caronas
 }
 
 func main() {
@@ -76,9 +93,14 @@ func main() {
 
 		switch opcao {
 		case "1":
+			fmt.Println("\n--- PUBLICAR CARONA (Digite 0 em qualquer campo para voltar) ---")
 			origem := lerTexto("Cidade de Origem: ")
+			if origem == "0" { continue }
+
 			destino := lerTexto("Cidade de Destino: ")
-			preco := 35.0 // Exemplo fixo ou pode usar fmt.Sscanf
+			if destino == "0" { continue }
+
+			preco := 35.0
 			assentos := 4
 
 			novaCarona := utils.Carona{
@@ -110,25 +132,39 @@ func main() {
 			fmt.Println("\n>", resp.Mensagem)
 
 		case "2":
-			req := utils.MensagemRequisicao{Acao: utils.AcaoConsultarCaronas, Usuario: email}
-			reqBytes, _ := json.Marshal(req)
-			conexao.Write(reqBytes)
-
-			n, _ := conexao.Read(buf)
-			var resp utils.MensagemResposta
-			json.Unmarshal(buf[:n], &resp)
-
-			var caronas []utils.Carona
-			json.Unmarshal(resp.Payload, &caronas)
-
+			caronas := buscarCaronas(conexao, email, buf)
 			fmt.Println("\n--- MINHAS CARONAS ---")
-			for _, c := range caronas {
-				fmt.Printf("ID: %s | Status Ativo: %t | Trechos: %d\n", c.ID, c.Ativa, len(c.Trechos))
+			if len(caronas) == 0 {
+				fmt.Println("Nenhuma carona encontrada.")
+				continue
+			}
+			for i, c := range caronas {
+				status := "Ativa"
+				if !c.Ativa { status = "Cancelada" }
+				fmt.Printf("[%d] ID: %s | Status: %s | Trechos: %d\n", i+1, c.ID, status, len(c.Trechos))
 			}
 
 		case "3":
-			caronaID := lerTexto("Digite o ID da Carona: ")
-			payload, _ := json.Marshal(map[string]string{"carona_id": caronaID})
+			caronas := buscarCaronas(conexao, email, buf)
+			fmt.Println("\n--- CONSULTAR PASSAGEIROS ---")
+			if len(caronas) == 0 {
+				fmt.Println("Nenhuma carona encontrada.")
+				continue
+			}
+
+			for i, c := range caronas {
+				fmt.Printf("[%d] ID: %s | Trechos: %d\n", i+1, c.ID, len(c.Trechos))
+			}
+			fmt.Println("[0] Voltar ao menu")
+
+			input := lerTexto("Escolha o número da carona: ")
+			num, err := strconv.Atoi(input)
+			if err != nil || num == 0 || num > len(caronas) {
+				continue
+			}
+
+			caronaEscolhida := caronas[num-1]
+			payload, _ := json.Marshal(map[string]string{"carona_id": caronaEscolhida.ID})
 			req := utils.MensagemRequisicao{Acao: utils.AcaoConsultarPassageirosCarona, Usuario: email, Payload: payload}
 			reqBytes, _ := json.Marshal(req)
 			conexao.Write(reqBytes)
@@ -141,13 +177,37 @@ func main() {
 			json.Unmarshal(resp.Payload, &passageiros)
 
 			fmt.Println("\n--- PASSAGEIROS CONFIRMADOS ---")
-			for _, p := range passageiros {
-				fmt.Println("- ", p)
+			if len(passageiros) == 0 {
+				fmt.Println("Nenhum passageiro reservou esta carona ainda.")
+			} else {
+				for _, p := range passageiros {
+					fmt.Println("- ", p)
+				}
 			}
 
 		case "4":
-			caronaID := lerTexto("Digite o ID da carona para cancelar: ")
-			payload, _ := json.Marshal(map[string]interface{}{"carona_id": caronaID, "confirmar": false})
+			caronas := buscarCaronas(conexao, email, buf)
+			fmt.Println("\n--- CANCELAR CARONA ---")
+			if len(caronas) == 0 {
+				fmt.Println("Nenhuma carona encontrada.")
+				continue
+			}
+
+			for i, c := range caronas {
+				if c.Ativa {
+					fmt.Printf("[%d] ID: %s | Trechos: %d\n", i+1, c.ID, len(c.Trechos))
+				}
+			}
+			fmt.Println("[0] Voltar ao menu")
+
+			input := lerTexto("Escolha o número da carona para cancelar: ")
+			num, err := strconv.Atoi(input)
+			if err != nil || num == 0 || num > len(caronas) {
+				continue
+			}
+
+			caronaEscolhida := caronas[num-1]
+			payload, _ := json.Marshal(map[string]interface{}{"carona_id": caronaEscolhida.ID, "confirmar": false})
 			req := utils.MensagemRequisicao{Acao: utils.AcaoCancelarCarona, Usuario: email, Payload: payload}
 			reqBytes, _ := json.Marshal(req)
 			conexao.Write(reqBytes)
@@ -158,11 +218,10 @@ func main() {
 
 			fmt.Println("\n>", resp.Mensagem)
 
-			// Se houver passageiros afetados, pede confirmação do motorista
 			if !resp.Sucesso && strings.Contains(resp.Mensagem, "ATENÇÃO") {
-				confirmar := lerTexto("Deseja realmente cancelar? (s/n): ")
+				confirmar := lerTexto("Deseja realmente cancelar? (s/n ou 0 para voltar): ")
 				if strings.ToLower(confirmar) == "s" {
-					payloadConf, _ := json.Marshal(map[string]interface{}{"carona_id": caronaID, "confirmar": true})
+					payloadConf, _ := json.Marshal(map[string]interface{}{"carona_id": caronaEscolhida.ID, "confirmar": true})
 					req.Payload = payloadConf
 					reqBytes, _ = json.Marshal(req)
 					conexao.Write(reqBytes)
