@@ -177,7 +177,7 @@ func gerenciarConexao(conexao net.Conn) {
 			}
 			respBytes, _ := json.Marshal(resp)
 			conexao.Write(respBytes)
-			
+
 		case utils.AcaoConsultarCaronas:
 			caronas, err := utils.ConsultarCaronasMotorista(req.Usuario)
 			if err != nil {
@@ -279,7 +279,7 @@ func gerenciarConexao(conexao net.Conn) {
 }
 
 func main() {
-	ln, err := net.Listen("tcp", "localhost:8080")
+	ln, err := net.Listen("tcp", ":8080")
 	if err != nil {
 		log.Fatalln(err)
 	}

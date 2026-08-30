@@ -9,6 +9,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"flag"
 
 	"vaiJunto/utils"
 )
@@ -19,7 +20,7 @@ func lerTexto(rotulo string) string {
 	fmt.Print(rotulo)
 	texto, _ := leitor.ReadString('\n')
 	// Remove a quebra de linha (\n ou \r\n) e espaços extras antes e depois
-	return strings.TrimSpace(texto) 
+	return strings.TrimSpace(texto)
 }
 
 // BuscarReservasDoPassageiro é uma função auxiliar para consultar as reservas do cliente
@@ -38,7 +39,12 @@ func buscarReservas(conexao net.Conn, email string, buf []byte) []utils.Reserva 
 }
 
 func main() {
-	conexao, err := net.Dial("tcp", "localhost:8080")
+	// Flag para aceitar IP dinâmico na execução do terminal
+	serverAddr := flag.String("server", "localhost:8080", "Endereço do servidor TCP (ex: 192.168.1.15:8080)")
+	flag.Parse()
+
+	// Conecta ao endereço configurado
+	conexao, err := net.Dial("tcp", *serverAddr)
 	if err != nil {
 		log.Fatalln("Erro ao conectar ao servidor:", err)
 	}
@@ -96,10 +102,14 @@ func main() {
 		case "1":
 			fmt.Println("\n--- BUSCAR ITINERÁRIOS (Digite 0 para voltar) ---")
 			origem := lerTexto("Origem: ")
-			if origem == "0" { continue }
+			if origem == "0" {
+				continue
+			}
 
 			destino := lerTexto("Destino: ")
-			if destino == "0" { continue }
+			if destino == "0" {
+				continue
+			}
 
 			filtro := struct {
 				Origem  string     `json:"origem"`

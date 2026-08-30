@@ -7,11 +7,22 @@ import (
 	"sync"
 	"testing"
 	"time"
+	"flag"
+	"os"
 
 	"vaiJunto/utils"
 )
 
-const enderecoServidor = "localhost:8080"
+var enderecoServidor string
+func TestMain(m *testing.M) {
+	// Define a flag -server com valor padrão em localhost:8080
+	flag.StringVar(&enderecoServidor, "server", "localhost:8080", "Endereço do servidor TCP (ex: 192.168.1.15:8080)")
+	flag.Parse()
+
+	// Executa a suíte de testes
+	exitCode := m.Run()
+	os.Exit(exitCode)
+}
 
 // Função auxiliar genérica para enviar requisições TCP e ler respostas
 func enviarRequisicao(conn net.Conn, acao utils.TipoAcao, usuario string, payload interface{}) (utils.MensagemResposta, error) {

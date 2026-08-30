@@ -2,14 +2,12 @@ version: '3.8'
 
 services:
   servidor-vaijunto:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     container_name: vaijunto_server
     ports:
       - "8080:8080"
     volumes:
       - ./caronas.json:/app/caronas.json
-      - ./usuarios.json:/app/usuarios.json
       - ./reservas.json:/app/reservas.json
-    restart: always
+      - ./usuarios.json:/app/usuarios.json
+    
