@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"strings"
 	"sync"
 	"time"
-	"strings"
 )
 
 // String formata a data para leitura (ex: "25/12/2026")
@@ -21,14 +21,14 @@ func NovaData(dia, mes, ano int) Data {
 
 // Aresta representa um trecho de carona disponível na rede
 type ArestaTrecho struct {
-	CaronaID       string
-	MotoristaID    string
-	Origem         string
-	Destino        string
-	HorarioPartida time.Time
-	HorarioChegada time.Time
-	Preco          float64
-	AssentosLivre  int
+	CaronaID       string    `json:"carona_id"`
+	MotoristaID    string    `json:"motorista_id"`
+	Origem         string    `json:"origem"`
+	Destino        string    `json:"destino"`
+	HorarioPartida time.Time `json:"horario_partida"`
+	HorarioChegada time.Time `json:"horario_chegada"`
+	Preco          float64   `json:"preco"`
+	AssentosLivre  int       `json:"assentos_livres"` // Padronizado com o 's' final do Trecho
 }
 
 // Representa um itinerário completo sugerido ao passageiro (uma lista sequencial de trechos)
@@ -67,10 +67,12 @@ func MontarGrafo(caronas []Carona, dataDesejada Data) GrafoCidades {
 	}
 	return grafo
 }
+
 // NormalizarTexto remove espaços sobressalentes nas extremidades e converte para caixa baixa
 func NormalizarTexto(texto string) string {
 	return strings.ToLower(strings.TrimSpace(texto))
 }
+
 // BuscarItinerarios realiza a busca em largura comparando strings de forma insensível a maiúsculas e espaços
 func BuscarItinerarios(caronas []Carona, origem, destino string, data Data) []Itinerario {
 	// Normaliza as entradas do passageiro
@@ -169,9 +171,9 @@ func ConsolidarTrechos(trechos []ArestaTrecho) []ArestaTrecho {
 
 // persistencia de caronas
 var (
-	ArquivoCaronas = "caronas.json"
+	ArquivoCaronas  = "caronas.json"
 	ArquivoReservas = "reservas.json"
-	mu             sync.Mutex // Evita conflito de concorrência entre goroutines do servidor
+	mu              sync.Mutex // Evita conflito de concorrência entre goroutines do servidor
 	ArquivoUsuarios = "usuarios.json"
 )
 
@@ -314,7 +316,6 @@ func ReservarItinerario(passageiroID string, itinerario Itinerario) (*Reserva, e
 	return &novaReserva, nil
 }
 
-
 // ListarReservasPassageiro retorna todas as reservas ativas de um determinado passageiro
 func ListarReservasPassageiro(passageiroID string) ([]Reserva, error) {
 	mu.Lock()
@@ -344,13 +345,16 @@ func CancelarReserva(reservaID, passageiroID string) error {
 		return err
 	}
 
+	reservaIDClean := strings.TrimSpace(reservaID)
+	passageiroIDClean := strings.TrimSpace(passageiroID)
+
 	var reservaEncontrada *Reserva
 	novaListaReservas := make([]Reserva, 0)
 
-	// 1. Procura a reserva e valida o dono
+	// 1. Procura a reserva e valida a posse
 	for _, r := range reservas {
-		if r.ID == reservaID {
-			if r.PassageiroID != passageiroID {
+		if strings.TrimSpace(r.ID) == reservaIDClean {
+			if strings.TrimSpace(r.PassageiroID) != passageiroIDClean {
 				return fmt.Errorf("você não tem permissão para cancelar esta reserva")
 			}
 			reservaEncontrada = &r
@@ -360,29 +364,33 @@ func CancelarReserva(reservaID, passageiroID string) error {
 	}
 
 	if reservaEncontrada == nil {
-		return fmt.Errorf("reserva %s não encontrada", reservaID)
+		return fmt.Errorf("reserva %s não encontrada", reservaIDClean)
 	}
 
 	// 2. Devolve os assentos ocupados no caronas.json
 	caronas, err := CarregarCaronas()
 	if err == nil {
 		for _, trechoReservado := range reservaEncontrada.Itinerario {
+			caronaIDClean := strings.TrimSpace(trechoReservado.CaronaID)
+			origemClean := NormalizarTexto(trechoReservado.Origem)
+			destinoClean := NormalizarTexto(trechoReservado.Destino)
+
 			for idxC, c := range caronas {
-				if c.ID == trechoReservado.CaronaID {
+				if strings.TrimSpace(c.ID) == caronaIDClean {
 					for idxT, t := range c.Trechos {
-						if t.Origem == trechoReservado.Origem && t.Destino == trechoReservado.Destino {
+						if NormalizarTexto(t.Origem) == origemClean && NormalizarTexto(t.Destino) == destinoClean {
 							caronas[idxC].Trechos[idxT].AssentosLivre++
 						}
 					}
 				}
 			}
 		}
-		// Persiste caronas com assentos restaurados
+
 		dadosCaronas, _ := json.MarshalIndent(caronas, "", "  ")
 		_ = os.WriteFile(ArquivoCaronas, dadosCaronas, 0644)
 	}
 
-	// 3. Atualiza o reservas.json
+	// 3. Atualiza o arquivo de reservas na raiz
 	dadosReservas, err := json.MarshalIndent(novaListaReservas, "", "  ")
 	if err != nil {
 		return err

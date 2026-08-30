@@ -3,8 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"io"
+	"log"
 	"net"
 
 	"vaiJunto/utils"
@@ -134,7 +134,7 @@ func gerenciarConexao(conexao net.Conn) {
 			respBytes, _ := json.Marshal(resp)
 			conexao.Write(respBytes)
 
-			case utils.AcaoListarReservas:
+		case utils.AcaoListarReservas:
 			reservas, err := utils.ListarReservasPassageiro(req.Usuario)
 			if err != nil {
 				resp := utils.MensagemResposta{Sucesso: false, Mensagem: "Erro ao buscar reservas."}
@@ -177,8 +177,8 @@ func gerenciarConexao(conexao net.Conn) {
 			}
 			respBytes, _ := json.Marshal(resp)
 			conexao.Write(respBytes)
-
-			case utils.AcaoConsultarCaronas:
+			
+		case utils.AcaoConsultarCaronas:
 			caronas, err := utils.ConsultarCaronasMotorista(req.Usuario)
 			if err != nil {
 				resp := utils.MensagemResposta{Sucesso: false, Mensagem: "Erro ao buscar caronas do motorista."}
@@ -248,7 +248,7 @@ func gerenciarConexao(conexao net.Conn) {
 			respBytes, _ := json.Marshal(resp)
 			conexao.Write(respBytes)
 
-			case utils.AcaoAutenticar:
+		case utils.AcaoAutenticar:
 			var reqAuth struct {
 				Email string            `json:"email"`
 				Senha string            `json:"senha"`
@@ -275,7 +275,6 @@ func gerenciarConexao(conexao net.Conn) {
 			conexao.Write(respBytes)
 		}
 
-		
 	}
 }
 
