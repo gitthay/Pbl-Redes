@@ -563,3 +563,28 @@ func AutenticarOuCadastrarUsuario(email, senha string, tipo TipoUsuario) (bool, 
 
 	return true, "Usuário cadastrado e autenticado com sucesso!", nil
 }
+
+var (
+	ArquivoLog = "servidor.log"
+	muLog      sync.Mutex
+)
+
+// RegistrarLog grava eventos, requisições e respostas com timestamp no arquivo de log
+func RegistrarLog(formato string, v ...interface{}) {
+	muLog.Lock()
+	defer muLog.Unlock()
+
+	timestamp := time.Now().Format("2006-01-02 15:04:05")
+	mensagem := fmt.Sprintf(formato, v...)
+	linhaLog := fmt.Sprintf("[%s] %s\n", timestamp, mensagem)
+
+	// Abre o arquivo em modo append (ou cria se não existir)
+	f, err := os.OpenFile(ArquivoLog, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		fmt.Printf("Erro ao gravar log: %v\n", err)
+		return
+	}
+	defer f.Close()
+
+	_, _ = f.WriteString(linhaLog)
+}

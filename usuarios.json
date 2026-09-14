@@ -93,5 +93,15 @@
     "email": "s",
     "senha": "s",
     "tipo": "PASSAGEIRO"
+  },
+  {
+    "email": "e",
+    "senha": "e",
+    "tipo": "MOTORISTA"
+  },
+  {
+    "email": "thay",
+    "senha": "123",
+    "tipo": "MOTORISTA"
   }
 ]

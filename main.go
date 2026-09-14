@@ -12,24 +12,40 @@ import (
 
 func gerenciarConexao(conexao net.Conn) {
 	defer conexao.Close()
+	clienteAddr := conexao.RemoteAddr().String()
+	utils.RegistrarLog("[CONEXAO] Novo cliente conectado de: %s", clienteAddr)
 
 	buf := make([]byte, 2048)
 	for {
 		n, err := conexao.Read(buf)
 		if err != nil {
-			// Captura quando o cliente fecha a aplicação normalmente
 			if err == io.EOF {
 				fmt.Println("Cliente desconectou.")
-				return // Sai do loop e encerra a goroutine
+				utils.RegistrarLog("[DESCONEXAO] Cliente %s desconectou normalmente.", clienteAddr)
+				return
 			}
 			log.Println("Erro ao ler da conexão:", err)
+			utils.RegistrarLog("[ERRO CONEXAO] Erro na leitura do cliente %s: %v", clienteAddr, err)
 			return
 		}
 
 		var req utils.MensagemRequisicao
 		if err := json.Unmarshal(buf[:n], &req); err != nil {
 			log.Println("JSON inválido:", err)
+			utils.RegistrarLog("[ERRO JSON] Cliente %s enviou JSON malformado: %s", clienteAddr, string(buf[:n]))
 			return
+		}
+
+		// Log da Requisição
+		utils.RegistrarLog("[REQUISICAO] De: %s | Usuario: %s | Acao: %s | Payload: %s",
+			clienteAddr, req.Usuario, req.Acao, string(req.Payload))
+
+		// Função auxiliar interna para responder e logar
+		enviarResposta := func(resp utils.MensagemResposta) {
+			respBytes, _ := json.Marshal(resp)
+			conexao.Write(respBytes)
+			utils.RegistrarLog("[RESPOSTA] Para: %s (Usuario: %s) | Acao: %s | Sucesso: %t | Msg: %s | Payload: %s",
+				clienteAddr, req.Usuario, req.Acao, resp.Sucesso, resp.Mensagem, string(resp.Payload))
 		}
 
 		switch req.Acao {
@@ -37,33 +53,20 @@ func gerenciarConexao(conexao net.Conn) {
 			var carona utils.Carona
 			if err := json.Unmarshal(req.Payload, &carona); err != nil {
 				log.Println("Erro ao ler payload da carona:", err)
+				enviarResposta(utils.MensagemResposta{Sucesso: false, Mensagem: "Payload inválido."})
 				return
 			}
 
-			// Chama a função utilitária do pacote utils
 			if err := utils.SalvarCarona(carona); err != nil {
 				log.Println("Erro ao salvar carona:", err)
-
-				resp := utils.MensagemResposta{
-					Sucesso:  false,
-					Mensagem: "Erro ao salvar carona no servidor.",
-				}
-				respBytes, _ := json.Marshal(resp)
-				conexao.Write(respBytes)
+				enviarResposta(utils.MensagemResposta{Sucesso: false, Mensagem: "Erro ao salvar carona no servidor."})
 				return
 			}
 
 			fmt.Println("Carona cadastrada e gravada no arquivo caronas.json!")
-
-			resp := utils.MensagemResposta{
-				Sucesso:  true,
-				Mensagem: "Carona cadastrada com sucesso!",
-			}
-			respBytes, _ := json.Marshal(resp)
-			conexao.Write(respBytes)
+			enviarResposta(utils.MensagemResposta{Sucesso: true, Mensagem: "Carona cadastrada com sucesso!"})
 
 		case utils.AcaoBuscarItinerario:
-			// 1. Decodifica os parâmetros de busca enviados pelo passageiro
 			var filtro struct {
 				Origem  string     `json:"origem"`
 				Destino string     `json:"destino"`
@@ -72,158 +75,119 @@ func gerenciarConexao(conexao net.Conn) {
 
 			if err := json.Unmarshal(req.Payload, &filtro); err != nil {
 				log.Println("Erro no payload da busca:", err)
+				enviarResposta(utils.MensagemResposta{Sucesso: false, Mensagem: "Payload de busca inválido."})
 				return
 			}
 
-			// 2. Carrega as caronas do JSON
 			caronas, err := utils.CarregarCaronas()
 			if err != nil {
 				log.Println("Erro ao carregar caronas:", err)
-				resp := utils.MensagemResposta{Sucesso: false, Mensagem: "Erro interno no servidor."}
-				respBytes, _ := json.Marshal(resp)
-				conexao.Write(respBytes)
+				enviarResposta(utils.MensagemResposta{Sucesso: false, Mensagem: "Erro interno no servidor."})
 				return
 			}
 
-			// 3. Executa a busca de rotas baseada em Grafo (BFS)
 			itinerarios := utils.BuscarItinerarios(caronas, filtro.Origem, filtro.Destino, filtro.Data)
-
 			payloadBytes, _ := json.Marshal(itinerarios)
 
-			// 4. Devolve o resultado formatado
-			resp := utils.MensagemResposta{
+			enviarResposta(utils.MensagemResposta{
 				Sucesso:  true,
 				Mensagem: fmt.Sprintf("Encontrado(s) %d itinerário(s) disponível(is).", len(itinerarios)),
 				Payload:  payloadBytes,
-			}
-
-			respBytes, _ := json.Marshal(resp)
-			conexao.Write(respBytes)
+			})
 
 		case utils.AcaoReservarTrecho:
 			var itinerarioDesejado utils.Itinerario
 			if err := json.Unmarshal(req.Payload, &itinerarioDesejado); err != nil {
 				log.Println("Erro ao ler payload da reserva:", err)
-				resp := utils.MensagemResposta{Sucesso: false, Mensagem: "Payload de reserva inválido."}
-				respBytes, _ := json.Marshal(resp)
-				conexao.Write(respBytes)
+				enviarResposta(utils.MensagemResposta{Sucesso: false, Mensagem: "Payload de reserva inválido."})
 				return
 			}
 
-			// Executa o processo atômico de reserva
 			reserva, err := utils.ReservarItinerario(req.Usuario, itinerarioDesejado)
 			if err != nil {
 				log.Println("Falha na reserva:", err)
-				resp := utils.MensagemResposta{
-					Sucesso:  false,
-					Mensagem: err.Error(),
-				}
-				respBytes, _ := json.Marshal(resp)
-				conexao.Write(respBytes)
+				enviarResposta(utils.MensagemResposta{Sucesso: false, Mensagem: err.Error()})
 				return
 			}
 
 			fmt.Printf("Reserva %s confirmada para o passageiro %s!\n", reserva.ID, req.Usuario)
-
 			payloadBytes, _ := json.Marshal(reserva)
-			resp := utils.MensagemResposta{
+
+			enviarResposta(utils.MensagemResposta{
 				Sucesso:  true,
 				Mensagem: "Reserva confirmada com sucesso!",
 				Payload:  payloadBytes,
-			}
-			respBytes, _ := json.Marshal(resp)
-			conexao.Write(respBytes)
+			})
 
 		case utils.AcaoListarReservas:
 			reservas, err := utils.ListarReservasPassageiro(req.Usuario)
 			if err != nil {
-				resp := utils.MensagemResposta{Sucesso: false, Mensagem: "Erro ao buscar reservas."}
-				respBytes, _ := json.Marshal(resp)
-				conexao.Write(respBytes)
+				enviarResposta(utils.MensagemResposta{Sucesso: false, Mensagem: "Erro ao buscar reservas."})
 				continue
 			}
 
 			payloadBytes, _ := json.Marshal(reservas)
-			resp := utils.MensagemResposta{
+			enviarResposta(utils.MensagemResposta{
 				Sucesso:  true,
 				Mensagem: fmt.Sprintf("Encontrada(s) %d reserva(s).", len(reservas)),
 				Payload:  payloadBytes,
-			}
-			respBytes, _ := json.Marshal(resp)
-			conexao.Write(respBytes)
+			})
 
 		case utils.AcaoCancelarReserva:
 			var reqCancelamento struct {
 				ReservaID string `json:"reserva_id"`
 			}
 			if err := json.Unmarshal(req.Payload, &reqCancelamento); err != nil {
-				resp := utils.MensagemResposta{Sucesso: false, Mensagem: "Payload de cancelamento inválido."}
-				respBytes, _ := json.Marshal(resp)
-				conexao.Write(respBytes)
+				enviarResposta(utils.MensagemResposta{Sucesso: false, Mensagem: "Payload de cancelamento inválido."})
 				continue
 			}
 
 			err := utils.CancelarReserva(reqCancelamento.ReservaID, req.Usuario)
 			if err != nil {
-				resp := utils.MensagemResposta{Sucesso: false, Mensagem: err.Error()}
-				respBytes, _ := json.Marshal(resp)
-				conexao.Write(respBytes)
+				enviarResposta(utils.MensagemResposta{Sucesso: false, Mensagem: err.Error()})
 				continue
 			}
 
-			resp := utils.MensagemResposta{
+			enviarResposta(utils.MensagemResposta{
 				Sucesso:  true,
 				Mensagem: "Reserva cancelada e assentos liberados com sucesso!",
-			}
-			respBytes, _ := json.Marshal(resp)
-			conexao.Write(respBytes)
+			})
 
 		case utils.AcaoConsultarCaronas:
 			caronas, err := utils.ConsultarCaronasMotorista(req.Usuario)
 			if err != nil {
-				resp := utils.MensagemResposta{Sucesso: false, Mensagem: "Erro ao buscar caronas do motorista."}
-				respBytes, _ := json.Marshal(resp)
-				conexao.Write(respBytes)
+				enviarResposta(utils.MensagemResposta{Sucesso: false, Mensagem: "Erro ao buscar caronas do motorista."})
 				continue
 			}
 
 			payloadBytes, _ := json.Marshal(caronas)
-			resp := utils.MensagemResposta{
+			enviarResposta(utils.MensagemResposta{
 				Sucesso:  true,
 				Mensagem: fmt.Sprintf("Encontrada(s) %d carona(s) publicada(s).", len(caronas)),
 				Payload:  payloadBytes,
-			}
-			respBytes, _ := json.Marshal(resp)
-			conexao.Write(respBytes)
+			})
 
 		case utils.AcaoCancelarCarona:
 			var reqCancelamento struct {
 				CaronaID  string `json:"carona_id"`
-				Confirmar bool   `json:"confirmar"` // Flag enviada se o motorista deu "SIM" na confirmação
+				Confirmar bool   `json:"confirmar"`
 			}
 
 			if err := json.Unmarshal(req.Payload, &reqCancelamento); err != nil {
-				resp := utils.MensagemResposta{Sucesso: false, Mensagem: "Payload de cancelamento inválido."}
-				respBytes, _ := json.Marshal(resp)
-				conexao.Write(respBytes)
+				enviarResposta(utils.MensagemResposta{Sucesso: false, Mensagem: "Payload de cancelamento inválido."})
 				continue
 			}
 
 			requerConfirmacao, msg, err := utils.CancelarCaronaMotorista(reqCancelamento.CaronaID, req.Usuario, reqCancelamento.Confirmar)
 			if err != nil {
-				resp := utils.MensagemResposta{Sucesso: false, Mensagem: err.Error()}
-				respBytes, _ := json.Marshal(resp)
-				conexao.Write(respBytes)
+				enviarResposta(utils.MensagemResposta{Sucesso: false, Mensagem: err.Error()})
 				continue
 			}
 
-			// Retorna se exige confirmação ou se o cancelamento foi finalizado
-			resp := utils.MensagemResposta{
-				Sucesso:  !requerConfirmacao, // Se requer confirmação, vem Sucesso: false para o cliente tratar o aviso
+			enviarResposta(utils.MensagemResposta{
+				Sucesso:  !requerConfirmacao,
 				Mensagem: msg,
-			}
-			respBytes, _ := json.Marshal(resp)
-			conexao.Write(respBytes)
+			})
 
 		case utils.AcaoConsultarPassageirosCarona:
 			var reqPassageiros struct {
@@ -233,20 +197,16 @@ func gerenciarConexao(conexao net.Conn) {
 
 			passageiros, err := utils.ConsultarPassageirosCarona(reqPassageiros.CaronaID, req.Usuario)
 			if err != nil {
-				resp := utils.MensagemResposta{Sucesso: false, Mensagem: "Erro ao consultar passageiros."}
-				respBytes, _ := json.Marshal(resp)
-				conexao.Write(respBytes)
+				enviarResposta(utils.MensagemResposta{Sucesso: false, Mensagem: "Erro ao consultar passageiros."})
 				continue
 			}
 
 			payloadBytes, _ := json.Marshal(passageiros)
-			resp := utils.MensagemResposta{
+			enviarResposta(utils.MensagemResposta{
 				Sucesso:  true,
 				Mensagem: fmt.Sprintf("Passageiros na carona %s:", reqPassageiros.CaronaID),
 				Payload:  payloadBytes,
-			}
-			respBytes, _ := json.Marshal(resp)
-			conexao.Write(respBytes)
+			})
 
 		case utils.AcaoAutenticar:
 			var reqAuth struct {
@@ -256,25 +216,18 @@ func gerenciarConexao(conexao net.Conn) {
 			}
 
 			if err := json.Unmarshal(req.Payload, &reqAuth); err != nil {
-				resp := utils.MensagemResposta{Sucesso: false, Mensagem: "Payload de autenticação inválido."}
-				respBytes, _ := json.Marshal(resp)
-				conexao.Write(respBytes)
+				enviarResposta(utils.MensagemResposta{Sucesso: false, Mensagem: "Payload de autenticação inválido."})
 				continue
 			}
 
 			sucesso, msg, err := utils.AutenticarOuCadastrarUsuario(reqAuth.Email, reqAuth.Senha, reqAuth.Tipo)
 			if err != nil || !sucesso {
-				resp := utils.MensagemResposta{Sucesso: false, Mensagem: msg}
-				respBytes, _ := json.Marshal(resp)
-				conexao.Write(respBytes)
+				enviarResposta(utils.MensagemResposta{Sucesso: false, Mensagem: msg})
 				continue
 			}
 
-			resp := utils.MensagemResposta{Sucesso: true, Mensagem: msg}
-			respBytes, _ := json.Marshal(resp)
-			conexao.Write(respBytes)
+			enviarResposta(utils.MensagemResposta{Sucesso: true, Mensagem: msg})
 		}
-
 	}
 }
 

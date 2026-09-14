@@ -376,5 +376,94 @@
       }
     ],
     "ativa": false
+  },
+  {
+    "id": "CAR-1788056725713098900",
+    "motorista_id": "e",
+    "assentos_tot": 4,
+    "trechos": [
+      {
+        "origem": "e",
+        "destino": "b",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-08-29T23:25:25.7130989-03:00",
+        "horario_chegada": "2026-08-30T01:25:25.7130989-03:00",
+        "preco": 35,
+        "assentos_livres": 4
+      }
+    ],
+    "ativa": true
+  },
+  {
+    "id": "CAR-1789377512135365000",
+    "motorista_id": "thay",
+    "assentos_tot": 2,
+    "trechos": [
+      {
+        "origem": "a",
+        "destino": "b",
+        "data_partida": {
+          "dia": 11,
+          "mes": 44,
+          "ano": 4444
+        },
+        "horario_partida": "4447-08-11T11:22:00-03:00",
+        "horario_chegada": "4447-08-11T22:22:00-03:00",
+        "preco": 12,
+        "assentos_livres": 2
+      },
+      {
+        "origem": "b",
+        "destino": "34",
+        "data_partida": {
+          "dia": 11,
+          "mes": 44,
+          "ano": 4444
+        },
+        "horario_partida": "4447-08-11T22:33:00-03:00",
+        "horario_chegada": "4447-08-11T22:44:00-03:00",
+        "preco": 15,
+        "assentos_livres": 2
+      }
+    ],
+    "ativa": false
+  },
+  {
+    "id": "CAR-1789377726646435400",
+    "motorista_id": "thay",
+    "assentos_tot": 5,
+    "trechos": [
+      {
+        "origem": "ssa",
+        "destino": "feira",
+        "data_partida": {
+          "dia": 22,
+          "mes": 5,
+          "ano": 2025
+        },
+        "horario_partida": "2025-05-22T11:30:00-03:00",
+        "horario_chegada": "2025-05-22T11:45:00-03:00",
+        "preco": 45,
+        "assentos_livres": 5
+      },
+      {
+        "origem": "feira",
+        "destino": "madri",
+        "data_partida": {
+          "dia": 22,
+          "mes": 5,
+          "ano": 2025
+        },
+        "horario_partida": "2025-05-22T11:45:00-03:00",
+        "horario_chegada": "2025-05-22T15:00:00-03:00",
+        "preco": 45,
+        "assentos_livres": 5
+      }
+    ],
+    "ativa": false
   }
 ]

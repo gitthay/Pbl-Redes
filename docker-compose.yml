@@ -10,4 +10,5 @@ services:
       - ./caronas.json:/app/caronas.json
       - ./reservas.json:/app/reservas.json
       - ./usuarios.json:/app/usuarios.json
+      - ./servidor.log:/app/servidor.log
     

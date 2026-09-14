@@ -1,0 +1,6 @@
+[2026-09-14 07:03:05] [CONEXAO] Novo cliente conectado de: [::1]:55619
+[2026-09-14 07:03:09] [REQUISICAO] De: [::1]:55619 | Usuario: thay | Acao: AUTENTICAR | Payload: {"email":"thay","senha":"123","tipo":"PASSAGEIRO"}
+[2026-09-14 07:03:09] [RESPOSTA] Para: [::1]:55619 (Usuario: thay) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-14 07:03:23] [REQUISICAO] De: [::1]:55619 | Usuario: thay | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"ssa","destino":"s","data":{"dia":11,"mes":7,"ano":1230}}
+[2026-09-14 07:03:23] [RESPOSTA] Para: [::1]:55619 (Usuario: thay) | Acao: BUSCAR_ITINERARIO | Sucesso: true | Msg: Encontrado(s) 0 itinerário(s) disponível(is). | Payload: null
+[2026-09-14 07:03:26] [ERRO CONEXAO] Erro na leitura do cliente [::1]:55619: read tcp [::1]:8080->[::1]:55619: wsarecv: Foi forçado o cancelamento de uma conexão existente pelo host remoto.
