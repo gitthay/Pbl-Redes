@@ -179,8 +179,8 @@ func main() {
 			for i, itin := range itinerariosEncontrados {
 				fmt.Printf("\nOPÇÃO [%d] - Preço Total: R$ %.2f\n", i+1, itin.PrecoTotal)
 				for j, t := range itin.Trechos {
-					fmt.Printf("  Trecho %d: %s -> %s | Partida: %s | Chegada: %s | Motorista: %s\n",
-						j+1, t.Origem, t.Destino, t.HorarioPartida.Format("15:04"), t.HorarioChegada.Format("15:04"), t.MotoristaID)
+					fmt.Printf("  Trecho %d: %s -> %s | Partida: %s | Chegada: %s (Carona ID: %s | Motorista: %s)\n",
+						j+1, t.Origem, t.Destino, t.HorarioPartida.Format("15:04"), t.HorarioChegada.Format("15:04"), t.CaronaID, t.MotoristaID)
 				}
 			}
 
@@ -233,7 +233,7 @@ func main() {
 				continue
 			}
 
-			// Lista todas as reservas com detalhes completos
+			// Lista todas as reservas com detalhes completos e ID da reserva preservado
 			for i, r := range reservas {
 				origemGeral := "Indefinida"
 				destinoGeral := "Indefinido"
@@ -250,10 +250,10 @@ func main() {
 				fmt.Printf("\n[%d] ID Reserva: %s | Rota: %s -> %s\n", i+1, r.ID, origemGeral, destinoGeral)
 				fmt.Printf("    Partida: %s | Valor Total: R$ %.2f | Trechos: %d\n", dataHoraStr, r.ValorTotal, len(r.Itinerario))
 
-				// Detalha os trechos individuais caso seja uma viagem com conexões
+				// Detalha os trechos individuais com ID da carona preservado
 				for j, t := range r.Itinerario {
-					fmt.Printf("      Trecho %d: %s -> %s (Motorista: %s | Partida: %s | Chegada: %s)\n",
-						j+1, t.Origem, t.Destino, t.MotoristaID,
+					fmt.Printf("      Trecho %d: %s -> %s (Carona ID: %s | Motorista: %s | Partida: %s | Chegada: %s)\n",
+						j+1, t.Origem, t.Destino, t.CaronaID, t.MotoristaID,
 						t.HorarioPartida.Format("15:04"), t.HorarioChegada.Format("15:04"))
 				}
 			}
