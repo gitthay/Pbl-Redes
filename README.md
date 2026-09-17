@@ -142,6 +142,7 @@ go test ./testes/... -v -args -server localhost:8080
 A suíte cobre:
 - **Testes unitários**: normalização de texto, consolidação de trechos, formatação de data.
 - **Testes de concorrência/integração** contra o servidor real: cadastro/autenticação simultânea de múltiplos usuários, buscas concorrentes de itinerários, reserva de itinerários compostos por caronas de motoristas diferentes, disputa pelo mesmo assento (garantindo que nenhum trecho é vendido duas vezes), cancelamento de carona com passageiros, bloqueio de login duplicado, queda abrupta de cliente e envio de mensagens malformadas.
+- **Teste de desempenho sob carga** (TestDesempenhoTempoResposta): dispara 50 requisições concorrentes de busca de itinerário, cada uma em sua própria conexão TCP, medindo o tempo de resposta (round-trip) individual de cada uma e reportando o tempo médio, mínimo e máximo observados.
 
 ## Estrutura de arquivos
 
