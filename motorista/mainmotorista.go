@@ -24,7 +24,7 @@ func lerTexto(rotulo string) string {
 	return strings.TrimSpace(texto)
 }
 
-// BuscarCaronasDoMotorista é uma função auxiliar para consultar a lista atual de caronas
+// função auxiliar para consultar a lista atual de caronas
 func buscarCaronas(conexao net.Conn, email string, buf []byte) []utils.Carona {
 	req := utils.MensagemRequisicao{Acao: utils.AcaoConsultarCaronas, Usuario: email}
 	reqBytes, _ := json.Marshal(req)
@@ -72,7 +72,7 @@ func main() {
 	fmt.Println("        VAIJUNTO - MOTORISTA              ")
 	fmt.Println("==========================================")
 
-	// --- AUTENTICAÇÃO ---
+	// AUTENTICAÇÃO
 	var email string
 	for {
 		email = lerTexto("Digite seu Email: ")
@@ -109,7 +109,7 @@ func main() {
 		break
 	}
 
-	// --- MENU PRINCIPAL ---
+	//MENU PRINCIPAL
 	for {
 		fmt.Println("\n------------------------------------------")
 		fmt.Println("1. Publicar Nova Carona")
@@ -369,7 +369,7 @@ func main() {
 				}
 			}
 
-			// Exibição de Caronas Ativas
+			// Print de Caronas Ativas
 			fmt.Println("\n>>> CARONAS ATIVAS <<<")
 			if len(ativas) == 0 {
 				fmt.Println("Nenhuma carona ativa no momento.")
@@ -396,7 +396,7 @@ func main() {
 				}
 			}
 
-			// Exibição de Caronas Não Ativas / Canceladas
+			// Print de Caronas Não Ativas / Canceladas
 			fmt.Println("\n>>> CARONAS NÃO ATIVAS (CANCELADAS) <<<")
 			if len(naoAtivas) == 0 {
 				fmt.Println("Nenhuma carona cancelada.")

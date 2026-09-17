@@ -1305,5 +1305,278 @@
       }
     ],
     "ativa": true
+  },
+  {
+    "id": "CAR-BUSCA-1789614603125118400",
+    "motorista_id": "m_busca@email.com",
+    "assentos_tot": 4,
+    "trechos": [
+      {
+        "origem": "Feira de Santana",
+        "destino": "Salvador",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-09-17T00:10:03.1251184-03:00",
+        "horario_chegada": "2026-09-17T01:10:03.1251184-03:00",
+        "preco": 25,
+        "assentos_livres": 4
+      }
+    ],
+    "ativa": true
+  },
+  {
+    "id": "CAR-COMP1-1789614603478031900",
+    "motorista_id": "m1@email.com",
+    "assentos_tot": 1,
+    "trechos": [
+      {
+        "origem": "Feira de Santana",
+        "destino": "Santo Amaro",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-09-17T00:10:03.4780319-03:00",
+        "horario_chegada": "2026-09-17T01:10:03.4780319-03:00",
+        "preco": 15,
+        "assentos_livres": 0
+      }
+    ],
+    "ativa": true
+  },
+  {
+    "id": "CAR-COMP2-1789614603559869800",
+    "motorista_id": "m2@email.com",
+    "assentos_tot": 1,
+    "trechos": [
+      {
+        "origem": "Santo Amaro",
+        "destino": "Salvador",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-09-17T02:10:03.5598698-03:00",
+        "horario_chegada": "2026-09-17T03:10:03.5598698-03:00",
+        "preco": 20,
+        "assentos_livres": 0
+      }
+    ],
+    "ativa": true
+  },
+  {
+    "id": "CAR-GEST-1789614603731824000",
+    "motorista_id": "m_gestao@email.com",
+    "assentos_tot": 2,
+    "trechos": [
+      {
+        "origem": "Feira de Santana",
+        "destino": "Valença",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-09-17T00:10:03.731824-03:00",
+        "horario_chegada": "2026-09-17T01:10:03.731824-03:00",
+        "preco": 40,
+        "assentos_livres": 2
+      }
+    ],
+    "ativa": true
+  },
+  {
+    "id": "CAR-CONS-1789614603817977100",
+    "motorista_id": "motorista_consultas@email.com",
+    "assentos_tot": 3,
+    "trechos": [
+      {
+        "origem": "Feira de Santana",
+        "destino": "Ilhéus",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-09-17T00:10:03.8179771-03:00",
+        "horario_chegada": "2026-09-17T01:10:03.8179771-03:00",
+        "preco": 80,
+        "assentos_livres": 2
+      }
+    ],
+    "ativa": true
+  },
+  {
+    "id": "CAR-CANC-MOT-1789614603914994000",
+    "motorista_id": "motorista_cancela@email.com",
+    "assentos_tot": 2,
+    "trechos": [
+      {
+        "origem": "Feira de Santana",
+        "destino": "Itabuna",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-09-17T00:10:03.914994-03:00",
+        "horario_chegada": "2026-09-17T01:10:03.914994-03:00",
+        "preco": 60,
+        "assentos_livres": 2
+      }
+    ],
+    "ativa": false
+  },
+  {
+    "id": "CAR-DISPUTA-1789614604038329300",
+    "motorista_id": "m_disputa@email.com",
+    "assentos_tot": 1,
+    "trechos": [
+      {
+        "origem": "Feira de Santana",
+        "destino": "Salvador",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-09-17T00:10:04.0383293-03:00",
+        "horario_chegada": "2026-09-17T01:10:04.0383293-03:00",
+        "preco": 30,
+        "assentos_livres": 0
+      }
+    ],
+    "ativa": true
+  },
+  {
+    "id": "CAR-INDIV-1-1789614604184072000",
+    "motorista_id": "motorista_1@email.com",
+    "assentos_tot": 5,
+    "trechos": [
+      {
+        "origem": "Cidade A",
+        "destino": "Cidade B",
+        "data_partida": {
+          "dia": 20,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-09-17T00:10:04.184072-03:00",
+        "horario_chegada": "2026-09-17T01:10:04.184072-03:00",
+        "preco": 50,
+        "assentos_livres": 4
+      }
+    ],
+    "ativa": true
+  },
+  {
+    "id": "CAR-INDIV-2-1789614604203993000",
+    "motorista_id": "motorista_2@email.com",
+    "assentos_tot": 5,
+    "trechos": [
+      {
+        "origem": "Cidade A",
+        "destino": "Cidade B",
+        "data_partida": {
+          "dia": 20,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-09-17T00:10:04.203993-03:00",
+        "horario_chegada": "2026-09-17T01:10:04.203993-03:00",
+        "preco": 50,
+        "assentos_livres": 4
+      }
+    ],
+    "ativa": true
+  },
+  {
+    "id": "CAR-INDIV-3-1789614604232499000",
+    "motorista_id": "motorista_3@email.com",
+    "assentos_tot": 5,
+    "trechos": [
+      {
+        "origem": "Cidade A",
+        "destino": "Cidade B",
+        "data_partida": {
+          "dia": 20,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-09-17T00:10:04.232499-03:00",
+        "horario_chegada": "2026-09-17T01:10:04.232499-03:00",
+        "preco": 50,
+        "assentos_livres": 4
+      }
+    ],
+    "ativa": true
+  },
+  {
+    "id": "CAR-INDIV-4-1789614604257153500",
+    "motorista_id": "motorista_4@email.com",
+    "assentos_tot": 5,
+    "trechos": [
+      {
+        "origem": "Cidade A",
+        "destino": "Cidade B",
+        "data_partida": {
+          "dia": 20,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-09-17T00:10:04.2571535-03:00",
+        "horario_chegada": "2026-09-17T01:10:04.2571535-03:00",
+        "preco": 50,
+        "assentos_livres": 4
+      }
+    ],
+    "ativa": true
+  },
+  {
+    "id": "CAR-INDIV-5-1789614604278439000",
+    "motorista_id": "motorista_5@email.com",
+    "assentos_tot": 5,
+    "trechos": [
+      {
+        "origem": "Cidade A",
+        "destino": "Cidade B",
+        "data_partida": {
+          "dia": 20,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-09-17T00:10:04.2790205-03:00",
+        "horario_chegada": "2026-09-17T01:10:04.2790205-03:00",
+        "preco": 50,
+        "assentos_livres": 4
+      }
+    ],
+    "ativa": true
+  },
+  {
+    "id": "CAR-PERF-1789614604643719800",
+    "motorista_id": "m_perf@email.com",
+    "assentos_tot": 50,
+    "trechos": [
+      {
+        "origem": "Feira de Santana",
+        "destino": "Salvador",
+        "data_partida": {
+          "dia": 15,
+          "mes": 10,
+          "ano": 2026
+        },
+        "horario_partida": "2026-09-17T00:10:04.6437198-03:00",
+        "horario_chegada": "2026-09-17T01:10:04.6437198-03:00",
+        "preco": 30,
+        "assentos_livres": 50
+      }
+    ],
+    "ativa": true
   }
 ]

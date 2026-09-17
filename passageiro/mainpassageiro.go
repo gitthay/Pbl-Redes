@@ -23,7 +23,7 @@ func lerTexto(rotulo string) string {
 	return strings.TrimSpace(texto)
 }
 
-// BuscarReservasDoPassageiro é uma função auxiliar para consultar as reservas do cliente
+// função auxiliar para consultar as reservas do cliente
 func buscarReservas(conexao net.Conn, email string, buf []byte) []utils.Reserva {
 	req := utils.MensagemRequisicao{Acao: utils.AcaoListarReservas, Usuario: email}
 	reqBytes, _ := json.Marshal(req)
@@ -56,7 +56,7 @@ func main() {
 	fmt.Println("        VAIJUNTO - PASSAGEIRO             ")
 	fmt.Println("==========================================")
 
-	// --- AUTENTICAÇÃO ---
+	//AUTENTICAÇÃO 
 	var email string
 	for {
 		email = lerTexto("Digite seu Email: ")
@@ -93,7 +93,7 @@ func main() {
 		break
 	}
 
-	// --- MENU PRINCIPAL ---
+	// MENU PRINCIPAL
 	for {
 		fmt.Println("\n------------------------------------------")
 		fmt.Println("1. Buscar/Reservar Caronas")

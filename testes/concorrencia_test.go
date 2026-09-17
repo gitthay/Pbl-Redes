@@ -64,7 +64,7 @@ func TestNormalizacaoDeTexto(t *testing.T) {
 	t.Log("[UNITÁRIO]: Normalização de texto validada!")
 }
 
-// 2. Teste Unitário: Consolidação de Trechos Contínuos
+// 2. Teste Unitário: Consolidação de Trechos
 func TestConsolidacaoDeTrechos(t *testing.T) {
 	trechosOriginais := []utils.ArestaTrecho{
 		{CaronaID: "CAR-1", Origem: "Feira de Santana", Destino: "Santo Amaro", Preco: 15.0, AssentosLivre: 3},
@@ -399,7 +399,7 @@ func TestCancelarCaronaMotorista(t *testing.T) {
 	t.Log("[INTEGRAÇÃO]: Cancelamento de carona pelo motorista validado!")
 }
 
-// 12. Teste de Integração: Bloqueio de Logins Simultâneos com o Mesmo E-mail
+// 10. Teste de Integração: Bloqueio de Logins Simultâneos com o Mesmo E-mail
 func TestBloqueioLoginSimultaneo(t *testing.T) {
 	// 1. Abre a primeira conexão
 	conn1, err := net.Dial("tcp", enderecoServidor)

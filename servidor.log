@@ -1534,3 +1534,419 @@
 [2026-09-16 22:15:52] [DESCONEXAO] Cliente [::1]:53454 desconectou normalmente.
 [2026-09-16 22:15:52] [DESCONEXAO] Cliente [::1]:53497 desconectou normalmente.
 [2026-09-16 22:15:52] [DESCONEXAO] Cliente [::1]:53447 desconectou normalmente.
+[2026-09-17 03:10:02] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42482
+[2026-09-17 03:10:02] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42462
+[2026-09-17 03:10:02] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42468
+[2026-09-17 03:10:02] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42488
+[2026-09-17 03:10:02] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42500
+[2026-09-17 03:10:02] [REQUISICAO] De: 172.18.0.1:42500 | Usuario: user_stress_4@email.com | Acao: AUTENTICAR | Payload: {"email":"user_stress_4@email.com","senha":"senha_segura_123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:02] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42504
+[2026-09-17 03:10:02] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42508
+[2026-09-17 03:10:02] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42514
+[2026-09-17 03:10:02] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42516
+[2026-09-17 03:10:02] [REQUISICAO] De: 172.18.0.1:42482 | Usuario: user_stress_10@email.com | Acao: AUTENTICAR | Payload: {"email":"user_stress_10@email.com","senha":"senha_segura_123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42526
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42538
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42552
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42562
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42462 | Usuario: user_stress_8@email.com | Acao: AUTENTICAR | Payload: {"email":"user_stress_8@email.com","senha":"senha_segura_123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42568
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42572
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42468 | Usuario: user_stress_3@email.com | Acao: AUTENTICAR | Payload: {"email":"user_stress_3@email.com","senha":"senha_segura_123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42488 | Usuario: user_stress_1@email.com | Acao: AUTENTICAR | Payload: {"email":"user_stress_1@email.com","senha":"senha_segura_123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42504 | Usuario: user_stress_7@email.com | Acao: AUTENTICAR | Payload: {"email":"user_stress_7@email.com","senha":"senha_segura_123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42500 (Usuario: user_stress_4@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42508 | Usuario: user_stress_14@email.com | Acao: AUTENTICAR | Payload: {"email":"user_stress_14@email.com","senha":"senha_segura_123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42514 | Usuario: user_stress_13@email.com | Acao: AUTENTICAR | Payload: {"email":"user_stress_13@email.com","senha":"senha_segura_123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42516 | Usuario: user_stress_12@email.com | Acao: AUTENTICAR | Payload: {"email":"user_stress_12@email.com","senha":"senha_segura_123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42526 | Usuario: user_stress_6@email.com | Acao: AUTENTICAR | Payload: {"email":"user_stress_6@email.com","senha":"senha_segura_123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42482 (Usuario: user_stress_10@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42538 | Usuario: user_stress_9@email.com | Acao: AUTENTICAR | Payload: {"email":"user_stress_9@email.com","senha":"senha_segura_123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42552 | Usuario: user_stress_5@email.com | Acao: AUTENTICAR | Payload: {"email":"user_stress_5@email.com","senha":"senha_segura_123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42562 | Usuario: user_stress_11@email.com | Acao: AUTENTICAR | Payload: {"email":"user_stress_11@email.com","senha":"senha_segura_123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42568 | Usuario: user_stress_2@email.com | Acao: AUTENTICAR | Payload: {"email":"user_stress_2@email.com","senha":"senha_segura_123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42462 (Usuario: user_stress_8@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42572 | Usuario: user_stress_15@email.com | Acao: AUTENTICAR | Payload: {"email":"user_stress_15@email.com","senha":"senha_segura_123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42468 (Usuario: user_stress_3@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42488 (Usuario: user_stress_1@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42500 desconectou normalmente.
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42504 (Usuario: user_stress_7@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42508 (Usuario: user_stress_14@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42514 (Usuario: user_stress_13@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42516 (Usuario: user_stress_12@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42482 desconectou normalmente.
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42526 (Usuario: user_stress_6@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42538 (Usuario: user_stress_9@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42552 (Usuario: user_stress_5@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42562 (Usuario: user_stress_11@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42568 (Usuario: user_stress_2@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42462 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42468 desconectou normalmente.
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42572 (Usuario: user_stress_15@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42488 desconectou normalmente.
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42582
+[2026-09-17 03:10:03] [DESCONEXAO] Sessão ativa do usuário user_stress_4@email.com liberada.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42504 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42508 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42514 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42516 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Sessão ativa do usuário user_stress_10@email.com liberada.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42526 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42538 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42552 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42562 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42568 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Sessão ativa do usuário user_stress_8@email.com liberada.
+[2026-09-17 03:10:03] [DESCONEXAO] Sessão ativa do usuário user_stress_3@email.com liberada.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42572 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Sessão ativa do usuário user_stress_1@email.com liberada.
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42582 | Usuario: m_busca@email.com | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-BUSCA-1789614603125118400","motorista_id":"m_busca@email.com","assentos_tot":4,"trechos":[{"origem":"Feira de Santana","destino":"Salvador","data_partida":{"dia":15,"mes":10,"ano":2026},"horario_partida":"2026-09-17T00:10:03.1251184-03:00","horario_chegada":"2026-09-17T01:10:03.1251184-03:00","preco":25,"assentos_livres":4}],"ativa":true}
+[2026-09-17 03:10:03] [DESCONEXAO] Sessão ativa do usuário user_stress_7@email.com liberada.
+[2026-09-17 03:10:03] [DESCONEXAO] Sessão ativa do usuário user_stress_14@email.com liberada.
+[2026-09-17 03:10:03] [DESCONEXAO] Sessão ativa do usuário user_stress_13@email.com liberada.
+[2026-09-17 03:10:03] [DESCONEXAO] Sessão ativa do usuário user_stress_12@email.com liberada.
+[2026-09-17 03:10:03] [DESCONEXAO] Sessão ativa do usuário user_stress_6@email.com liberada.
+[2026-09-17 03:10:03] [DESCONEXAO] Sessão ativa do usuário user_stress_9@email.com liberada.
+[2026-09-17 03:10:03] [DESCONEXAO] Sessão ativa do usuário user_stress_5@email.com liberada.
+[2026-09-17 03:10:03] [DESCONEXAO] Sessão ativa do usuário user_stress_11@email.com liberada.
+[2026-09-17 03:10:03] [DESCONEXAO] Sessão ativa do usuário user_stress_2@email.com liberada.
+[2026-09-17 03:10:03] [DESCONEXAO] Sessão ativa do usuário user_stress_15@email.com liberada.
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42598
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42606
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42616
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42620
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42628
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42636
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42646
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42652
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42658
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42668
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42684
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42686
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42702
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42712
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42728
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42598 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42730
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42606 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42740
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42750
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42754
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42760
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42616 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42620 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42628 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42636 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42646 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42652 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42658 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42668 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42684 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42686 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42702 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42712 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42728 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42598 desconectou normalmente.
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42730 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42740 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42606 desconectou normalmente.
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42750 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42754 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42760 | Usuario: passageiro_busca@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"salvador  ","origem":"  FEIRA de santana "}
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42616 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42620 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42628 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42636 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42646 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42652 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42658 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42668 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42684 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42686 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42702 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42712 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42728 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42730 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42740 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42750 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42754 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42760 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42582 desconectou normalmente.
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42766
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42766 | Usuario: m1@email.com | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-COMP1-1789614603478031900","motorista_id":"m1@email.com","assentos_tot":1,"trechos":[{"origem":"Feira de Santana","destino":"Santo Amaro","data_partida":{"dia":15,"mes":10,"ano":2026},"horario_partida":"2026-09-17T00:10:03.4780319-03:00","horario_chegada":"2026-09-17T01:10:03.4780319-03:00","preco":15,"assentos_livres":1}],"ativa":true}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42766 | Usuario: m2@email.com | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-COMP2-1789614603559869800","motorista_id":"m2@email.com","assentos_tot":1,"trechos":[{"origem":"Santo Amaro","destino":"Salvador","data_partida":{"dia":15,"mes":10,"ano":2026},"horario_partida":"2026-09-17T02:10:03.5598698-03:00","horario_chegada":"2026-09-17T03:10:03.5598698-03:00","preco":20,"assentos_livres":1}],"ativa":true}
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42774
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42776
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42776 | Usuario: p_comp_3@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-COMP1-1789614603478031900","motorista_id":"","origem":"Feira de Santana","destino":"Santo Amaro","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":15,"assentos_livres":0},{"carona_id":"CAR-COMP2-1789614603559869800","motorista_id":"","origem":"Santo Amaro","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":20,"assentos_livres":0}],"preco_total":35}
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42780
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42796
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42808
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42774 | Usuario: p_comp_10@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-COMP1-1789614603478031900","motorista_id":"","origem":"Feira de Santana","destino":"Santo Amaro","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":15,"assentos_livres":0},{"carona_id":"CAR-COMP2-1789614603559869800","motorista_id":"","origem":"Santo Amaro","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":20,"assentos_livres":0}],"preco_total":35}
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42824
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42840
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42844
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42860
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42862
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42780 | Usuario: p_comp_9@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-COMP1-1789614603478031900","motorista_id":"","origem":"Feira de Santana","destino":"Santo Amaro","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":15,"assentos_livres":0},{"carona_id":"CAR-COMP2-1789614603559869800","motorista_id":"","origem":"Santo Amaro","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":20,"assentos_livres":0}],"preco_total":35}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42796 | Usuario: p_comp_5@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-COMP1-1789614603478031900","motorista_id":"","origem":"Feira de Santana","destino":"Santo Amaro","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":15,"assentos_livres":0},{"carona_id":"CAR-COMP2-1789614603559869800","motorista_id":"","origem":"Santo Amaro","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":20,"assentos_livres":0}],"preco_total":35}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42808 | Usuario: p_comp_2@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-COMP1-1789614603478031900","motorista_id":"","origem":"Feira de Santana","destino":"Santo Amaro","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":15,"assentos_livres":0},{"carona_id":"CAR-COMP2-1789614603559869800","motorista_id":"","origem":"Santo Amaro","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":20,"assentos_livres":0}],"preco_total":35}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42824 | Usuario: p_comp_7@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-COMP1-1789614603478031900","motorista_id":"","origem":"Feira de Santana","destino":"Santo Amaro","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":15,"assentos_livres":0},{"carona_id":"CAR-COMP2-1789614603559869800","motorista_id":"","origem":"Santo Amaro","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":20,"assentos_livres":0}],"preco_total":35}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42840 | Usuario: p_comp_1@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-COMP1-1789614603478031900","motorista_id":"","origem":"Feira de Santana","destino":"Santo Amaro","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":15,"assentos_livres":0},{"carona_id":"CAR-COMP2-1789614603559869800","motorista_id":"","origem":"Santo Amaro","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":20,"assentos_livres":0}],"preco_total":35}
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42776 desconectou normalmente.
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42844 | Usuario: p_comp_8@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-COMP1-1789614603478031900","motorista_id":"","origem":"Feira de Santana","destino":"Santo Amaro","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":15,"assentos_livres":0},{"carona_id":"CAR-COMP2-1789614603559869800","motorista_id":"","origem":"Santo Amaro","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":20,"assentos_livres":0}],"preco_total":35}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42860 | Usuario: p_comp_4@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-COMP1-1789614603478031900","motorista_id":"","origem":"Feira de Santana","destino":"Santo Amaro","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":15,"assentos_livres":0},{"carona_id":"CAR-COMP2-1789614603559869800","motorista_id":"","origem":"Santo Amaro","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":20,"assentos_livres":0}],"preco_total":35}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42862 | Usuario: p_comp_6@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-COMP1-1789614603478031900","motorista_id":"","origem":"Feira de Santana","destino":"Santo Amaro","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":15,"assentos_livres":0},{"carona_id":"CAR-COMP2-1789614603559869800","motorista_id":"","origem":"Santo Amaro","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":20,"assentos_livres":0}],"preco_total":35}
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42766 desconectou normalmente.
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42872
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42872 | Usuario: m_gestao@email.com | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-GEST-1789614603731824000","motorista_id":"m_gestao@email.com","assentos_tot":2,"trechos":[{"origem":"Feira de Santana","destino":"Valença","data_partida":{"dia":15,"mes":10,"ano":2026},"horario_partida":"2026-09-17T00:10:03.731824-03:00","horario_chegada":"2026-09-17T01:10:03.731824-03:00","preco":40,"assentos_livres":2}],"ativa":true}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42872 | Usuario: passageiro_gestao@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-GEST-1789614603731824000","motorista_id":"","origem":"Feira de Santana","destino":"Valença","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":0,"assentos_livres":0}],"preco_total":40}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42872 | Usuario: passageiro_gestao@email.com | Acao: LISTAR_RESERVAS | Payload: null
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42872 | Usuario: passageiro_gestao@email.com | Acao: CANCELAR_RESERVA | Payload: {"reserva_id":"RES-1789614603765336264"}
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42872 desconectou normalmente.
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42880
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42880 | Usuario: motorista_consultas@email.com | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-CONS-1789614603817977100","motorista_id":"motorista_consultas@email.com","assentos_tot":3,"trechos":[{"origem":"Feira de Santana","destino":"Ilhéus","data_partida":{"dia":15,"mes":10,"ano":2026},"horario_partida":"2026-09-17T00:10:03.8179771-03:00","horario_chegada":"2026-09-17T01:10:03.8179771-03:00","preco":80,"assentos_livres":3}],"ativa":true}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42880 | Usuario: p_ilheus@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-CONS-1789614603817977100","motorista_id":"","origem":"Feira de Santana","destino":"Ilhéus","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":0,"assentos_livres":0}],"preco_total":80}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42880 | Usuario: motorista_consultas@email.com | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42880 | Usuario: motorista_consultas@email.com | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-CONS-1789614603817977100"}
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42880 desconectou normalmente.
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42882
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42882 | Usuario: motorista_cancela@email.com | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-CANC-MOT-1789614603914994000","motorista_id":"motorista_cancela@email.com","assentos_tot":2,"trechos":[{"origem":"Feira de Santana","destino":"Itabuna","data_partida":{"dia":15,"mes":10,"ano":2026},"horario_partida":"2026-09-17T00:10:03.914994-03:00","horario_chegada":"2026-09-17T01:10:03.914994-03:00","preco":60,"assentos_livres":2}],"ativa":true}
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42882 | Usuario: motorista_cancela@email.com | Acao: CANCELAR_CARONA | Payload: {"carona_id":"CAR-CANC-MOT-1789614603914994000","confirmar":true}
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42882 desconectou normalmente.
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42898
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42898 | Usuario: usuario_duplicado@email.com | Acao: AUTENTICAR | Payload: {"email":"usuario_duplicado@email.com","senha":"senha123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42898 (Usuario: usuario_duplicado@email.com) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42914
+[2026-09-17 03:10:03] [REQUISICAO] De: 172.18.0.1:42914 | Usuario: usuario_duplicado@email.com | Acao: AUTENTICAR | Payload: {"email":"usuario_duplicado@email.com","senha":"senha123","tipo":"PASSAGEIRO"}
+[2026-09-17 03:10:03] [RESPOSTA] Para: 172.18.0.1:42914 (Usuario: usuario_duplicado@email.com) | Acao: AUTENTICAR | Sucesso: false | Msg: Acesso negado: Este usuário já está conectado em outra sessão. | Payload: 
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42914 desconectou normalmente.
+[2026-09-17 03:10:03] [DESCONEXAO] Cliente 172.18.0.1:42898 desconectou normalmente.
+[2026-09-17 03:10:03] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42930
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42942
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42956
+[2026-09-17 03:10:04] [DESCONEXAO] Sessão ativa do usuário usuario_duplicado@email.com liberada.
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42962
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42966
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:42930 desconectou normalmente.
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42972
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:42942 desconectou normalmente.
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:42956 desconectou normalmente.
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:42962 desconectou normalmente.
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:42966 desconectou normalmente.
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:42972 | Usuario: teste_resiliencia@email.com | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:42972 desconectou normalmente.
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42974
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:42974 | Usuario: m_disputa@email.com | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-DISPUTA-1789614604038329300","motorista_id":"m_disputa@email.com","assentos_tot":1,"trechos":[{"origem":"Feira de Santana","destino":"Salvador","data_partida":{"dia":15,"mes":10,"ano":2026},"horario_partida":"2026-09-17T00:10:04.0383293-03:00","horario_chegada":"2026-09-17T01:10:04.0383293-03:00","preco":30,"assentos_livres":1}],"ativa":true}
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42980
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:42980 | Usuario: passageiro_lento_5@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-DISPUTA-1789614604038329300","motorista_id":"","origem":"Feira de Santana","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":30,"assentos_livres":0}],"preco_total":30}
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:42986
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43000
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43012
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43018
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43030
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43032
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43036
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43052
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43062
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43072
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43084
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43092
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43104
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43120
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:42986 | Usuario: passageiro_lento_15@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-DISPUTA-1789614604038329300","motorista_id":"","origem":"Feira de Santana","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":30,"assentos_livres":0}],"preco_total":30}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43000 | Usuario: passageiro_lento_1@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-DISPUTA-1789614604038329300","motorista_id":"","origem":"Feira de Santana","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":30,"assentos_livres":0}],"preco_total":30}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43012 | Usuario: passageiro_lento_2@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-DISPUTA-1789614604038329300","motorista_id":"","origem":"Feira de Santana","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":30,"assentos_livres":0}],"preco_total":30}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43018 | Usuario: passageiro_lento_8@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-DISPUTA-1789614604038329300","motorista_id":"","origem":"Feira de Santana","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":30,"assentos_livres":0}],"preco_total":30}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43030 | Usuario: passageiro_lento_9@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-DISPUTA-1789614604038329300","motorista_id":"","origem":"Feira de Santana","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":30,"assentos_livres":0}],"preco_total":30}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43032 | Usuario: passageiro_lento_4@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-DISPUTA-1789614604038329300","motorista_id":"","origem":"Feira de Santana","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":30,"assentos_livres":0}],"preco_total":30}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43036 | Usuario: passageiro_lento_7@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-DISPUTA-1789614604038329300","motorista_id":"","origem":"Feira de Santana","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":30,"assentos_livres":0}],"preco_total":30}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43052 | Usuario: passageiro_lento_14@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-DISPUTA-1789614604038329300","motorista_id":"","origem":"Feira de Santana","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":30,"assentos_livres":0}],"preco_total":30}
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:42980 desconectou normalmente.
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43062 | Usuario: passageiro_lento_3@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-DISPUTA-1789614604038329300","motorista_id":"","origem":"Feira de Santana","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":30,"assentos_livres":0}],"preco_total":30}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43072 | Usuario: passageiro_lento_11@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-DISPUTA-1789614604038329300","motorista_id":"","origem":"Feira de Santana","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":30,"assentos_livres":0}],"preco_total":30}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43084 | Usuario: passageiro_lento_10@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-DISPUTA-1789614604038329300","motorista_id":"","origem":"Feira de Santana","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":30,"assentos_livres":0}],"preco_total":30}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43092 | Usuario: passageiro_lento_12@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-DISPUTA-1789614604038329300","motorista_id":"","origem":"Feira de Santana","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":30,"assentos_livres":0}],"preco_total":30}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43104 | Usuario: passageiro_lento_13@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-DISPUTA-1789614604038329300","motorista_id":"","origem":"Feira de Santana","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":30,"assentos_livres":0}],"preco_total":30}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43120 | Usuario: passageiro_lento_6@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-DISPUTA-1789614604038329300","motorista_id":"","origem":"Feira de Santana","destino":"Salvador","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":30,"assentos_livres":0}],"preco_total":30}
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:42974 desconectou normalmente.
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43128
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43128 | Usuario: motorista_1@email.com | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-INDIV-1-1789614604184072000","motorista_id":"motorista_1@email.com","assentos_tot":5,"trechos":[{"origem":"Cidade A","destino":"Cidade B","data_partida":{"dia":20,"mes":10,"ano":2026},"horario_partida":"2026-09-17T00:10:04.184072-03:00","horario_chegada":"2026-09-17T01:10:04.184072-03:00","preco":50,"assentos_livres":5}],"ativa":true}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43128 | Usuario: motorista_2@email.com | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-INDIV-2-1789614604203993000","motorista_id":"motorista_2@email.com","assentos_tot":5,"trechos":[{"origem":"Cidade A","destino":"Cidade B","data_partida":{"dia":20,"mes":10,"ano":2026},"horario_partida":"2026-09-17T00:10:04.203993-03:00","horario_chegada":"2026-09-17T01:10:04.203993-03:00","preco":50,"assentos_livres":5}],"ativa":true}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43128 | Usuario: motorista_3@email.com | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-INDIV-3-1789614604232499000","motorista_id":"motorista_3@email.com","assentos_tot":5,"trechos":[{"origem":"Cidade A","destino":"Cidade B","data_partida":{"dia":20,"mes":10,"ano":2026},"horario_partida":"2026-09-17T00:10:04.232499-03:00","horario_chegada":"2026-09-17T01:10:04.232499-03:00","preco":50,"assentos_livres":5}],"ativa":true}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43128 | Usuario: motorista_4@email.com | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-INDIV-4-1789614604257153500","motorista_id":"motorista_4@email.com","assentos_tot":5,"trechos":[{"origem":"Cidade A","destino":"Cidade B","data_partida":{"dia":20,"mes":10,"ano":2026},"horario_partida":"2026-09-17T00:10:04.2571535-03:00","horario_chegada":"2026-09-17T01:10:04.2571535-03:00","preco":50,"assentos_livres":5}],"ativa":true}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43128 | Usuario: motorista_5@email.com | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-INDIV-5-1789614604278439000","motorista_id":"motorista_5@email.com","assentos_tot":5,"trechos":[{"origem":"Cidade A","destino":"Cidade B","data_partida":{"dia":20,"mes":10,"ano":2026},"horario_partida":"2026-09-17T00:10:04.2790205-03:00","horario_chegada":"2026-09-17T01:10:04.2790205-03:00","preco":50,"assentos_livres":5}],"ativa":true}
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43136
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43136 | Usuario: passageiro_independente_4@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-INDIV-5-1789614604278439000","motorista_id":"","origem":"Cidade A","destino":"Cidade B","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":50,"assentos_livres":0}],"preco_total":50}
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43142
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43152
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43156
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43164
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43142 | Usuario: passageiro_independente_2@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-INDIV-3-1789614604232499000","motorista_id":"","origem":"Cidade A","destino":"Cidade B","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":50,"assentos_livres":0}],"preco_total":50}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43152 | Usuario: passageiro_independente_3@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-INDIV-4-1789614604257153500","motorista_id":"","origem":"Cidade A","destino":"Cidade B","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":50,"assentos_livres":0}],"preco_total":50}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43156 | Usuario: passageiro_independente_1@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-INDIV-2-1789614604203993000","motorista_id":"","origem":"Cidade A","destino":"Cidade B","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":50,"assentos_livres":0}],"preco_total":50}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43164 | Usuario: passageiro_independente_0@email.com | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-INDIV-1-1789614604184072000","motorista_id":"","origem":"Cidade A","destino":"Cidade B","horario_partida":"0001-01-01T00:00:00Z","horario_chegada":"0001-01-01T00:00:00Z","preco":50,"assentos_livres":0}],"preco_total":50}
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:43136 desconectou normalmente.
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:43142 desconectou normalmente.
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:43152 desconectou normalmente.
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:43156 desconectou normalmente.
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:43164 desconectou normalmente.
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:43128 desconectou normalmente.
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43168
+[2026-09-17 03:10:04] [ERRO JSON] Cliente 172.18.0.1:43168 enviou JSON malformado: { "acao": "PUBLICAR_CARONA", "payload": dados_quebrados_sem_fechar_aspas... }}} 
+
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43180
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43180 | Usuario: teste_robustez@email.com | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:43180 desconectou normalmente.
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43184
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43184 | Usuario: m_perf@email.com | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-PERF-1789614604643719800","motorista_id":"m_perf@email.com","assentos_tot":50,"trechos":[{"origem":"Feira de Santana","destino":"Salvador","data_partida":{"dia":15,"mes":10,"ano":2026},"horario_partida":"2026-09-17T00:10:04.6437198-03:00","horario_chegada":"2026-09-17T01:10:04.6437198-03:00","preco":30,"assentos_livres":50}],"ativa":true}
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43186
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43186 | Usuario: p_perf_20@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43188
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43204
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43218
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43232
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43236
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43238
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43248
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43252
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43264
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43280
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43286
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43302
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43312
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43324
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43334
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43340
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43348
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43364
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43374
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43378
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43386
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43402
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43412
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43424
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43440
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43450
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43188 | Usuario: p_perf_17@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:04] [DESCONEXAO] Cliente 172.18.0.1:43186 desconectou normalmente.
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43204 | Usuario: p_perf_6@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43452
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43460
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43218 | Usuario: p_perf_14@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43476
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43486
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43492
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43502
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43506
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43508
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43520
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43528
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43530
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43540
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43232 | Usuario: p_perf_11@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43544
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43236 | Usuario: p_perf_27@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:04] [REQUISICAO] De: 172.18.0.1:43238 | Usuario: p_perf_15@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:04] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43554
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43248 | Usuario: p_perf_34@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43562
+[2026-09-17 03:10:05] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43574
+[2026-09-17 03:10:05] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43584
+[2026-09-17 03:10:05] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43598
+[2026-09-17 03:10:05] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43602
+[2026-09-17 03:10:05] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43616
+[2026-09-17 03:10:05] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43630
+[2026-09-17 03:10:05] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43634
+[2026-09-17 03:10:05] [CONEXAO] Novo cliente conectado de: 172.18.0.1:43646
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43252 | Usuario: p_perf_18@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43264 | Usuario: p_perf_24@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43280 | Usuario: p_perf_12@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43286 | Usuario: p_perf_45@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43302 | Usuario: p_perf_9@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43312 | Usuario: p_perf_22@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43324 | Usuario: p_perf_7@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43334 | Usuario: p_perf_19@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43340 | Usuario: p_perf_50@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43348 | Usuario: p_perf_13@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43364 | Usuario: p_perf_37@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43374 | Usuario: p_perf_40@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43378 | Usuario: p_perf_49@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43386 | Usuario: p_perf_23@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43402 | Usuario: p_perf_35@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43412 | Usuario: p_perf_38@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43424 | Usuario: p_perf_28@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43440 | Usuario: p_perf_16@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43450 | Usuario: p_perf_25@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43188 desconectou normalmente.
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43452 | Usuario: p_perf_47@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43460 | Usuario: p_perf_41@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43204 desconectou normalmente.
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43476 | Usuario: p_perf_21@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43218 desconectou normalmente.
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43486 | Usuario: p_perf_26@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43492 | Usuario: p_perf_32@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43502 | Usuario: p_perf_33@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43506 | Usuario: p_perf_44@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43508 | Usuario: p_perf_43@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43520 | Usuario: p_perf_1@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43528 | Usuario: p_perf_30@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43530 | Usuario: p_perf_36@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43540 | Usuario: p_perf_46@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43544 | Usuario: p_perf_3@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43232 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43236 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43238 desconectou normalmente.
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43554 | Usuario: p_perf_42@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43562 | Usuario: p_perf_48@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43248 desconectou normalmente.
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43574 | Usuario: p_perf_2@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43584 | Usuario: p_perf_4@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43598 | Usuario: p_perf_29@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43602 | Usuario: p_perf_5@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43616 | Usuario: p_perf_8@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43630 | Usuario: p_perf_39@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43634 | Usuario: p_perf_31@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [REQUISICAO] De: 172.18.0.1:43646 | Usuario: p_perf_10@email.com | Acao: BUSCAR_ITINERARIO | Payload: {"data":{"dia":15,"mes":10,"ano":2026},"destino":"Salvador","origem":"Feira de Santana"}
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43252 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43264 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43280 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43286 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43302 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43312 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43324 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43334 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43340 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43348 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43364 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43374 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43378 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43386 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43402 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43412 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43424 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43440 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43450 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43452 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43460 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43476 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43486 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43492 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43502 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43506 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43508 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43520 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43528 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43530 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43540 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43544 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43554 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43562 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43574 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43584 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43598 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43602 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43616 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43630 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43634 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43646 desconectou normalmente.
+[2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43184 desconectou normalmente.

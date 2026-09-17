@@ -510,5 +510,159 @@
     ],
     "valor_total": 50,
     "data_criacao": "2026-09-16T21:56:50.7523258-03:00"
+  },
+  {
+    "id": "RES-1789614603631525782",
+    "passageiro_id": "p_comp_3@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-COMP1-1789614603478031900",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Santo Amaro",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 15,
+        "assentos_livres": 0
+      },
+      {
+        "carona_id": "CAR-COMP2-1789614603559869800",
+        "motorista_id": "",
+        "origem": "Santo Amaro",
+        "destino": "Salvador",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 20,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 35,
+    "data_criacao": "2026-09-17T03:10:03.631531234Z"
+  },
+  {
+    "id": "RES-1789614603876747650",
+    "passageiro_id": "p_ilheus@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-CONS-1789614603817977100",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Ilhéus",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 0,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 80,
+    "data_criacao": "2026-09-17T03:10:03.876755244Z"
+  },
+  {
+    "id": "RES-1789614604089822036",
+    "passageiro_id": "passageiro_lento_5@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-DISPUTA-1789614604038329300",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Salvador",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 30,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 30,
+    "data_criacao": "2026-09-17T03:10:04.089828252Z"
+  },
+  {
+    "id": "RES-1789614604334597834",
+    "passageiro_id": "passageiro_independente_4@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-INDIV-5-1789614604278439000",
+        "motorista_id": "",
+        "origem": "Cidade A",
+        "destino": "Cidade B",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 50,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 50,
+    "data_criacao": "2026-09-17T03:10:04.334613361Z"
+  },
+  {
+    "id": "RES-1789614604366138655",
+    "passageiro_id": "passageiro_independente_2@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-INDIV-3-1789614604232499000",
+        "motorista_id": "",
+        "origem": "Cidade A",
+        "destino": "Cidade B",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 50,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 50,
+    "data_criacao": "2026-09-17T03:10:04.366146179Z"
+  },
+  {
+    "id": "RES-1789614604396196471",
+    "passageiro_id": "passageiro_independente_3@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-INDIV-4-1789614604257153500",
+        "motorista_id": "",
+        "origem": "Cidade A",
+        "destino": "Cidade B",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 50,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 50,
+    "data_criacao": "2026-09-17T03:10:04.396203953Z"
+  },
+  {
+    "id": "RES-1789614604441643360",
+    "passageiro_id": "passageiro_independente_1@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-INDIV-2-1789614604203993000",
+        "motorista_id": "",
+        "origem": "Cidade A",
+        "destino": "Cidade B",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 50,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 50,
+    "data_criacao": "2026-09-17T03:10:04.441649294Z"
+  },
+  {
+    "id": "RES-1789614604472622642",
+    "passageiro_id": "passageiro_independente_0@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-INDIV-1-1789614604184072000",
+        "motorista_id": "",
+        "origem": "Cidade A",
+        "destino": "Cidade B",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 50,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 50,
+    "data_criacao": "2026-09-17T03:10:04.472629021Z"
   }
 ]

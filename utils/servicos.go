@@ -9,17 +9,17 @@ import (
 	"time"
 )
 
-// String formata a data para leitura (ex: "25/12/2026")
+// formata a data para leitura (ex: "25/12/2026")
 func (d Data) String() string {
 	return fmt.Sprintf("%02d/%02d/%04d", d.Dia, d.Mes, d.Ano)
 }
 
-// NovaData é uma função utilitária para criar o tipo a partir de inteiros
+// é uma função utilitária para criar o tipo a partir de inteiros
 func NovaData(dia, mes, ano int) Data {
 	return Data{Dia: dia, Mes: mes, Ano: ano}
 }
 
-// Aresta representa um trecho de carona disponível na rede
+// representa um trecho de carona disponível na rede
 type ArestaTrecho struct {
 	CaronaID       string    `json:"carona_id"`
 	MotoristaID    string    `json:"motorista_id"`
@@ -28,7 +28,7 @@ type ArestaTrecho struct {
 	HorarioPartida time.Time `json:"horario_partida"`
 	HorarioChegada time.Time `json:"horario_chegada"`
 	Preco          float64   `json:"preco"`
-	AssentosLivre  int       `json:"assentos_livres"` // Padronizado com o 's' final do Trecho
+	AssentosLivre  int       `json:"assentos_livres"` 
 }
 
 // Representa um itinerário completo sugerido ao passageiro (uma lista sequencial de trechos)
@@ -37,10 +37,10 @@ type Itinerario struct {
 	PrecoTotal float64        `json:"preco_total"`
 }
 
-// Grafo de Cidades (Adjacência: CidadeOrigem -> Lista de Trechos Saindo dela)
+// Grafo de Cidades
 type GrafoCidades map[string][]ArestaTrecho
 
-// MontarGrafo constrói o grafo a partir das caronas cadastradas no JSON
+//  constrói o grafo a partir das caronas cadastradas no JSON
 func MontarGrafo(caronas []Carona, dataDesejada Data) GrafoCidades {
 	grafo := make(GrafoCidades)
 
@@ -68,12 +68,12 @@ func MontarGrafo(caronas []Carona, dataDesejada Data) GrafoCidades {
 	return grafo
 }
 
-// NormalizarTexto remove espaços sobressalentes nas extremidades e converte para caixa baixa
+//  remove espaços nas extremidades e converte para caixa baixa
 func NormalizarTexto(texto string) string {
 	return strings.ToLower(strings.TrimSpace(texto))
 }
 
-// BuscarItinerarios realiza a busca em largura comparando strings de forma insensível a maiúsculas e espaços
+//  realiza a busca em largura comparando strings de forma insensível a maiúsculas e espaços
 func BuscarItinerarios(caronas []Carona, origem, destino string, data Data) []Itinerario {
 	// Normaliza as entradas do passageiro
 	origemNorm := NormalizarTexto(origem)
@@ -135,7 +135,7 @@ func BuscarItinerarios(caronas []Carona, origem, destino string, data Data) []It
 	return resultados
 }
 
-// ConsolidarTrechos funde segmentos contínuos da mesma carona em um único trecho
+//  funde segmentos contínuos da mesma carona em um único trecho
 func ConsolidarTrechos(trechos []ArestaTrecho) []ArestaTrecho {
 	if len(trechos) <= 1 {
 		return trechos
@@ -177,7 +177,7 @@ var (
 	ArquivoUsuarios = "usuarios.json"
 )
 
-// CarregarCaronas lê todas as caronas salvas no arquivo JSON
+//  lê todas as caronas salvas no arquivo JSON
 func CarregarCaronas() ([]Carona, error) {
 	// Se o arquivo não existir, retorna um slice vazio em vez de dar erro
 	if _, err := os.Stat(ArquivoCaronas); os.IsNotExist(err) {
@@ -202,31 +202,32 @@ func CarregarCaronas() ([]Carona, error) {
 	return caronas, nil
 }
 
-// SalvarCarona adiciona uma nova carona ao arquivo JSON existente
+//  adiciona uma nova carona ao arquivo JSON existente
 func SalvarCarona(novaCarona Carona) error {
 	mu.Lock()
 	defer mu.Unlock() // Libera a trava do arquivo assim que a função terminar
 
-	// 1. Carrega as caronas já existentes
+	// Carrega as caronas já existentes
 	caronas, err := CarregarCaronas()
 	if err != nil {
 		return err
 	}
 
-	// 2. Adiciona a nova carona à lista
+	//Adiciona a nova carona à lista
 	caronas = append(caronas, novaCarona)
 
-	// 3. Converte a lista completa de volta para JSON
+	// Converte a lista completa de volta para JSON
 	dadosFormatados, err := json.MarshalIndent(caronas, "", "  ")
 	if err != nil {
 		return err
 	}
 
-	// 4. Salva os dados no arquivo
+	// salvaa
+	//  os dados no arquivo
 	return os.WriteFile(ArquivoCaronas, dadosFormatados, 0644)
 }
 
-// CarregarReservas lê todas as reservas salvas
+// lê todas as reservas salvas
 func CarregarReservas() ([]Reserva, error) {
 	if _, err := os.Stat(ArquivoReservas); os.IsNotExist(err) {
 		return []Reserva{}, nil
@@ -240,18 +241,18 @@ func CarregarReservas() ([]Reserva, error) {
 	return reservas, err
 }
 
-// ReservarItinerario executa a validação e reserva atômica de todos os trechos do itinerário
+// executa a validação e reserva atômica de todos os trechos do itinerário
 func ReservarItinerario(passageiroID string, itinerario Itinerario) (*Reserva, error) {
-	mu.Lock()         // 1. TRAVA EXCLUSIVA: Nenhuma outra goroutine lê ou altera assentos enquanto essa roda
-	defer mu.Unlock() // 2. Libera o arquivo apenas no final da operação
+	mu.Lock()         // TRAVA EXCLUSIVA: Nenhuma outra goroutine lê ou altera assentos enquanto essa roda
+	defer mu.Unlock() //Libera o arquivo apenas no final da operação
 
-	// 3. Carrega o estado mais recente do arquivo de caronas
+	// carrega o estado mais recente do arquivo de caronas
 	caronas, err := CarregarCaronas()
 	if err != nil {
 		return nil, fmt.Errorf("erro ao carregar caronas: %v", err)
 	}
 
-	// 4. VALIDAÇÃO DE ÚLTIMA HORA: Verifica se TODOS os trechos do itinerário ainda têm assento livre
+	// Verifica se TODOS os trechos do itinerário ainda têm assento livre
 	for _, trechoDesejado := range itinerario.Trechos {
 		assentoDisponivel := false
 
@@ -273,7 +274,7 @@ func ReservarItinerario(passageiroID string, itinerario Itinerario) (*Reserva, e
 		}
 	}
 
-	// 5. DECREMENTA OS ASSENTOS: Aplica a reserva atualizando a lista em memória
+	//aplica a reserva atualizando a lista em memória
 	for _, trechoDesejado := range itinerario.Trechos {
 		for idxC, c := range caronas {
 			if c.ID == trechoDesejado.CaronaID {
@@ -287,7 +288,8 @@ func ReservarItinerario(passageiroID string, itinerario Itinerario) (*Reserva, e
 		}
 	}
 
-	// 6. Persiste o caronas.json atualizado
+
+	// Persiste o caronas.json atualizado
 	dadosCaronas, err := json.MarshalIndent(caronas, "", "  ")
 	if err != nil {
 		return nil, fmt.Errorf("erro ao serializar caronas: %v", err)
@@ -296,7 +298,7 @@ func ReservarItinerario(passageiroID string, itinerario Itinerario) (*Reserva, e
 		return nil, fmt.Errorf("erro ao salvar caronas atualizadas: %v", err)
 	}
 
-	// 7. Criar o registro da Reserva
+	// Criar o registro da Reserva
 	novaReserva := Reserva{
 		ID:           fmt.Sprintf("RES-%d", time.Now().UnixNano()),
 		PassageiroID: passageiroID,
@@ -304,8 +306,7 @@ func ReservarItinerario(passageiroID string, itinerario Itinerario) (*Reserva, e
 		ValorTotal:   itinerario.PrecoTotal,
 		DataCriacao:  time.Now(),
 	}
-
-	// 8. Salvar no reservas.json
+	// Salvar no reservas.json
 	reservas, _ := CarregarReservas()
 	reservas = append(reservas, novaReserva)
 	dadosReservas, _ := json.MarshalIndent(reservas, "", "  ")
@@ -316,7 +317,7 @@ func ReservarItinerario(passageiroID string, itinerario Itinerario) (*Reserva, e
 	return &novaReserva, nil
 }
 
-// ListarReservasPassageiro retorna todas as reservas ativas de um determinado passageiro
+//  retorna todas as reservas ativas de um determinado passageiro
 func ListarReservasPassageiro(passageiroID string) ([]Reserva, error) {
 	mu.Lock()
 	defer mu.Unlock()
@@ -335,7 +336,7 @@ func ListarReservasPassageiro(passageiroID string) ([]Reserva, error) {
 	return minhasReservas, nil
 }
 
-// CancelarReserva remove a reserva e devolve os assentos para as caronas correspondentes
+//  remove a reserva e devolve os assentos para as caronas correspondentes
 func CancelarReserva(reservaID, passageiroID string) error {
 	mu.Lock()
 	defer mu.Unlock()
@@ -351,7 +352,7 @@ func CancelarReserva(reservaID, passageiroID string) error {
 	var reservaEncontrada *Reserva
 	novaListaReservas := make([]Reserva, 0)
 
-	// 1. Procura a reserva e valida a posse
+	//Procura a reserva e valida a posse
 	for _, r := range reservas {
 		if strings.TrimSpace(r.ID) == reservaIDClean {
 			if strings.TrimSpace(r.PassageiroID) != passageiroIDClean {
@@ -367,7 +368,7 @@ func CancelarReserva(reservaID, passageiroID string) error {
 		return fmt.Errorf("reserva %s não encontrada", reservaIDClean)
 	}
 
-	// 2. Devolve os assentos ocupados no caronas.json
+	//Devolve os assentos ocupados no caronas.json
 	caronas, err := CarregarCaronas()
 	if err == nil {
 		for _, trechoReservado := range reservaEncontrada.Itinerario {
@@ -390,7 +391,7 @@ func CancelarReserva(reservaID, passageiroID string) error {
 		_ = os.WriteFile(ArquivoCaronas, dadosCaronas, 0644)
 	}
 
-	// 3. Atualiza o arquivo de reservas na raiz
+	// Atualiza o arquivo de reservas na raiz
 	dadosReservas, err := json.MarshalIndent(novaListaReservas, "", "  ")
 	if err != nil {
 		return err
@@ -398,7 +399,7 @@ func CancelarReserva(reservaID, passageiroID string) error {
 	return os.WriteFile(ArquivoReservas, dadosReservas, 0644)
 }
 
-// ConsultarCaronasMotorista traz todas as caronas cadastradas pelo motorista logado
+// traz todas as caronas cadastradas pelo motorista logado
 func ConsultarCaronasMotorista(motoristaID string) ([]Carona, error) {
 	mu.Lock()
 	defer mu.Unlock()
@@ -417,7 +418,7 @@ func ConsultarCaronasMotorista(motoristaID string) ([]Carona, error) {
 	return minhasCaronas, nil
 }
 
-// CancelarCaronaMotorista cancela a carona e verifica se há passageiros afetados
+//  cancela a carona e verifica se há passageiros afetados
 func CancelarCaronaMotorista(caronaID, motoristaID string, confirmouComPassageiros bool) (bool, string, error) {
 	mu.Lock()
 	defer mu.Unlock()
@@ -427,7 +428,7 @@ func CancelarCaronaMotorista(caronaID, motoristaID string, confirmouComPassageir
 		return false, "", err
 	}
 
-	// 1. Localiza a carona e valida a posse do motorista
+	// Localiza a carona e valida a posse do motorista
 	var caronaIndex = -1
 	for i, c := range caronas {
 		if c.ID == caronaID {
@@ -443,7 +444,7 @@ func CancelarCaronaMotorista(caronaID, motoristaID string, confirmouComPassageir
 		return false, "", fmt.Errorf("carona %s não encontrada", caronaID)
 	}
 
-	// 2. Checa se existem reservas associadas a esta carona
+	// Checa se existem reservas associadas a esta carona
 	reservas, _ := CarregarReservas()
 	passageirosAfetados := make(map[string]bool)
 
@@ -457,13 +458,13 @@ func CancelarCaronaMotorista(caronaID, motoristaID string, confirmouComPassageir
 
 	qtdPassageiros := len(passageirosAfetados)
 
-	// 3. Se houver passageiros e o motorista ainda não confirmou expressamente o cancelamento
+	// Se houver passageiros e o motorista ainda não confirmou expressamente o cancelamento
 	if qtdPassageiros > 0 && !confirmouComPassageiros {
 		msg := fmt.Sprintf("ATENÇÃO: Esta carona possui %d passageiro(s) com reserva confirmada! Deseja realmente cancelar?", qtdPassageiros)
 		return true, msg, nil
 	}
 
-	// 4. Efetiva o cancelamento (Inativa a carona no caronas.json)
+	// Efetiva o cancelamento (Inativa a carona no caronas.json)
 	caronas[caronaIndex].Ativa = false
 
 	dadosCaronas, _ := json.MarshalIndent(caronas, "", "  ")
@@ -471,7 +472,7 @@ func CancelarCaronaMotorista(caronaID, motoristaID string, confirmouComPassageir
 		return false, "", err
 	}
 
-	// 5. Remove as reservas ativas dessa carona cancelada do reservas.json
+	// Remove as reservas ativas dessa carona cancelada do reservas.json
 	if qtdPassageiros > 0 {
 		novasReservas := make([]Reserva, 0)
 		for _, r := range reservas {
@@ -493,7 +494,7 @@ func CancelarCaronaMotorista(caronaID, motoristaID string, confirmouComPassageir
 	return false, "Carona cancelada com sucesso!", nil
 }
 
-// ConsultarPassageirosCarona retorna quais passageiros compraram assentos na carona
+//  retorna quais passageiros compraram assentos na carona
 func ConsultarPassageirosCarona(caronaID, motoristaID string) ([]string, error) {
 	mu.Lock()
 	defer mu.Unlock()
@@ -519,14 +520,14 @@ func ConsultarPassageirosCarona(caronaID, motoristaID string) ([]string, error) 
 	return lista, nil
 }
 
-// AutenticarOuCadastrarUsuario valida a senha do usuário ou cria um novo registro se não existir
+// valida a senha do usuário ou cria um novo registro se não existir
 func AutenticarOuCadastrarUsuario(email, senha string, tipo TipoUsuario) (bool, string, error) {
 	mu.Lock()
 	defer mu.Unlock()
 
 	var usuarios []Usuario
 
-	// 1. Carrega os usuários existentes
+	// Carrega os usuários existentes
 	if _, err := os.Stat(ArquivoUsuarios); !os.IsNotExist(err) {
 		dados, err := os.ReadFile(ArquivoUsuarios)
 		if err == nil && len(dados) > 0 {
@@ -534,7 +535,7 @@ func AutenticarOuCadastrarUsuario(email, senha string, tipo TipoUsuario) (bool, 
 		}
 	}
 
-	// 2. Procura o usuário cadastrado
+	// Procura o usuário cadastrado
 	for _, u := range usuarios {
 		if u.Email == email {
 			if u.Senha == senha {
@@ -544,7 +545,7 @@ func AutenticarOuCadastrarUsuario(email, senha string, tipo TipoUsuario) (bool, 
 		}
 	}
 
-	// 3. Se não encontrou, realiza o cadastro automático no primeiro acesso
+	//e não encontrou, realiza o cadastro automático no primeiro acesso
 	novoUsuario := Usuario{
 		Email: email,
 		Senha: senha,
@@ -569,7 +570,7 @@ var (
 	muLog      sync.Mutex
 )
 
-// RegistrarLog grava eventos, requisições e respostas com timestamp no arquivo de log
+//  grava eventos, requisições e respostas com timestamp no arquivo de log
 func RegistrarLog(formato string, v ...interface{}) {
 	muLog.Lock()
 	defer muLog.Unlock()
@@ -588,14 +589,12 @@ func RegistrarLog(formato string, v ...interface{}) {
 
 	_, _ = f.WriteString(linhaLog)
 }
-
-// --- CONTROLE DE SESSÕES SIMULTÂNEAS ---
 var (
 	usuariosLogados = make(map[string]bool)
 	muSessoes       sync.Mutex
 )
 
-// RegistrarLogin tenta marcar o usuário como logado. Retorna falso se ele já estiver ativo.
+//  tenta marcar o usuário como logado. Retorna falso se ele já estiver ativo.
 func RegistrarLogin(email string) bool {
 	muSessoes.Lock()
 	defer muSessoes.Unlock()
@@ -608,7 +607,7 @@ func RegistrarLogin(email string) bool {
 	return true
 }
 
-// RemoverLogin libera o usuário do mapa de sessões ativas ao desconectar
+//  libera o usuário do mapa de sessões ativas ao desconectar
 func RemoverLogin(email string) {
 	muSessoes.Lock()
 	defer muSessoes.Unlock()
