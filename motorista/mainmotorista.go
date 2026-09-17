@@ -114,7 +114,8 @@ func main() {
 		fmt.Println("\n------------------------------------------")
 		fmt.Println("1. Publicar Nova Carona")
 		fmt.Println("2. Listar Minhas Caronas")
-		fmt.Println("3. Cancelar Carona")
+		fmt.Println("3. Consultar Passageiros de uma Carona")
+		fmt.Println("4. Cancelar Carona")
 		fmt.Println("0. Sair")
 		fmt.Println("------------------------------------------")
 
@@ -375,23 +376,13 @@ func main() {
 				fmt.Println("Nenhuma carona ativa no momento.")
 			} else {
 				for i, c := range ativas {
-					fmt.Printf("\n[%d] Assentos Totais: %d\n", i+1, c.AssentosTot)
+					fmt.Printf("\n[%d] ID: %s | Assentos Totais: %d\n", i+1, c.ID, c.AssentosTot)
 					fmt.Println("  Trechos:")
 					for idx, t := range c.Trechos {
 						fmt.Printf("    Trecho %d: %s -> %s | Data: %s | Horário: %s às %s | Preço: R$ %.2f | Assentos Livres: %d\n",
 							idx+1, t.Origem, t.Destino, t.DataPartida.String(),
 							t.HorarioPartida.Format("15:04"), t.HorarioChegada.Format("15:04"),
 							t.Preco, t.AssentosLivre)
-					}
-
-					passageiros := buscarPassageirosDaCarona(conexao, email, c.ID, buf)
-					fmt.Println("  Passageiros:")
-					if len(passageiros) == 0 {
-						fmt.Println("    Nenhum passageiro reservou esta carona ainda.")
-					} else {
-						for _, p := range passageiros {
-							fmt.Printf("    - %s\n", p)
-						}
 					}
 				}
 			}
@@ -402,7 +393,7 @@ func main() {
 				fmt.Println("Nenhuma carona cancelada.")
 			} else {
 				for i, c := range naoAtivas {
-					fmt.Printf("\n[%d] Assentos Totais: %d\n", i+1, c.AssentosTot)
+					fmt.Printf("\n[%d] ID: %s | Assentos Totais: %d\n", i+1, c.ID, c.AssentosTot)
 					fmt.Println("  Trechos:")
 					for idx, t := range c.Trechos {
 						fmt.Printf("    Trecho %d: %s -> %s | Data: %s | Horário: %s às %s | Preço: R$ %.2f\n",
@@ -410,20 +401,50 @@ func main() {
 							t.HorarioPartida.Format("15:04"), t.HorarioChegada.Format("15:04"),
 							t.Preco)
 					}
-
-					passageiros := buscarPassageirosDaCarona(conexao, email, c.ID, buf)
-					fmt.Println("  Passageiros:")
-					if len(passageiros) == 0 {
-						fmt.Println("    Nenhum passageiro registrado.")
-					} else {
-						for _, p := range passageiros {
-							fmt.Printf("    - %s\n", p)
-						}
-					}
 				}
 			}
 
 		case "3":
+			caronas := buscarCaronas(conexao, email, buf)
+			fmt.Println("\n==========================================")
+			fmt.Println("    CONSULTAR PASSAGEIROS DA CARONA       ")
+			fmt.Println("==========================================")
+
+			if len(caronas) == 0 {
+				fmt.Println("Nenhuma carona encontrada.")
+				continue
+			}
+
+			for i, c := range caronas {
+				origemGeral := c.Trechos[0].Origem
+				destinoGeral := c.Trechos[len(c.Trechos)-1].Destino
+				status := "Ativa"
+				if !c.Ativa {
+					status = "Cancelada"
+				}
+				fmt.Printf("[%d] ID: %s | Rota: %s -> %s (%s)\n", i+1, c.ID, origemGeral, destinoGeral, status)
+			}
+
+			fmt.Println("\n[0] Voltar ao menu")
+			input := lerTexto("Escolha o número da carona para ver os passageiros: ")
+			num, err := strconv.Atoi(input)
+			if err != nil || num == 0 || num > len(caronas) {
+				continue
+			}
+
+			caronaEscolhida := caronas[num-1]
+			passageiros := buscarPassageirosDaCarona(conexao, email, caronaEscolhida.ID, buf)
+
+			fmt.Printf("\n--- Passageiros da Carona %s ---\n", caronaEscolhida.ID)
+			if len(passageiros) == 0 {
+				fmt.Println("Nenhum passageiro reservou esta carona ainda.")
+			} else {
+				for _, p := range passageiros {
+					fmt.Printf("- %s\n", p)
+				}
+			}
+
+		case "4":
 			caronas := buscarCaronas(conexao, email, buf)
 			fmt.Println("\n==========================================")
 			fmt.Println("           CANCELAR CARONA                ")

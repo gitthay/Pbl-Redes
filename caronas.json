@@ -100,5 +100,94 @@
       }
     ],
     "ativa": true
+  },
+  {
+    "id": "CAR-1789662801880167700",
+    "motorista_id": "joao",
+    "assentos_tot": 5,
+    "trechos": [
+      {
+        "origem": "ssa",
+        "destino": "recife",
+        "data_partida": {
+          "dia": 12,
+          "mes": 12,
+          "ano": 2026
+        },
+        "horario_partida": "2026-12-12T12:30:00-03:00",
+        "horario_chegada": "2026-12-12T12:50:00-03:00",
+        "preco": 15,
+        "assentos_livres": 4
+      }
+    ],
+    "ativa": false
+  },
+  {
+    "id": "CAR-1789663001530526200",
+    "motorista_id": "pedro",
+    "assentos_tot": 2,
+    "trechos": [
+      {
+        "origem": "recife",
+        "destino": "brasilia",
+        "data_partida": {
+          "dia": 12,
+          "mes": 12,
+          "ano": 2026
+        },
+        "horario_partida": "2026-12-12T20:00:00-03:00",
+        "horario_chegada": "2026-12-12T20:30:00-03:00",
+        "preco": 15,
+        "assentos_livres": 2
+      },
+      {
+        "origem": "brasilia",
+        "destino": "minas",
+        "data_partida": {
+          "dia": 12,
+          "mes": 12,
+          "ano": 2026
+        },
+        "horario_partida": "2026-12-12T20:30:00-03:00",
+        "horario_chegada": "2026-12-12T21:00:00-03:00",
+        "preco": 15,
+        "assentos_livres": 1
+      }
+    ],
+    "ativa": true
+  },
+  {
+    "id": "CAR-1789663172642086100",
+    "motorista_id": "a",
+    "assentos_tot": 1,
+    "trechos": [
+      {
+        "origem": "minas",
+        "destino": "aracaju",
+        "data_partida": {
+          "dia": 12,
+          "mes": 12,
+          "ano": 2026
+        },
+        "horario_partida": "2026-12-12T23:00:00-03:00",
+        "horario_chegada": "2026-12-12T23:10:00-03:00",
+        "preco": 56,
+        "assentos_livres": 0
+      },
+      {
+        "origem": "aracaju",
+        "destino": "bahia",
+        "data_partida": {
+          "dia": 12,
+          "mes": 12,
+          "ano": 2026
+        },
+        "horario_partida": "2026-12-12T23:10:00-03:00",
+        "horario_chegada": "2026-12-12T23:30:00-03:00",
+        "preco": 8,
+        "assentos_livres": 0
+      }
+    ],
+    "ativa": true
   }
 ]

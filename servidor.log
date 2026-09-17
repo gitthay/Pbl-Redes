@@ -2094,3 +2094,61 @@
 [2026-09-17 11:31:22] [DESCONEXAO] Sessão ativa do usuário ana liberada.
 [2026-09-17 11:31:24] [ERRO CONEXAO] Erro na leitura do cliente 26.170.71.31:63663: read tcp 26.170.71.31:8080->26.170.71.31:63663: wsarecv: Foi forçado o cancelamento de uma conexão existente pelo host remoto.
 [2026-09-17 11:31:24] [DESCONEXAO] Sessão ativa do usuário joao liberada.
+[2026-09-17 11:39:12] [CONEXAO] Novo cliente conectado de: 26.170.71.31:52494
+[2026-09-17 11:39:16] [REQUISICAO] De: 26.170.71.31:52494 | Usuario: thay | Acao: AUTENTICAR | Payload: {"email":"thay","senha":"123","tipo":"MOTORISTA"}
+[2026-09-17 11:39:16] [RESPOSTA] Para: 26.170.71.31:52494 (Usuario: thay) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 11:39:25] [REQUISICAO] De: 26.170.71.31:52494 | Usuario: thay | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 11:39:25] [REQUISICAO] De: 26.170.71.31:52494 | Usuario: thay | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789653436990577900"}
+[2026-09-17 16:32:30] [CONEXAO] Novo cliente conectado de: 172.18.0.1:56472
+[2026-09-17 16:32:34] [REQUISICAO] De: 172.18.0.1:56472 | Usuario: joao | Acao: AUTENTICAR | Payload: {"email":"joao","senha":"123","tipo":"MOTORISTA"}
+[2026-09-17 16:32:34] [RESPOSTA] Para: 172.18.0.1:56472 (Usuario: joao) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 16:32:42] [REQUISICAO] De: 172.18.0.1:56472 | Usuario: joao | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 16:32:54] [REQUISICAO] De: 172.18.0.1:56472 | Usuario: joao | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 16:33:21] [REQUISICAO] De: 172.18.0.1:56472 | Usuario: joao | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-1789662801880167700","motorista_id":"joao","assentos_tot":5,"trechos":[{"origem":"ssa","destino":"recife","data_partida":{"dia":12,"mes":12,"ano":2026},"horario_partida":"2026-12-12T12:30:00-03:00","horario_chegada":"2026-12-12T12:50:00-03:00","preco":15,"assentos_livres":5}],"ativa":true}
+[2026-09-17 16:33:24] [REQUISICAO] De: 172.18.0.1:56472 | Usuario: joao | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 16:33:39] [REQUISICAO] De: 172.18.0.1:56472 | Usuario: joao | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 16:33:48] [REQUISICAO] De: 172.18.0.1:56472 | Usuario: joao | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789662801880167700"}
+[2026-09-17 16:34:00] [CONEXAO] Novo cliente conectado de: 172.18.0.1:56764
+[2026-09-17 16:34:04] [REQUISICAO] De: 172.18.0.1:56764 | Usuario: maria | Acao: AUTENTICAR | Payload: {"email":"maria","senha":"123","tipo":"PASSAGEIRO"}
+[2026-09-17 16:34:04] [RESPOSTA] Para: 172.18.0.1:56764 (Usuario: maria) | Acao: AUTENTICAR | Sucesso: true | Msg: Usuário cadastrado e autenticado com sucesso! | Payload: 
+[2026-09-17 16:34:18] [REQUISICAO] De: 172.18.0.1:56764 | Usuario: maria | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"ssa","destino":"recife","data":{"dia":12,"mes":12,"ano":2026}}
+[2026-09-17 16:34:24] [REQUISICAO] De: 172.18.0.1:56764 | Usuario: maria | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-1789662801880167700","motorista_id":"joao","origem":"ssa","destino":"recife","horario_partida":"2026-12-12T12:30:00-03:00","horario_chegada":"2026-12-12T12:50:00-03:00","preco":15,"assentos_livres":5}],"preco_total":15}
+[2026-09-17 16:34:29] [REQUISICAO] De: 172.18.0.1:56472 | Usuario: joao | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 16:34:48] [REQUISICAO] De: 172.18.0.1:56764 | Usuario: maria | Acao: LISTAR_RESERVAS | Payload: null
+[2026-09-17 16:34:52] [REQUISICAO] De: 172.18.0.1:56472 | Usuario: joao | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 16:34:54] [REQUISICAO] De: 172.18.0.1:56472 | Usuario: joao | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789662801880167700"}
+[2026-09-17 16:35:10] [REQUISICAO] De: 172.18.0.1:56472 | Usuario: joao | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 16:35:10] [REQUISICAO] De: 172.18.0.1:56472 | Usuario: joao | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789662801880167700"}
+[2026-09-17 16:35:12] [REQUISICAO] De: 172.18.0.1:56472 | Usuario: joao | Acao: CANCELAR_CARONA | Payload: {"carona_id":"CAR-1789662801880167700","confirmar":false}
+[2026-09-17 16:35:14] [REQUISICAO] De: 172.18.0.1:56472 | Usuario: joao | Acao: CANCELAR_CARONA | Payload: {"carona_id":"CAR-1789662801880167700","confirmar":true}
+[2026-09-17 16:35:16] [REQUISICAO] De: 172.18.0.1:56764 | Usuario: maria | Acao: LISTAR_RESERVAS | Payload: null
+[2026-09-17 16:35:41] [DESCONEXAO] Cliente 172.18.0.1:56472 desconectou normalmente.
+[2026-09-17 16:35:41] [DESCONEXAO] Sessão ativa do usuário joao liberada.
+[2026-09-17 16:35:43] [CONEXAO] Novo cliente conectado de: 172.18.0.1:49266
+[2026-09-17 16:35:49] [REQUISICAO] De: 172.18.0.1:49266 | Usuario: pedro | Acao: AUTENTICAR | Payload: {"email":"pedro","senha":"123]","tipo":"MOTORISTA"}
+[2026-09-17 16:35:49] [RESPOSTA] Para: 172.18.0.1:49266 (Usuario: pedro) | Acao: AUTENTICAR | Sucesso: true | Msg: Usuário cadastrado e autenticado com sucesso! | Payload: 
+[2026-09-17 16:36:41] [REQUISICAO] De: 172.18.0.1:49266 | Usuario: pedro | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-1789663001530526200","motorista_id":"pedro","assentos_tot":2,"trechos":[{"origem":"recife","destino":"brasilia","data_partida":{"dia":12,"mes":12,"ano":2026},"horario_partida":"2026-12-12T20:00:00-03:00","horario_chegada":"2026-12-12T20:30:00-03:00","preco":15,"assentos_livres":2},{"origem":"brasilia","destino":"minas","data_partida":{"dia":12,"mes":12,"ano":2026},"horario_partida":"2026-12-12T20:30:00-03:00","horario_chegada":"2026-12-12T21:00:00-03:00","preco":15,"assentos_livres":2}],"ativa":true}
+[2026-09-17 16:37:14] [REQUISICAO] De: 172.18.0.1:56764 | Usuario: maria | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"recife","destino":"minas","data":{"dia":12,"mes":12,"ano":2026}}
+[2026-09-17 16:38:16] [DESCONEXAO] Cliente 172.18.0.1:49266 desconectou normalmente.
+[2026-09-17 16:38:16] [DESCONEXAO] Sessão ativa do usuário pedro liberada.
+[2026-09-17 16:38:27] [CONEXAO] Novo cliente conectado de: 172.18.0.1:54976
+[2026-09-17 16:38:31] [REQUISICAO] De: 172.18.0.1:54976 | Usuario: a | Acao: AUTENTICAR | Payload: {"email":"a","senha":"123","tipo":"MOTORISTA"}
+[2026-09-17 16:38:31] [RESPOSTA] Para: 172.18.0.1:54976 (Usuario: a) | Acao: AUTENTICAR | Sucesso: true | Msg: Usuário cadastrado e autenticado com sucesso! | Payload: 
+[2026-09-17 16:39:32] [REQUISICAO] De: 172.18.0.1:54976 | Usuario: a | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-1789663172642086100","motorista_id":"a","assentos_tot":1,"trechos":[{"origem":"minas","destino":"aracaju","data_partida":{"dia":12,"mes":12,"ano":2026},"horario_partida":"2026-12-12T23:00:00-03:00","horario_chegada":"2026-12-12T23:10:00-03:00","preco":56,"assentos_livres":1},{"origem":"aracaju","destino":"bahia","data_partida":{"dia":12,"mes":12,"ano":2026},"horario_partida":"2026-12-12T23:10:00-03:00","horario_chegada":"2026-12-12T23:30:00-03:00","preco":8,"assentos_livres":1}],"ativa":true}
+[2026-09-17 16:40:14] [REQUISICAO] De: 172.18.0.1:56764 | Usuario: maria | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"brasilia","destino":"bahia","data":{"dia":12,"mes":12,"ano":2026}}
+[2026-09-17 16:40:23] [REQUISICAO] De: 172.18.0.1:56764 | Usuario: maria | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-1789663001530526200","motorista_id":"pedro","origem":"brasilia","destino":"minas","horario_partida":"2026-12-12T20:30:00-03:00","horario_chegada":"2026-12-12T21:00:00-03:00","preco":15,"assentos_livres":2},{"carona_id":"CAR-1789663172642086100","motorista_id":"a","origem":"minas","destino":"bahia","horario_partida":"2026-12-12T23:00:00-03:00","horario_chegada":"2026-12-12T23:30:00-03:00","preco":64,"assentos_livres":1}],"preco_total":79}
+[2026-09-17 16:40:28] [REQUISICAO] De: 172.18.0.1:56764 | Usuario: maria | Acao: LISTAR_RESERVAS | Payload: null
+[2026-09-17 16:40:43] [REQUISICAO] De: 172.18.0.1:54976 | Usuario: a | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 16:40:56] [REQUISICAO] De: 172.18.0.1:54976 | Usuario: a | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 16:41:04] [REQUISICAO] De: 172.18.0.1:54976 | Usuario: a | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789663172642086100"}
+[2026-09-17 16:41:16] [DESCONEXAO] Cliente 172.18.0.1:54976 desconectou normalmente.
+[2026-09-17 16:41:16] [DESCONEXAO] Sessão ativa do usuário a liberada.
+[2026-09-17 16:41:19] [CONEXAO] Novo cliente conectado de: 172.18.0.1:55810
+[2026-09-17 16:41:32] [REQUISICAO] De: 172.18.0.1:55810 | Usuario: pedro | Acao: AUTENTICAR | Payload: {"email":"pedro","senha":"123]","tipo":"MOTORISTA"}
+[2026-09-17 16:41:32] [RESPOSTA] Para: 172.18.0.1:55810 (Usuario: pedro) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 16:41:38] [REQUISICAO] De: 172.18.0.1:55810 | Usuario: pedro | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 16:41:40] [REQUISICAO] De: 172.18.0.1:55810 | Usuario: pedro | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789663001530526200"}
+[2026-09-17 16:41:42] [DESCONEXAO] Cliente 172.18.0.1:55810 desconectou normalmente.
+[2026-09-17 16:41:42] [DESCONEXAO] Sessão ativa do usuário pedro liberada.
+[2026-09-17 16:41:45] [DESCONEXAO] Cliente 172.18.0.1:56764 desconectou normalmente.
+[2026-09-17 16:41:45] [DESCONEXAO] Sessão ativa do usuário maria liberada.
