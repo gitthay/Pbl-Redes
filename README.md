@@ -142,10 +142,12 @@ go run main.go
 
 ```bash
 # Cliente motorista
-go run ./motorista -server localhost:8080
+go run motorista/mainmotorista.go -server <IP>
 
 # Cliente passageiro
-go run ./passageiro -server localhost:8080
+go run passageiro/mainpassageiro.go -server <IP>
+
+obs: Sem a flag "server", roda localmente.
 ```
 
 A flag `-server` permite apontar para o IP de outra máquina na rede (útil para testar servidor e clientes em computadores distintos do laboratório).
