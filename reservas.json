@@ -136,5 +136,379 @@
     ],
     "valor_total": 80,
     "data_criacao": "2026-08-30T02:16:56.944035605Z"
+  },
+  {
+    "id": "RES-1789527683314484300",
+    "passageiro_id": "p_comp_2@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-COMP1-1789527683262497000",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Santo Amaro",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 15,
+        "assentos_livres": 0
+      },
+      {
+        "carona_id": "CAR-COMP2-1789527683276970800",
+        "motorista_id": "",
+        "origem": "Santo Amaro",
+        "destino": "Salvador",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 20,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 35,
+    "data_criacao": "2026-09-16T00:01:23.3144843-03:00"
+  },
+  {
+    "id": "RES-1789527683413267300",
+    "passageiro_id": "p_ilheus@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-CONS-1789527683379603400",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Ilhéus",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 0,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 80,
+    "data_criacao": "2026-09-16T00:01:23.4132673-03:00"
+  },
+  {
+    "id": "RES-1789528051067975800",
+    "passageiro_id": "p_comp_10@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-COMP1-1789528051014168600",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Santo Amaro",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 15,
+        "assentos_livres": 0
+      },
+      {
+        "carona_id": "CAR-COMP2-1789528051029939700",
+        "motorista_id": "",
+        "origem": "Santo Amaro",
+        "destino": "Salvador",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 20,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 35,
+    "data_criacao": "2026-09-16T00:07:31.0679758-03:00"
+  },
+  {
+    "id": "RES-1789528051174864300",
+    "passageiro_id": "p_ilheus@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-CONS-1789528051140425500",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Ilhéus",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 0,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 80,
+    "data_criacao": "2026-09-16T00:07:31.1748643-03:00"
+  },
+  {
+    "id": "RES-1789528051271014600",
+    "passageiro_id": "hibrido@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-HIBRIDO-1789528051228453200",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Alagoinhas",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 0,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 30,
+    "data_criacao": "2026-09-16T00:07:31.2710146-03:00"
+  },
+  {
+    "id": "RES-1789528678067238000",
+    "passageiro_id": "p_comp_1@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-COMP1-1789528678015876100",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Santo Amaro",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 15,
+        "assentos_livres": 0
+      },
+      {
+        "carona_id": "CAR-COMP2-1789528678024162900",
+        "motorista_id": "",
+        "origem": "Santo Amaro",
+        "destino": "Salvador",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 20,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 35,
+    "data_criacao": "2026-09-16T00:17:58.067238-03:00"
+  },
+  {
+    "id": "RES-1789528678170468900",
+    "passageiro_id": "p_ilheus@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-CONS-1789528678132078700",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Ilhéus",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 0,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 80,
+    "data_criacao": "2026-09-16T00:17:58.1704689-03:00"
+  },
+  {
+    "id": "RES-1789528678277181400",
+    "passageiro_id": "hibrido@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-HIBRIDO-1789528678244437500",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Alagoinhas",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 0,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 30,
+    "data_criacao": "2026-09-16T00:17:58.2771814-03:00"
+  },
+  {
+    "id": "RES-1789528759197376300",
+    "passageiro_id": "p_comp_5@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-COMP1-1789528759150674300",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Santo Amaro",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 15,
+        "assentos_livres": 0
+      },
+      {
+        "carona_id": "CAR-COMP2-1789528759159773100",
+        "motorista_id": "",
+        "origem": "Santo Amaro",
+        "destino": "Salvador",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 20,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 35,
+    "data_criacao": "2026-09-16T00:19:19.1973763-03:00"
+  },
+  {
+    "id": "RES-1789528759292475000",
+    "passageiro_id": "p_ilheus@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-CONS-1789528759258562200",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Ilhéus",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 0,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 80,
+    "data_criacao": "2026-09-16T00:19:19.292475-03:00"
+  },
+  {
+    "id": "RES-1789606610331586300",
+    "passageiro_id": "p_comp_3@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-COMP1-1789606610291475200",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Santo Amaro",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 15,
+        "assentos_livres": 0
+      },
+      {
+        "carona_id": "CAR-COMP2-1789606610298439800",
+        "motorista_id": "",
+        "origem": "Santo Amaro",
+        "destino": "Salvador",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 20,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 35,
+    "data_criacao": "2026-09-16T21:56:50.3315863-03:00"
+  },
+  {
+    "id": "RES-1789606610438421300",
+    "passageiro_id": "p_ilheus@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-CONS-1789606610405674300",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Ilhéus",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 0,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 80,
+    "data_criacao": "2026-09-16T21:56:50.4384213-03:00"
+  },
+  {
+    "id": "RES-1789606610521870600",
+    "passageiro_id": "passageiro_lento_15@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-DISPUTA-1789606610500879100",
+        "motorista_id": "",
+        "origem": "Feira de Santana",
+        "destino": "Salvador",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 30,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 30,
+    "data_criacao": "2026-09-16T21:56:50.5218706-03:00"
+  },
+  {
+    "id": "RES-1789606610657208300",
+    "passageiro_id": "passageiro_independente_4@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-INDIV-5-1789606610623599700",
+        "motorista_id": "",
+        "origem": "Cidade A",
+        "destino": "Cidade B",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 50,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 50,
+    "data_criacao": "2026-09-16T21:56:50.6572083-03:00"
+  },
+  {
+    "id": "RES-1789606610675029100",
+    "passageiro_id": "passageiro_independente_1@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-INDIV-2-1789606610558282800",
+        "motorista_id": "",
+        "origem": "Cidade A",
+        "destino": "Cidade B",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 50,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 50,
+    "data_criacao": "2026-09-16T21:56:50.6750291-03:00"
+  },
+  {
+    "id": "RES-1789606610703655600",
+    "passageiro_id": "passageiro_independente_0@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-INDIV-1-1789606610555520800",
+        "motorista_id": "",
+        "origem": "Cidade A",
+        "destino": "Cidade B",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 50,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 50,
+    "data_criacao": "2026-09-16T21:56:50.7036556-03:00"
+  },
+  {
+    "id": "RES-1789606610734090000",
+    "passageiro_id": "passageiro_independente_2@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-INDIV-3-1789606610588311400",
+        "motorista_id": "",
+        "origem": "Cidade A",
+        "destino": "Cidade B",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 50,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 50,
+    "data_criacao": "2026-09-16T21:56:50.73409-03:00"
+  },
+  {
+    "id": "RES-1789606610752325800",
+    "passageiro_id": "passageiro_independente_3@email.com",
+    "itinerario": [
+      {
+        "carona_id": "CAR-INDIV-4-1789606610604737200",
+        "motorista_id": "",
+        "origem": "Cidade A",
+        "destino": "Cidade B",
+        "horario_partida": "0001-01-01T00:00:00Z",
+        "horario_chegada": "0001-01-01T00:00:00Z",
+        "preco": 50,
+        "assentos_livres": 0
+      }
+    ],
+    "valor_total": 50,
+    "data_criacao": "2026-09-16T21:56:50.7523258-03:00"
   }
 ]

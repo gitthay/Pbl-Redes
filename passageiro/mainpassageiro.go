@@ -184,10 +184,18 @@ func main() {
 				}
 			}
 
-			// Pergunta se deseja reservar ou voltar
+			// Pergunta se deseja reservar ou voltar (repete se digitar algo inválido)
 			fmt.Println("\n------------------------------------------")
-			desejaReservar := lerTexto("Deseja reservar algum desses itinerários? (s/n): ")
-			if strings.ToLower(desejaReservar) != "s" {
+			var desejaReservar string
+			for {
+				desejaReservar = strings.ToLower(lerTexto("Deseja reservar algum desses itinerários? (s/n): "))
+				if desejaReservar == "s" || desejaReservar == "n" {
+					break
+				}
+				fmt.Println("[ERRO]: Digite apenas 's' para sim ou 'n' para não.")
+			}
+
+			if desejaReservar == "n" {
 				continue
 			}
 

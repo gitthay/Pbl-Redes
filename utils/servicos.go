@@ -588,3 +588,31 @@ func RegistrarLog(formato string, v ...interface{}) {
 
 	_, _ = f.WriteString(linhaLog)
 }
+
+// --- CONTROLE DE SESSÕES SIMULTÂNEAS ---
+var (
+	usuariosLogados = make(map[string]bool)
+	muSessoes       sync.Mutex
+)
+
+// RegistrarLogin tenta marcar o usuário como logado. Retorna falso se ele já estiver ativo.
+func RegistrarLogin(email string) bool {
+	muSessoes.Lock()
+	defer muSessoes.Unlock()
+	
+	emailClean := strings.TrimSpace(strings.ToLower(email))
+	if usuariosLogados[emailClean] {
+		return false
+	}
+	usuariosLogados[emailClean] = true
+	return true
+}
+
+// RemoverLogin libera o usuário do mapa de sessões ativas ao desconectar
+func RemoverLogin(email string) {
+	muSessoes.Lock()
+	defer muSessoes.Unlock()
+	
+	emailClean := strings.TrimSpace(strings.ToLower(email))
+	delete(usuariosLogados, emailClean)
+}

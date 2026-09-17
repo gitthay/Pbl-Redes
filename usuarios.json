@@ -95,13 +95,28 @@
     "tipo": "PASSAGEIRO"
   },
   {
-    "email": "e",
-    "senha": "e",
+    "email": "m_busca@email.com",
+    "senha": "123",
     "tipo": "MOTORISTA"
   },
   {
     "email": "thay",
     "senha": "123",
     "tipo": "MOTORISTA"
+  },
+  {
+    "email": "thayq",
+    "senha": "123",
+    "tipo": "MOTORISTA"
+  },
+  {
+    "email": "tahh",
+    "senha": "11",
+    "tipo": "PASSAGEIRO"
+  },
+  {
+    "email": "usuario_duplicado@email.com",
+    "senha": "senha123",
+    "tipo": "PASSAGEIRO"
   }
 ]

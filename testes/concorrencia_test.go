@@ -2,24 +2,23 @@ package testes
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"net"
+	"os"
 	"sync"
 	"testing"
 	"time"
-	"flag"
-	"os"
 
 	"vaiJunto/utils"
 )
 
 var enderecoServidor string
+
 func TestMain(m *testing.M) {
-	// Define a flag -server com valor padrão em localhost:8080
 	flag.StringVar(&enderecoServidor, "server", "localhost:8080", "Endereço do servidor TCP (ex: 192.168.1.15:8080)")
 	flag.Parse()
 
-	// Executa a suíte de testes
 	exitCode := m.Run()
 	os.Exit(exitCode)
 }
@@ -53,8 +52,7 @@ func enviarRequisicao(conn net.Conn, acao utils.TipoAcao, usuario string, payloa
 	return resp, err
 }
 
-
-// 1. Teste Unitário: Normalização de Texto e Insensibilidade a Maiúsculas/Espaços
+// 1. Teste Unitário: Normalização de Texto
 func TestNormalizacaoDeTexto(t *testing.T) {
 	entrada := "   Feira DE Santana   "
 	esperado := "feira de santana"
@@ -66,7 +64,7 @@ func TestNormalizacaoDeTexto(t *testing.T) {
 	t.Log("[UNITÁRIO]: Normalização de texto validada!")
 }
 
-// 2. Teste Unitário: Consolidação de Trechos Contínuos na Mesma Carona
+// 2. Teste Unitário: Consolidação de Trechos Contínuos
 func TestConsolidacaoDeTrechos(t *testing.T) {
 	trechosOriginais := []utils.ArestaTrecho{
 		{CaronaID: "CAR-1", Origem: "Feira de Santana", Destino: "Santo Amaro", Preco: 15.0, AssentosLivre: 3},
@@ -85,7 +83,7 @@ func TestConsolidacaoDeTrechos(t *testing.T) {
 	t.Log("[UNITÁRIO]: Consolidação de trechos contínuos validada!")
 }
 
-// 3. Teste Unitário: Formatação de Data e Criação Utilitária
+// 3. Teste Unitário: Formatação de Data
 func TestEstruturaData(t *testing.T) {
 	data := utils.NovaData(15, 10, 2026)
 	esperado := "15/10/2026"
@@ -96,8 +94,7 @@ func TestEstruturaData(t *testing.T) {
 	t.Log("[UNITÁRIO]: Formatação de data validada!")
 }
 
-
-// 4. AcaoAutenticar: Cadastro e Autenticação Simultânea
+// 4. Teste de Integração: Cadastro e Autenticação Concorrente
 func TestConcorrenciaAutenticacaoECadastro(t *testing.T) {
 	const totalUsuarios = 15
 	var wg sync.WaitGroup
@@ -144,7 +141,7 @@ func TestConcorrenciaAutenticacaoECadastro(t *testing.T) {
 	}
 }
 
-// 5. AcaoPublicarCarona + AcaoBuscarItinerario: Busca Simultânea no Grafo (BFS)
+// 5. Teste de Integração: Busca Concorrente no Grafo (BFS) com Data Corrigida
 func TestConcorrenciaBuscaItinerarios(t *testing.T) {
 	conn, err := net.Dial("tcp", enderecoServidor)
 	if err != nil {
@@ -159,8 +156,13 @@ func TestConcorrenciaBuscaItinerarios(t *testing.T) {
 		AssentosTot: 4,
 		Ativa:       true,
 		Trechos: []utils.Trecho{{
-			Origem: "Feira de Santana", Destino: "Salvador",
-			DataPartida: utils.NovaData(15, 10, 2026), Preco: 25.0, AssentosLivre: 4,
+			Origem:         "Feira de Santana",
+			Destino:        "Salvador",
+			DataPartida:    utils.NovaData(15, 10, 2026),
+			HorarioPartida: time.Now(),
+			HorarioChegada: time.Now().Add(time.Hour),
+			Preco:          25.0,
+			AssentosLivre:  4,
 		}},
 	}
 	enviarRequisicao(conn, utils.AcaoPublicarCarona, "m_busca@email.com", c)
@@ -201,7 +203,7 @@ func TestConcorrenciaBuscaItinerarios(t *testing.T) {
 	}
 }
 
-// 6. AcaoReservarTrecho: Disparo Concorrente em Itinerário Composto
+// 6. Teste de Integração: Disparo Concorrente em Itinerário Composto
 func TestConcorrenciaItinerarioComposto(t *testing.T) {
 	conn, err := net.Dial("tcp", enderecoServidor)
 	if err != nil {
@@ -276,7 +278,7 @@ func TestConcorrenciaItinerarioComposto(t *testing.T) {
 	}
 }
 
-// 7. AcaoListarReservas + AcaoCancelarReserva: Gestão do Passageiro
+// 7. Teste de Integração: Gestão de Reservas (Listar e Cancelar)
 func TestConcorrenciaListarECancelarReserva(t *testing.T) {
 	conn, err := net.Dial("tcp", enderecoServidor)
 	if err != nil {
@@ -292,7 +294,8 @@ func TestConcorrenciaListarECancelarReserva(t *testing.T) {
 		Ativa:       true,
 		Trechos: []utils.Trecho{{
 			Origem: "Feira de Santana", Destino: "Valença",
-			DataPartida: utils.NovaData(15, 10, 2026), Preco: 40.0, AssentosLivre: 2,
+			DataPartida: utils.NovaData(15, 10, 2026), HorarioPartida: time.Now(), HorarioChegada: time.Now().Add(time.Hour),
+			Preco: 40.0, AssentosLivre: 2,
 		}},
 	}
 	enviarRequisicao(conn, utils.AcaoPublicarCarona, "m_gestao@email.com", c)
@@ -320,7 +323,7 @@ func TestConcorrenciaListarECancelarReserva(t *testing.T) {
 	t.Log("[INTEGRAÇÃO]: Listagem e cancelamento de reservas validados")
 }
 
-// 8. AcaoConsultarCaronas + AcaoConsultarPassageirosCarona
+// 8. Teste de Integração: Consultas Exclusivas do Motorista
 func TestConcorrenciaConsultasMotorista(t *testing.T) {
 	conn, err := net.Dial("tcp", enderecoServidor)
 	if err != nil {
@@ -338,7 +341,8 @@ func TestConcorrenciaConsultasMotorista(t *testing.T) {
 		Ativa:       true,
 		Trechos: []utils.Trecho{{
 			Origem: "Feira de Santana", Destino: "Ilhéus",
-			DataPartida: utils.NovaData(15, 10, 2026), Preco: 80.0, AssentosLivre: 3,
+			DataPartida: utils.NovaData(15, 10, 2026), HorarioPartida: time.Now(), HorarioChegada: time.Now().Add(time.Hour),
+			Preco: 80.0, AssentosLivre: 3,
 		}},
 	}
 	enviarRequisicao(conn, utils.AcaoPublicarCarona, emailMotorista, c)
@@ -362,7 +366,7 @@ func TestConcorrenciaConsultasMotorista(t *testing.T) {
 	t.Log("[INTEGRAÇÃO]: Consultas exclusivas do motorista validadas!")
 }
 
-// 9. AcaoCancelarCarona: Cancelamento pelo Motorista com Confirmação Expressa
+// 9. Teste de Integração: Cancelamento de Carona pelo Motorista
 func TestCancelarCaronaMotorista(t *testing.T) {
 	conn, err := net.Dial("tcp", enderecoServidor)
 	if err != nil {
@@ -380,7 +384,8 @@ func TestCancelarCaronaMotorista(t *testing.T) {
 		Ativa:       true,
 		Trechos: []utils.Trecho{{
 			Origem: "Feira de Santana", Destino: "Itabuna",
-			DataPartida: utils.NovaData(15, 10, 2026), Preco: 60.0, AssentosLivre: 2,
+			DataPartida: utils.NovaData(15, 10, 2026), HorarioPartida: time.Now(), HorarioChegada: time.Now().Add(time.Hour),
+			Preco: 60.0, AssentosLivre: 2,
 		}},
 	}
 	enviarRequisicao(conn, utils.AcaoPublicarCarona, emailMotorista, c)
@@ -394,12 +399,54 @@ func TestCancelarCaronaMotorista(t *testing.T) {
 	t.Log("[INTEGRAÇÃO]: Cancelamento de carona pelo motorista validado!")
 }
 
-// 10. Encerramento Inesperado do Socket TCP (EOF)
+// 12. Teste de Integração: Bloqueio de Logins Simultâneos com o Mesmo E-mail
+func TestBloqueioLoginSimultaneo(t *testing.T) {
+	// 1. Abre a primeira conexão
+	conn1, err := net.Dial("tcp", enderecoServidor)
+	if err != nil {
+		t.Fatalf("Servidor offline: %v", err)
+	}
+	defer conn1.Close()
+
+	emailTeste := "usuario_duplicado@email.com"
+	payloadAuth := map[string]interface{}{
+		"email": emailTeste,
+		"senha": "senha123",
+		"tipo":  utils.TipoPassageiro,
+	}
+
+	// 2. Realiza o primeiro login com sucesso
+	resp1, err := enviarRequisicao(conn1, utils.AcaoAutenticar, emailTeste, payloadAuth)
+	if err != nil || !resp1.Sucesso {
+		t.Fatalf("Primeiro login deveria ter sido bem-sucedido: %s", resp1.Mensagem)
+	}
+
+	// 3. Abre uma segunda conexão para tentar logar com o MESMO e-mail simultaneamente
+	conn2, err := net.Dial("tcp", enderecoServidor)
+	if err != nil {
+		t.Fatalf("Erro ao abrir segunda conexão: %v", err)
+	}
+	defer conn2.Close()
+
+	resp2, err := enviarRequisicao(conn2, utils.AcaoAutenticar, emailTeste, payloadAuth)
+	if err != nil {
+		t.Fatalf("Erro de comunicação no segundo login: %v", err)
+	}
+
+	// 4. O servidor deve rejeitar a segunda tentativa de login
+	if resp2.Sucesso {
+		t.Fatalf("Falha de lógica: O servidor permitiu login simultâneo com o mesmo e-mail!")
+	}
+
+	t.Log("[INTEGRAÇÃO]: Bloqueio de login simultâneo validado com sucesso!")
+}
+
+// 11. Teste de Integração: Queda Abrupta de Cliente (EOF)
 func TestQuedaAbruptaDeCliente(t *testing.T) {
 	for i := 0; i < 5; i++ {
 		conn, err := net.Dial("tcp", enderecoServidor)
 		if err == nil {
-			conn.Close() // Fecha o socket abruptamente sem protocolo
+			conn.Close()
 		}
 	}
 
@@ -415,4 +462,294 @@ func TestQuedaAbruptaDeCliente(t *testing.T) {
 	}
 
 	t.Log("O servidor tratou os erros de socket (EOF) e permanece online!")
+}
+
+// 12. Teste de Integração: Disputa Concorrente pelo Mesmo Assento (Atomicidade / Tudo ou Nada)
+func TestConcorrenciaDisputaMesmoAssento(t *testing.T) {
+	conn, err := net.Dial("tcp", enderecoServidor)
+	if err != nil {
+		t.Fatalf("Servidor offline: %v", err)
+	}
+	defer conn.Close()
+
+	caronaID := fmt.Sprintf("CAR-DISPUTA-%d", time.Now().UnixNano())
+	c := utils.Carona{
+		ID:          caronaID,
+		MotoristaID: "m_disputa@email.com",
+		AssentosTot: 1, // Apenas 1 assento disponível na carona inteira!
+		Ativa:       true,
+		Trechos: []utils.Trecho{{
+			Origem:         "Feira de Santana",
+			Destino:        "Salvador",
+			DataPartida:    utils.NovaData(15, 10, 2026),
+			HorarioPartida: time.Now(),
+			HorarioChegada: time.Now().Add(time.Hour),
+			Preco:          30.0,
+			AssentosLivre:  1, // Apenas 1 vaga real
+		}},
+	}
+	enviarRequisicao(conn, utils.AcaoPublicarCarona, "m_disputa@email.com", c)
+
+	itinerarioDesejado := utils.Itinerario{
+		PrecoTotal: 30.0,
+		Trechos: []utils.ArestaTrecho{{
+			CaronaID: caronaID,
+			Origem:   "Feira de Santana",
+			Destino:  "Salvador",
+			Preco:    30.0,
+		}},
+	}
+
+	const totalClientesDisputando = 15
+	var wg sync.WaitGroup
+	var mu sync.Mutex
+	sucessosReserva := 0
+	falhasReserva := 0
+
+	wg.Add(totalClientesDisputando)
+	for i := 1; i <= totalClientesDisputando; i++ {
+		emailPassageiro := fmt.Sprintf("passageiro_lento_%d@email.com", i)
+		go func(email string) {
+			defer wg.Done()
+			cli, err := net.Dial("tcp", enderecoServidor)
+			if err != nil {
+				return
+			}
+			defer cli.Close()
+
+			resp, err := enviarRequisicao(cli, utils.AcaoReservarTrecho, email, itinerarioDesejado)
+			mu.Lock()
+			defer mu.Unlock()
+			if err == nil && resp.Sucesso {
+				sucessosReserva++
+			} else {
+				falhasReserva++
+			}
+		}(emailPassageiro)
+	}
+
+	wg.Wait()
+
+	t.Logf("[INTEGRAÇÃO]: Resultado da disputa pelo único assento -> Sucessos: %d | Falhas rejeitadas corretamente: %d", sucessosReserva, falhasReserva)
+
+	// Validação estrita exigida pelo edital: Apenas 1 pode vencer, os outros devem falhar por falta de vaga
+	if sucessosReserva != 1 {
+		t.Fatalf("FALHA DE ATOMICIDADE: O sistema permitiu %d reservas para 1 único assento!", sucessosReserva)
+	}
+	if falhasReserva != totalClientesDisputando-1 {
+		t.Fatalf("Inconsistência nas rejeições: esperava %d falhas, obteve %d", totalClientesDisputando-1, falhasReserva)
+	}
+	t.Log("[INTEGRAÇÃO]: Teste de concorrência no mesmo assento validado com sucesso! Nenhum assento vendido em duplicidade.")
+}
+
+// 13. Teste de Integração: Acesso Simultâneo a Corridas Diferentes (Concorrência sem Bloqueio Indevido)
+func TestConcorrenciaCorridasDiferentes(t *testing.T) {
+	conn, err := net.Dial("tcp", enderecoServidor)
+	if err != nil {
+		t.Fatalf("Servidor offline: %v", err)
+	}
+	defer conn.Close()
+
+	// Publica 5 caronas totalmente independentes, cada uma com 5 assentos livres
+	const totalCaronas = 5
+	var caronaIDs []string
+
+	for i := 1; i <= totalCaronas; i++ {
+		cID := fmt.Sprintf("CAR-INDIV-%d-%d", i, time.Now().UnixNano())
+		caronaIDs = append(caronaIDs, cID)
+
+		c := utils.Carona{
+			ID:          cID,
+			MotoristaID: fmt.Sprintf("motorista_%d@email.com", i),
+			AssentosTot: 5,
+			Ativa:       true,
+			Trechos: []utils.Trecho{{
+				Origem:         "Cidade A",
+				Destino:        "Cidade B",
+				DataPartida:    utils.NovaData(20, 10, 2026),
+				HorarioPartida: time.Now(),
+				HorarioChegada: time.Now().Add(time.Hour),
+				Preco:          50.0,
+				AssentosLivre:  5,
+			}},
+		}
+		enviarRequisicao(conn, utils.AcaoPublicarCarona, c.MotoristaID, c)
+	}
+
+	var wg sync.WaitGroup
+	var mu sync.Mutex
+	reservasIndependentesSucesso := 0
+
+	// 5 passageiros diferentes reservando caronas DIFERENTES ao mesmo tempo em paralelo
+	wg.Add(totalCaronas)
+	for i := 0; i < totalCaronas; i++ {
+		idx := i
+		go func() {
+			defer wg.Done()
+			cli, err := net.Dial("tcp", enderecoServidor)
+			if err != nil {
+				return
+			}
+			defer cli.Close()
+
+			itin := utils.Itinerario{
+				PrecoTotal: 50.0,
+				Trechos: []utils.ArestaTrecho{{
+					CaronaID: caronaIDs[idx],
+					Origem:   "Cidade A",
+					Destino:  "Cidade_B",
+					Preco:    50.0,
+				}},
+			}
+			// Ajustando o destino corretamente para "Cidade B"
+			itin.Trechos[0].Destino = "Cidade B"
+
+			emailPassageiro := fmt.Sprintf("passageiro_independente_%d@email.com", idx)
+			resp, err := enviarRequisicao(cli, utils.AcaoReservarTrecho, emailPassageiro, itin)
+
+			mu.Lock()
+			if err == nil && resp.Sucesso {
+				reservasIndependentesSucesso++
+			}
+			mu.Unlock()
+		}()
+	}
+
+	wg.Wait()
+
+	t.Logf("[INTEGRAÇÃO]: %d reservas em caronas distintas processadas concorrentemente com sucesso", reservasIndependentesSucesso)
+
+	if reservasIndependentesSucesso != totalCaronas {
+		t.Fatalf("Erro de concorrência cruzada: esperava que todas as %d reservas em rotas distintas passassem, mas passaram apenas %d", totalCaronas, reservasIndependentesSucesso)
+	}
+	t.Log("[INTEGRAÇÃO]: Comprovado que acessos a corridas diferentes ocorrem concorrentemente sem interferência mutua!")
+}
+
+// 14. Teste de Integração: Envio de Mensagem Malformada (Validação e Robustez)
+func TestEnvioMensagemMalformada(t *testing.T) {
+	conn, err := net.Dial("tcp", enderecoServidor)
+	if err != nil {
+		t.Fatalf("Servidor offline: %v", err)
+	}
+	defer conn.Close()
+
+	// Envia bytes que não formam um JSON estruturado corretamente
+	dadosMalformados := []byte("{ \"acao\": \"PUBLICAR_CARONA\", \"payload\": dados_quebrados_sem_fechar_aspas... }}} \n")
+	if _, err := conn.Write(dadosMalformados); err != nil {
+		t.Fatalf("Erro ao enviar dados malformados: %v", err)
+	}
+
+	// Pausa breve para o servidor processar e descartar a mensagem no log/parser
+	time.Sleep(100 * time.Millisecond)
+
+	// O teste de ouro da resiliência: O servidor NÃO PODE ter caído.
+	// Abrimos uma nova conexão válida logo em seguida para provar que ele continua operando.
+	connValida, err := net.Dial("tcp", enderecoServidor)
+	if err != nil {
+		t.Fatalf("FALHA DE RESILIÊNCIA: O servidor caiu após receber uma mensagem malformada!")
+	}
+	defer connValida.Close()
+
+	_, err = enviarRequisicao(connValida, utils.AcaoConsultarCaronas, "teste_robustez@email.com", nil)
+	if err != nil {
+		t.Fatalf("O servidor parou de responder requisições após o erro de parsing.")
+	}
+
+	t.Log("[INTEGRAÇÃO]: Robustez do parser contra mensagens malformadas validada com sucesso! Servidor descartou o erro e continuou ativo.")
+}
+
+// 15. Teste de Desempenho: Medição de Tempo de Resposta sob Carga
+func TestDesempenhoTempoResposta(t *testing.T) {
+	conn, err := net.Dial("tcp", enderecoServidor)
+	if err != nil {
+		t.Fatalf("Servidor offline: %v", err)
+	}
+	defer conn.Close()
+
+	// Publica uma carona com vários assentos para suportar múltiplos testes de busca/reserva
+	caronaID := fmt.Sprintf("CAR-PERF-%d", time.Now().UnixNano())
+	c := utils.Carona{
+		ID:          caronaID,
+		MotoristaID: "m_perf@email.com",
+		AssentosTot: 50,
+		Ativa:       true,
+		Trechos: []utils.Trecho{{
+			Origem:         "Feira de Santana",
+			Destino:        "Salvador",
+			DataPartida:    utils.NovaData(15, 10, 2026),
+			HorarioPartida: time.Now(),
+			HorarioChegada: time.Now().Add(time.Hour),
+			Preco:          30.0,
+			AssentosLivre:  50,
+		}},
+	}
+	enviarRequisicao(conn, utils.AcaoPublicarCarona, "m_perf@email.com", c)
+
+	const totalRequisicoes = 50
+	var wg sync.WaitGroup
+	var mu sync.Mutex
+
+	// Fila para armazenar a latência de cada requisição individual
+	latencias := make([]time.Duration, 0, totalRequisicoes)
+
+	wg.Add(totalRequisicoes)
+	for i := 1; i <= totalRequisicoes; i++ {
+		email := fmt.Sprintf("p_perf_%d@email.com", i)
+		go func(e string) {
+			defer wg.Done()
+			cli, err := net.Dial("tcp", enderecoServidor)
+			if err != nil {
+				return
+			}
+			defer cli.Close()
+
+			filtroBusca := map[string]interface{}{
+				"origem":  "Feira de Santana",
+				"destino": "Salvador",
+				"data":    utils.NovaData(15, 10, 2026),
+			}
+
+			// CAPTURA O TEMPO ANTES DA REQUISIÇÃO
+			inicio := time.Now()
+			_, err = enviarRequisicao(cli, utils.AcaoBuscarItinerario, e, filtroBusca)
+			// MEDIÇÃO DO TEMPO DE RESPOSTA (ROUND-TRIP)
+			duracao := time.Since(inicio)
+
+			if err == nil {
+				mu.Lock()
+				latencias = append(latencias, duracao)
+				mu.Unlock()
+			}
+		}(email)
+	}
+
+	wg.Wait()
+
+	// Calcula estatísticas de desempenho (Média, Mínimo e Máximo)
+	if len(latencias) == 0 {
+		t.Fatalf("Nenhuma requisição de desempenho foi concluída com sucesso.")
+	}
+
+	var soma time.Duration
+	min := latencias[0]
+	max := latencias[0]
+
+	for _, lat := range latencias {
+		soma += lat
+		if lat < min {
+			min = lat
+		}
+		if lat > max {
+			max = lat
+		}
+	}
+	media := soma / time.Duration(len(latencias))
+
+	// Exibe os resultados no console (ótimos para prints do relatório / apresentação)
+	t.Logf("==================================================")
+	t.Logf("[DESEMPENHO SOB CARGA] Total de Requisições: %d", len(latencias))
+	t.Logf("⏱️ Tempo de Resposta Médio:  %v", media)
+	t.Logf("🚀 Menor Tempo (Mais rápido): %v", min)
+	t.Logf("⏳ Maior Tempo (Mais lento):  %v", max)
+	t.Logf("==================================================")
 }
