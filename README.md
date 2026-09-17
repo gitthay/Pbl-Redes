@@ -99,6 +99,25 @@ Mensagens malformadas (JSON inválido) são detectadas e descartadas pelo servid
 - Um `map` protegido por mutex (`usuariosLogados`) impede login simultâneo do mesmo email em mais de uma conexão, liberando a sessão automaticamente se o cliente cair (`io.EOF` ou erro de leitura).
 - Não é usado nenhum banco de dados ou serviço externo de coordenação — a exclusão mútua é feita inteiramente pela aplicação.
 
+## Pacotes e dependências
+
+O projeto utiliza **exclusivamente a biblioteca padrão do Go** — não há nenhuma dependência externa (nenhum framework de rede ou RPC), conforme exigido. Pacotes usados:
+
+| Pacote | Uso |
+|---|---|
+| `net` | Sockets TCP (servidor e clientes) |
+| `encoding/json` | Serialização do protocolo de aplicação |
+| `sync` | `Mutex` para exclusão mútua sobre o estado compartilhado |
+| `bufio`, `os` | Leitura de entrada do usuário nos clientes de terminal |
+| `flag` | Flag `-server` para configurar o endereço do servidor nos clientes |
+| `time` | Datas, horários e medição de tempo de resposta nos testes |
+| `strconv`, `strings` | Parsing e validação de entrada do usuário |
+| `fmt`, `log` | Saída de console e logging |
+| `testing` | Suíte de testes automatizados |
+
+Como não há dependências de terceiros, o `go.mod` não referencia nenhum módulo externo e o comando `go mod download` no `Dockerfile` não baixa pacote algum — ele é mantido por ser a etapa padrão de build Go, e passaria a baixar dependências automaticamente caso alguma fosse adicionada no futuro.
+
+
 ## Como executar
 
 ### Pré-requisitos

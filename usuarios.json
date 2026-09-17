@@ -1,122 +1,32 @@
 [
   {
-    "email": "oi",
-    "senha": "oi",
-    "tipo": "MOTORISTA"
-  },
-  {
-    "email": "user_stress_4@email.com",
-    "senha": "senha_segura_123",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "user_stress_6@email.com",
-    "senha": "senha_segura_123",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "user_stress_14@email.com",
-    "senha": "senha_segura_123",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "user_stress_2@email.com",
-    "senha": "senha_segura_123",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "user_stress_13@email.com",
-    "senha": "senha_segura_123",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "user_stress_9@email.com",
-    "senha": "senha_segura_123",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "user_stress_7@email.com",
-    "senha": "senha_segura_123",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "user_stress_1@email.com",
-    "senha": "senha_segura_123",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "user_stress_12@email.com",
-    "senha": "senha_segura_123",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "user_stress_5@email.com",
-    "senha": "senha_segura_123",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "user_stress_3@email.com",
-    "senha": "senha_segura_123",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "user_stress_8@email.com",
-    "senha": "senha_segura_123",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "user_stress_10@email.com",
-    "senha": "senha_segura_123",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "user_stress_11@email.com",
-    "senha": "senha_segura_123",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "user_stress_15@email.com",
-    "senha": "senha_segura_123",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "ss",
-    "senha": "ss",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "d",
-    "senha": "d",
-    "tipo": "MOTORISTA"
-  },
-  {
-    "email": "s",
-    "senha": "s",
-    "tipo": "PASSAGEIRO"
-  },
-  {
-    "email": "m_busca@email.com",
-    "senha": "123",
-    "tipo": "MOTORISTA"
-  },
-  {
     "email": "thay",
     "senha": "123",
     "tipo": "MOTORISTA"
   },
   {
-    "email": "thayq",
+    "email": "joao",
+    "senha": "123",
+    "tipo": "PASSAGEIRO"
+  },
+  {
+    "email": "",
+    "senha": "",
+    "tipo": "MOTORISTA"
+  },
+  {
+    "email": "matheus",
     "senha": "123",
     "tipo": "MOTORISTA"
   },
   {
-    "email": "tahh",
-    "senha": "11",
-    "tipo": "PASSAGEIRO"
+    "email": "ana",
+    "senha": "123",
+    "tipo": "MOTORISTA"
   },
   {
-    "email": "usuario_duplicado@email.com",
-    "senha": "senha123",
-    "tipo": "PASSAGEIRO"
+    "email": "rodrigo",
+    "senha": "123",
+    "tipo": "MOTORISTA"
   }
 ]

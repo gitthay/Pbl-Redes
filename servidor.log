@@ -1950,3 +1950,147 @@
 [2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43634 desconectou normalmente.
 [2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43646 desconectou normalmente.
 [2026-09-17 03:10:05] [DESCONEXAO] Cliente 172.18.0.1:43184 desconectou normalmente.
+[2026-09-17 13:39:36] [CONEXAO] Novo cliente conectado de: 172.18.0.1:48500
+[2026-09-17 13:39:48] [REQUISICAO] De: 172.18.0.1:48500 | Usuario: thay | Acao: AUTENTICAR | Payload: {"email":"thay","senha":"123","tipo":"MOTORISTA"}
+[2026-09-17 13:39:48] [RESPOSTA] Para: 172.18.0.1:48500 (Usuario: thay) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 13:40:15] [CONEXAO] Novo cliente conectado de: 172.18.0.1:57506
+[2026-09-17 13:40:22] [REQUISICAO] De: 172.18.0.1:57506 | Usuario: thay | Acao: AUTENTICAR | Payload: {"email":"thay","senha":"123","tipo":"PASSAGEIRO"}
+[2026-09-17 13:40:22] [RESPOSTA] Para: 172.18.0.1:57506 (Usuario: thay) | Acao: AUTENTICAR | Sucesso: false | Msg: Acesso negado: Este usuário já está conectado em outra sessão. | Payload: 
+[2026-09-17 13:40:29] [REQUISICAO] De: 172.18.0.1:57506 | Usuario: thay | Acao: AUTENTICAR | Payload: {"email":"thay","senha":"1234","tipo":"PASSAGEIRO"}
+[2026-09-17 13:40:29] [RESPOSTA] Para: 172.18.0.1:57506 (Usuario: thay) | Acao: AUTENTICAR | Sucesso: false | Msg: Acesso negado: Este usuário já está conectado em outra sessão. | Payload: 
+[2026-09-17 13:40:34] [REQUISICAO] De: 172.18.0.1:57506 | Usuario: thayyyy | Acao: AUTENTICAR | Payload: {"email":"thayyyy","senha":"123","tipo":"PASSAGEIRO"}
+[2026-09-17 13:40:34] [RESPOSTA] Para: 172.18.0.1:57506 (Usuario: thayyyy) | Acao: AUTENTICAR | Sucesso: true | Msg: Usuário cadastrado e autenticado com sucesso! | Payload: 
+[2026-09-17 13:41:53] [REQUISICAO] De: 172.18.0.1:48500 | Usuario: thay | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-1789652513488205700","motorista_id":"thay","assentos_tot":5,"trechos":[{"origem":"fsa","destino":"salvador","data_partida":{"dia":12,"mes":12,"ano":2026},"horario_partida":"2026-12-12T12:56:00-03:00","horario_chegada":"2026-12-12T12:58:00-03:00","preco":56,"assentos_livres":5},{"origem":"salvador","destino":"recife","data_partida":{"dia":12,"mes":12,"ano":2026},"horario_partida":"2026-12-12T12:58:00-03:00","horario_chegada":"2026-12-12T15:30:00-03:00","preco":56,"assentos_livres":5}],"ativa":true}
+[2026-09-17 13:42:29] [REQUISICAO] De: 172.18.0.1:48500 | Usuario: thay | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 13:42:29] [REQUISICAO] De: 172.18.0.1:48500 | Usuario: thay | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789652513488205700"}
+[2026-09-17 13:42:29] [REQUISICAO] De: 172.18.0.1:48500 | Usuario: thay | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789377512135365000"}
+[2026-09-17 13:42:29] [REQUISICAO] De: 172.18.0.1:48500 | Usuario: thay | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789377726646435400"}
+[2026-09-17 13:43:04] [REQUISICAO] De: 172.18.0.1:57506 | Usuario: thayyyy | Acao: LISTAR_RESERVAS | Payload: null
+[2026-09-17 13:43:25] [REQUISICAO] De: 172.18.0.1:57506 | Usuario: thayyyy | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"ssa","destino":"recife","data":{"dia":12,"mes":12,"ano":2026}}
+[2026-09-17 13:43:59] [REQUISICAO] De: 172.18.0.1:57506 | Usuario: thayyyy | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"fsa","destino":"recife","data":{"dia":12,"mes":12,"ano":2026}}
+[2026-09-17 13:44:37] [REQUISICAO] De: 172.18.0.1:57506 | Usuario: thayyyy | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-1789652513488205700","motorista_id":"thay","origem":"fsa","destino":"recife","horario_partida":"2026-12-12T12:56:00-03:00","horario_chegada":"2026-12-12T15:30:00-03:00","preco":112,"assentos_livres":5}],"preco_total":112}
+[2026-09-17 13:44:37] [DESCONEXAO] Sessão ativa do usuário thayyyy liberada.
+[2026-09-17 13:45:11] [REQUISICAO] De: 172.18.0.1:48500 | Usuario: thay | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 13:45:11] [REQUISICAO] De: 172.18.0.1:48500 | Usuario: thay | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789652513488205700"}
+[2026-09-17 13:45:11] [REQUISICAO] De: 172.18.0.1:48500 | Usuario: thay | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789377512135365000"}
+[2026-09-17 13:45:11] [REQUISICAO] De: 172.18.0.1:48500 | Usuario: thay | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789377726646435400"}
+[2026-09-17 13:47:58] [CONEXAO] Novo cliente conectado de: 172.18.0.1:51650
+[2026-09-17 13:48:05] [REQUISICAO] De: 172.18.0.1:51650 | Usuario: thayyy | Acao: AUTENTICAR | Payload: {"email":"thayyy","senha":"123","tipo":"PASSAGEIRO"}
+[2026-09-17 13:48:05] [RESPOSTA] Para: 172.18.0.1:51650 (Usuario: thayyy) | Acao: AUTENTICAR | Sucesso: true | Msg: Usuário cadastrado e autenticado com sucesso! | Payload: 
+[2026-09-17 13:48:21] [REQUISICAO] De: 172.18.0.1:51650 | Usuario: thayyy | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"fsa","destino":"recife","data":{"dia":12,"mes":12,"ano":2026}}
+[2026-09-17 13:48:28] [REQUISICAO] De: 172.18.0.1:51650 | Usuario: thayyy | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-1789652513488205700","motorista_id":"thay","origem":"fsa","destino":"recife","horario_partida":"2026-12-12T12:56:00-03:00","horario_chegada":"2026-12-12T15:30:00-03:00","preco":112,"assentos_livres":5}],"preco_total":112}
+[2026-09-17 13:48:28] [DESCONEXAO] Sessão ativa do usuário thayyy liberada.
+[2026-09-17 13:56:25] [DESCONEXAO] Cliente 172.18.0.1:48500 desconectou normalmente.
+[2026-09-17 13:56:25] [DESCONEXAO] Sessão ativa do usuário thay liberada.
+[2026-09-17 13:56:34] [CONEXAO] Novo cliente conectado de: 172.18.0.1:32984
+[2026-09-17 13:56:38] [REQUISICAO] De: 172.18.0.1:32984 | Usuario: thay | Acao: AUTENTICAR | Payload: {"email":"thay","senha":"123","tipo":"MOTORISTA"}
+[2026-09-17 13:56:38] [RESPOSTA] Para: 172.18.0.1:32984 (Usuario: thay) | Acao: AUTENTICAR | Sucesso: true | Msg: Usuário cadastrado e autenticado com sucesso! | Payload: 
+[2026-09-17 13:57:16] [REQUISICAO] De: 172.18.0.1:32984 | Usuario: thay | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-1789653436990577900","motorista_id":"thay","assentos_tot":5,"trechos":[{"origem":"ssa","destino":"fsa","data_partida":{"dia":12,"mes":12,"ano":2026},"horario_partida":"2026-12-12T15:26:00-03:00","horario_chegada":"2026-12-12T15:30:00-03:00","preco":15,"assentos_livres":5},{"origem":"fsa","destino":"recife","data_partida":{"dia":12,"mes":12,"ano":2026},"horario_partida":"2026-12-12T15:30:00-03:00","horario_chegada":"2026-12-12T15:40:00-03:00","preco":56,"assentos_livres":5}],"ativa":true}
+[2026-09-17 13:57:19] [REQUISICAO] De: 172.18.0.1:32984 | Usuario: thay | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 13:57:19] [REQUISICAO] De: 172.18.0.1:32984 | Usuario: thay | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789653436990577900"}
+[2026-09-17 13:57:28] [CONEXAO] Novo cliente conectado de: 172.18.0.1:55336
+[2026-09-17 13:57:34] [REQUISICAO] De: 172.18.0.1:55336 | Usuario: joao | Acao: AUTENTICAR | Payload: {"email":"joao","senha":"123","tipo":"PASSAGEIRO"}
+[2026-09-17 13:57:34] [RESPOSTA] Para: 172.18.0.1:55336 (Usuario: joao) | Acao: AUTENTICAR | Sucesso: true | Msg: Usuário cadastrado e autenticado com sucesso! | Payload: 
+[2026-09-17 13:57:49] [REQUISICAO] De: 172.18.0.1:55336 | Usuario: joao | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"ssa","destino":"recife","data":{"dia":12,"mes":12,"ano":2026}}
+[2026-09-17 13:57:56] [REQUISICAO] De: 172.18.0.1:55336 | Usuario: joao | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-1789653436990577900","motorista_id":"thay","origem":"ssa","destino":"recife","horario_partida":"2026-12-12T15:26:00-03:00","horario_chegada":"2026-12-12T15:40:00-03:00","preco":71,"assentos_livres":5}],"preco_total":71}
+[2026-09-17 13:57:56] [DESCONEXAO] Sessão ativa do usuário joao liberada.
+[2026-09-17 11:03:03] [CONEXAO] Novo cliente conectado de: 26.170.71.31:49679
+[2026-09-17 11:03:12] [CONEXAO] Novo cliente conectado de: 26.170.71.31:49684
+[2026-09-17 11:03:31] [REQUISICAO] De: 26.170.71.31:49684 | Usuario: joao | Acao: AUTENTICAR | Payload: {"email":"joao","senha":"123","tipo":"PASSAGEIRO"}
+[2026-09-17 11:03:31] [RESPOSTA] Para: 26.170.71.31:49684 (Usuario: joao) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 11:03:51] [REQUISICAO] De: 26.170.71.31:49684 | Usuario: joao | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"ssa","destino":"recife","data":{"dia":12,"mes":12,"ano":2026}}
+[2026-09-17 11:03:56] [REQUISICAO] De: 26.170.71.31:49684 | Usuario: joao | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-1789653436990577900","motorista_id":"thay","origem":"ssa","destino":"recife","horario_partida":"2026-12-12T15:26:00-03:00","horario_chegada":"2026-12-12T15:40:00-03:00","preco":71,"assentos_livres":5}],"preco_total":71}
+[2026-09-17 11:03:56] [DESCONEXAO] Sessão ativa do usuário joao liberada.
+[2026-09-17 11:12:35] [CONEXAO] Novo cliente conectado de: 26.170.71.31:49675
+[2026-09-17 11:12:43] [REQUISICAO] De: 26.170.71.31:49675 | Usuario: thay | Acao: AUTENTICAR | Payload: {"email":"thay","senha":"123","tipo":"PASSAGEIRO"}
+[2026-09-17 11:12:43] [RESPOSTA] Para: 26.170.71.31:49675 (Usuario: thay) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 11:13:04] [REQUISICAO] De: 26.170.71.31:49675 | Usuario: thay | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"ssa","destino":"fsa","data":{"dia":12,"mes":12,"ano":2026}}
+[2026-09-17 11:13:42] [REQUISICAO] De: 26.170.71.31:49675 | Usuario: thay | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-1789653436990577900","motorista_id":"thay","origem":"ssa","destino":"fsa","horario_partida":"2026-12-12T15:26:00-03:00","horario_chegada":"2026-12-12T15:30:00-03:00","preco":15,"assentos_livres":5}],"preco_total":15}
+[2026-09-17 11:13:55] [REQUISICAO] De: 26.170.71.31:49675 | Usuario: thay | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"ssa","destino":"fsa","data":{"dia":12,"mes":12,"ano":2026}}
+[2026-09-17 11:14:09] [REQUISICAO] De: 26.170.71.31:49675 | Usuario: thay | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"ssa","destino":"recife","data":{"dia":12,"mes":12,"ano":2026}}
+[2026-09-17 11:14:14] [REQUISICAO] De: 26.170.71.31:49675 | Usuario: thay | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-1789653436990577900","motorista_id":"thay","origem":"ssa","destino":"recife","horario_partida":"2026-12-12T15:26:00-03:00","horario_chegada":"2026-12-12T15:40:00-03:00","preco":71,"assentos_livres":4}],"preco_total":71}
+[2026-09-17 11:14:14] [DESCONEXAO] Sessão ativa do usuário thay liberada.
+[2026-09-17 11:16:36] [CONEXAO] Novo cliente conectado de: 26.170.71.31:56922
+[2026-09-17 11:16:36] [REQUISICAO] De: 26.170.71.31:56922 | Usuario:  | Acao: AUTENTICAR | Payload: {"email":"","senha":"","tipo":"MOTORISTA"}
+[2026-09-17 11:16:36] [RESPOSTA] Para: 26.170.71.31:56922 (Usuario: ) | Acao: AUTENTICAR | Sucesso: true | Msg: Usuário cadastrado e autenticado com sucesso! | Payload: 
+[2026-09-17 11:16:38] [ERRO CONEXAO] Erro na leitura do cliente 26.170.71.31:56922: read tcp 26.170.71.31:8080->26.170.71.31:56922: wsarecv: Foi forçado o cancelamento de uma conexão existente pelo host remoto.
+[2026-09-17 11:16:45] [CONEXAO] Novo cliente conectado de: 26.170.71.31:64127
+[2026-09-17 11:16:48] [REQUISICAO] De: 26.170.71.31:64127 | Usuario: thay | Acao: AUTENTICAR | Payload: {"email":"thay","senha":"123","tipo":"MOTORISTA"}
+[2026-09-17 11:16:48] [RESPOSTA] Para: 26.170.71.31:64127 (Usuario: thay) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 11:16:51] [REQUISICAO] De: 26.170.71.31:64127 | Usuario: thay | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 11:16:51] [REQUISICAO] De: 26.170.71.31:64127 | Usuario: thay | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789653436990577900"}
+[2026-09-17 11:17:14] [CONEXAO] Novo cliente conectado de: 26.170.71.31:61809
+[2026-09-17 11:17:17] [REQUISICAO] De: 26.170.71.31:61809 | Usuario: joao | Acao: AUTENTICAR | Payload: {"email":"joao","senha":"123","tipo":"PASSAGEIRO"}
+[2026-09-17 11:17:17] [RESPOSTA] Para: 26.170.71.31:61809 (Usuario: joao) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 11:17:29] [REQUISICAO] De: 26.170.71.31:61809 | Usuario: joao | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"ssa","destino":"recife","data":{"dia":12,"mes":12,"ano":2026}}
+[2026-09-17 11:17:42] [REQUISICAO] De: 26.170.71.31:61809 | Usuario: joao | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-1789653436990577900","motorista_id":"thay","origem":"ssa","destino":"recife","horario_partida":"2026-12-12T15:26:00-03:00","horario_chegada":"2026-12-12T15:40:00-03:00","preco":71,"assentos_livres":4}],"preco_total":71}
+[2026-09-17 11:18:21] [REQUISICAO] De: 26.170.71.31:64127 | Usuario: thay | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 11:18:21] [REQUISICAO] De: 26.170.71.31:64127 | Usuario: thay | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789653436990577900"}
+[2026-09-17 11:18:52] [REQUISICAO] De: 26.170.71.31:61809 | Usuario: joao | Acao: LISTAR_RESERVAS | Payload: null
+[2026-09-17 11:19:30] [ERRO CONEXAO] Erro na leitura do cliente 26.170.71.31:61809: read tcp 26.170.71.31:8080->26.170.71.31:61809: wsarecv: Foi forçado o cancelamento de uma conexão existente pelo host remoto.
+[2026-09-17 11:19:30] [DESCONEXAO] Sessão ativa do usuário joao liberada.
+[2026-09-17 11:19:34] [CONEXAO] Novo cliente conectado de: 26.170.71.31:57133
+[2026-09-17 11:19:38] [REQUISICAO] De: 26.170.71.31:57133 | Usuario: matheus | Acao: AUTENTICAR | Payload: {"email":"matheus","senha":"123","tipo":"MOTORISTA"}
+[2026-09-17 11:19:38] [RESPOSTA] Para: 26.170.71.31:57133 (Usuario: matheus) | Acao: AUTENTICAR | Sucesso: true | Msg: Usuário cadastrado e autenticado com sucesso! | Payload: 
+[2026-09-17 11:19:45] [REQUISICAO] De: 26.170.71.31:57133 | Usuario: matheus | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 11:20:08] [ERRO CONEXAO] Erro na leitura do cliente 26.170.71.31:57133: read tcp 26.170.71.31:8080->26.170.71.31:57133: wsarecv: Foi forçado o cancelamento de uma conexão existente pelo host remoto.
+[2026-09-17 11:20:08] [DESCONEXAO] Sessão ativa do usuário matheus liberada.
+[2026-09-17 11:20:11] [CONEXAO] Novo cliente conectado de: 26.170.71.31:52506
+[2026-09-17 11:20:16] [REQUISICAO] De: 26.170.71.31:52506 | Usuario: matheus | Acao: AUTENTICAR | Payload: {"email":"matheus","senha":"123","tipo":"PASSAGEIRO"}
+[2026-09-17 11:20:16] [RESPOSTA] Para: 26.170.71.31:52506 (Usuario: matheus) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 11:20:32] [REQUISICAO] De: 26.170.71.31:52506 | Usuario: matheus | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"ssa","destino":"recife","data":{"dia":12,"mes":12,"ano":2026}}
+[2026-09-17 11:20:39] [REQUISICAO] De: 26.170.71.31:52506 | Usuario: matheus | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-1789653436990577900","motorista_id":"thay","origem":"ssa","destino":"recife","horario_partida":"2026-12-12T15:26:00-03:00","horario_chegada":"2026-12-12T15:40:00-03:00","preco":71,"assentos_livres":3}],"preco_total":71}
+[2026-09-17 11:20:42] [REQUISICAO] De: 26.170.71.31:52506 | Usuario: matheus | Acao: LISTAR_RESERVAS | Payload: null
+[2026-09-17 11:20:47] [REQUISICAO] De: 26.170.71.31:64127 | Usuario: thay | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 11:20:47] [REQUISICAO] De: 26.170.71.31:64127 | Usuario: thay | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789653436990577900"}
+[2026-09-17 11:21:11] [REQUISICAO] De: 26.170.71.31:52506 | Usuario: matheus | Acao: LISTAR_RESERVAS | Payload: null
+[2026-09-17 11:21:34] [REQUISICAO] De: 26.170.71.31:52506 | Usuario: matheus | Acao: CANCELAR_RESERVA | Payload: {"reserva_id":"RES-1789654839318071800"}
+[2026-09-17 11:21:40] [REQUISICAO] De: 26.170.71.31:64127 | Usuario: thay | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 11:21:40] [REQUISICAO] De: 26.170.71.31:64127 | Usuario: thay | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789653436990577900"}
+[2026-09-17 11:21:57] [REQUISICAO] De: 26.170.71.31:52506 | Usuario: matheus | Acao: LISTAR_RESERVAS | Payload: null
+[2026-09-17 11:22:02] [DESCONEXAO] Cliente 26.170.71.31:52506 desconectou normalmente.
+[2026-09-17 11:22:02] [DESCONEXAO] Sessão ativa do usuário matheus liberada.
+[2026-09-17 11:22:20] [CONEXAO] Novo cliente conectado de: 26.170.71.31:63663
+[2026-09-17 11:22:23] [REQUISICAO] De: 26.170.71.31:63663 | Usuario: joao | Acao: AUTENTICAR | Payload: {"email":"joao","senha":"123","tipo":"PASSAGEIRO"}
+[2026-09-17 11:22:23] [RESPOSTA] Para: 26.170.71.31:63663 (Usuario: joao) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 11:22:24] [REQUISICAO] De: 26.170.71.31:63663 | Usuario: joao | Acao: LISTAR_RESERVAS | Payload: null
+[2026-09-17 11:22:41] [REQUISICAO] De: 26.170.71.31:64127 | Usuario: thay | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 11:22:41] [REQUISICAO] De: 26.170.71.31:64127 | Usuario: thay | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789653436990577900"}
+[2026-09-17 11:22:59] [REQUISICAO] De: 26.170.71.31:64127 | Usuario: thay | Acao: CANCELAR_CARONA | Payload: {"carona_id":"CAR-1789653436990577900","confirmar":false}
+[2026-09-17 11:23:01] [REQUISICAO] De: 26.170.71.31:64127 | Usuario: thay | Acao: CANCELAR_CARONA | Payload: {"carona_id":"CAR-1789653436990577900","confirmar":true}
+[2026-09-17 11:23:05] [REQUISICAO] De: 26.170.71.31:63663 | Usuario: joao | Acao: LISTAR_RESERVAS | Payload: null
+[2026-09-17 11:23:14] [REQUISICAO] De: 26.170.71.31:64127 | Usuario: thay | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 11:23:14] [REQUISICAO] De: 26.170.71.31:64127 | Usuario: thay | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789653436990577900"}
+[2026-09-17 11:23:36] [ERRO CONEXAO] Erro na leitura do cliente 26.170.71.31:64127: read tcp 26.170.71.31:8080->26.170.71.31:64127: wsarecv: Foi forçado o cancelamento de uma conexão existente pelo host remoto.
+[2026-09-17 11:23:36] [DESCONEXAO] Sessão ativa do usuário thay liberada.
+[2026-09-17 11:24:38] [CONEXAO] Novo cliente conectado de: 26.170.71.31:60240
+[2026-09-17 11:24:45] [REQUISICAO] De: 26.170.71.31:60240 | Usuario: ana | Acao: AUTENTICAR | Payload: {"email":"ana","senha":"123","tipo":"MOTORISTA"}
+[2026-09-17 11:24:45] [RESPOSTA] Para: 26.170.71.31:60240 (Usuario: ana) | Acao: AUTENTICAR | Sucesso: true | Msg: Usuário cadastrado e autenticado com sucesso! | Payload: 
+[2026-09-17 11:25:25] [REQUISICAO] De: 26.170.71.31:60240 | Usuario: ana | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-1789655125163569200","motorista_id":"ana","assentos_tot":5,"trechos":[{"origem":"fsa","destino":"ssa","data_partida":{"dia":12,"mes":12,"ano":2026},"horario_partida":"2026-12-12T15:30:00-03:00","horario_chegada":"2026-12-12T15:40:00-03:00","preco":15,"assentos_livres":5},{"origem":"ssa","destino":"paris","data_partida":{"dia":12,"mes":12,"ano":2026},"horario_partida":"2026-12-12T15:40:00-03:00","horario_chegada":"2026-12-12T16:00:00-03:00","preco":56,"assentos_livres":5}],"ativa":true}
+[2026-09-17 11:25:30] [ERRO CONEXAO] Erro na leitura do cliente 26.170.71.31:60240: read tcp 26.170.71.31:8080->26.170.71.31:60240: wsarecv: Foi forçado o cancelamento de uma conexão existente pelo host remoto.
+[2026-09-17 11:25:30] [DESCONEXAO] Sessão ativa do usuário ana liberada.
+[2026-09-17 11:25:33] [CONEXAO] Novo cliente conectado de: 26.170.71.31:57116
+[2026-09-17 11:25:38] [REQUISICAO] De: 26.170.71.31:57116 | Usuario: rodrigo | Acao: AUTENTICAR | Payload: {"email":"rodrigo","senha":"123","tipo":"MOTORISTA"}
+[2026-09-17 11:25:38] [RESPOSTA] Para: 26.170.71.31:57116 (Usuario: rodrigo) | Acao: AUTENTICAR | Sucesso: true | Msg: Usuário cadastrado e autenticado com sucesso! | Payload: 
+[2026-09-17 11:26:55] [REQUISICAO] De: 26.170.71.31:57116 | Usuario: rodrigo | Acao: PUBLICAR_CARONA | Payload: {"id":"CAR-1789655215880180500","motorista_id":"rodrigo","assentos_tot":1,"trechos":[{"origem":"paris","destino":"irece","data_partida":{"dia":12,"mes":12,"ano":2026},"horario_partida":"2026-12-12T18:00:00-03:00","horario_chegada":"2026-12-12T18:30:00-03:00","preco":56,"assentos_livres":1},{"origem":"irece","destino":"lapao","data_partida":{"dia":12,"mes":12,"ano":2026},"horario_partida":"2026-12-12T18:30:00-03:00","horario_chegada":"2026-12-12T18:40:00-03:00","preco":45,"assentos_livres":1}],"ativa":true}
+[2026-09-17 11:27:15] [REQUISICAO] De: 26.170.71.31:63663 | Usuario: joao | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"paris","destino":"lapao","data":{"dia":12,"mes":12,"ano":2026}}
+[2026-09-17 11:28:44] [REQUISICAO] De: 26.170.71.31:63663 | Usuario: joao | Acao: BUSCAR_ITINERARIO | Payload: {"origem":"ssa","destino":"lapao","data":{"dia":12,"mes":12,"ano":2026}}
+[2026-09-17 11:28:58] [REQUISICAO] De: 26.170.71.31:63663 | Usuario: joao | Acao: RESERVAR_TRECHO | Payload: {"trechos":[{"carona_id":"CAR-1789655125163569200","motorista_id":"ana","origem":"ssa","destino":"paris","horario_partida":"2026-12-12T15:40:00-03:00","horario_chegada":"2026-12-12T16:00:00-03:00","preco":56,"assentos_livres":5},{"carona_id":"CAR-1789655215880180500","motorista_id":"rodrigo","origem":"paris","destino":"lapao","horario_partida":"2026-12-12T18:00:00-03:00","horario_chegada":"2026-12-12T18:40:00-03:00","preco":101,"assentos_livres":1}],"preco_total":157}
+[2026-09-17 11:29:05] [REQUISICAO] De: 26.170.71.31:63663 | Usuario: joao | Acao: LISTAR_RESERVAS | Payload: null
+[2026-09-17 11:29:17] [REQUISICAO] De: 26.170.71.31:57116 | Usuario: rodrigo | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 11:29:17] [REQUISICAO] De: 26.170.71.31:57116 | Usuario: rodrigo | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789655215880180500"}
+[2026-09-17 11:29:51] [ERRO CONEXAO] Erro na leitura do cliente 26.170.71.31:57116: read tcp 26.170.71.31:8080->26.170.71.31:57116: wsarecv: Foi forçado o cancelamento de uma conexão existente pelo host remoto.
+[2026-09-17 11:29:51] [DESCONEXAO] Sessão ativa do usuário rodrigo liberada.
+[2026-09-17 11:30:13] [CONEXAO] Novo cliente conectado de: 26.170.71.31:63190
+[2026-09-17 11:30:18] [REQUISICAO] De: 26.170.71.31:63190 | Usuario: ana | Acao: AUTENTICAR | Payload: {"email":"ana","senha":"123","tipo":"MOTORISTA"}
+[2026-09-17 11:30:18] [RESPOSTA] Para: 26.170.71.31:63190 (Usuario: ana) | Acao: AUTENTICAR | Sucesso: true | Msg: Autenticação realizada com sucesso! | Payload: 
+[2026-09-17 11:30:21] [REQUISICAO] De: 26.170.71.31:63190 | Usuario: ana | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 11:30:21] [REQUISICAO] De: 26.170.71.31:63190 | Usuario: ana | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789655125163569200"}
+[2026-09-17 11:30:45] [REQUISICAO] De: 26.170.71.31:63663 | Usuario: joao | Acao: LISTAR_RESERVAS | Payload: null
+[2026-09-17 11:30:53] [REQUISICAO] De: 26.170.71.31:63663 | Usuario: joao | Acao: CANCELAR_RESERVA | Payload: {"reserva_id":"RES-1789655338223162100"}
+[2026-09-17 11:30:56] [REQUISICAO] De: 26.170.71.31:63190 | Usuario: ana | Acao: CONSULTAR_CARONAS | Payload: null
+[2026-09-17 11:30:56] [REQUISICAO] De: 26.170.71.31:63190 | Usuario: ana | Acao: CONSULTAR_PASSAGEIROS_CARONA | Payload: {"carona_id":"CAR-1789655125163569200"}
+[2026-09-17 11:31:22] [ERRO CONEXAO] Erro na leitura do cliente 26.170.71.31:63190: read tcp 26.170.71.31:8080->26.170.71.31:63190: wsarecv: Foi forçado o cancelamento de uma conexão existente pelo host remoto.
+[2026-09-17 11:31:22] [DESCONEXAO] Sessão ativa do usuário ana liberada.
+[2026-09-17 11:31:24] [ERRO CONEXAO] Erro na leitura do cliente 26.170.71.31:63663: read tcp 26.170.71.31:8080->26.170.71.31:63663: wsarecv: Foi forçado o cancelamento de uma conexão existente pelo host remoto.
+[2026-09-17 11:31:24] [DESCONEXAO] Sessão ativa do usuário joao liberada.

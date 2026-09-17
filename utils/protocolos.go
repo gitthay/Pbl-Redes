@@ -70,13 +70,13 @@ type Usuario struct {
 	Tipo  TipoUsuario `json:"tipo"`
 }
 
-// MensagemRequisicao é o envelope de dados enviado pelo Cliente ao Servidor.
+// envelope de dados enviado pelo Cliente ao Servidor.
 type MensagemRequisicao struct {
 	Acao    TipoAcao        `json:"acao"`
 	Usuario string          `json:"usuario"`
 	Payload json.RawMessage `json:"payload"` //se eu fixar uma struct especifica, teria que crair uma struct para cada tipo de payload, então uso RawMessage 
 }
-// MensagemResposta é o envelope padrão retornado pelo Servidor.
+// envelope padrão retornado pelo Servidor.
 type MensagemResposta struct {
 	Sucesso  bool            `json:"sucesso"`
 	Mensagem string          `json:"mensagem,omitempty"` //se o campo estiver vazio, não será incluído no JSON

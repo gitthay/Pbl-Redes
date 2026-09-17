@@ -17,7 +17,7 @@ func gerenciarConexao(conexao net.Conn) {
 
 	var usuarioLogadoNestaConexao string
 
-	// Garante que se o cliente cair/desconectar, o login é liberado do mapa
+	// Garante que se o cliente cair/desconectar, o login é liberado 
 	defer func() {
 		if usuarioLogadoNestaConexao != "" {
 			utils.RemoverLogin(usuarioLogadoNestaConexao)
@@ -66,7 +66,6 @@ func gerenciarConexao(conexao net.Conn) {
 				return
 			}
 
-			// Chama a função utilitária do pacote utils
 			if err := utils.SalvarCarona(carona); err != nil {
 				log.Println("Erro ao salvar carona:", err)
 
